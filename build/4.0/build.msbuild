@@ -1,0 +1,9 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
+  <ItemGroup>
+	<Framework Include="net35-full;net40-full;net45-full" />
+  </ItemGroup>
+  <Target Name="Build">
+    <MSBuild Projects="debug.msbuild" Properties="Framework=%(Framework.Identity)"></MSBuild>
+    <MSBuild Projects="release.msbuild" Properties="Framework=%(Framework.Identity)"></MSBuild>
+  </Target>
+</Project>

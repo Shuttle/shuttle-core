@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7D3E44D3-40C3-49E9-B42B-8143FF3D8090}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Test.All</RootNamespace>
+    <AssemblyName>Test.All</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\external-bin\NUnit\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\external-bin\RhinoMocks\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Assembler\ClientAssembler.cs" />
+    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\ClientContact.cs" />
+    <Compile Include="Infrastructure\ArgumentsTest.cs" />
+    <Compile Include="Infrastructure\Cron\CronDayOfMonthTest.cs" />
+    <Compile Include="Infrastructure\Cron\CronDayOfWeekTest.cs" />
+    <Compile Include="Infrastructure\Cron\CronExpressionTest.cs" />
+    <Compile Include="Infrastructure\Cron\CronHourTest.cs" />
+    <Compile Include="Infrastructure\Cron\CronMinuteTest.cs" />
+    <Compile Include="Infrastructure\Cron\CronMonthTest.cs" />
+    <Compile Include="Infrastructure\CryptographyServiceTest.cs" />
+    <Compile Include="Infrastructure\FileServiceTest.cs" />
+    <Compile Include="Infrastructure\GuidExtensionsTest.cs" />
+    <Compile Include="Infrastructure\ImageServiceTest.cs" />
+    <Compile Include="Infrastructure\ObservablePipeline\MockAuthenticateObserver.cs" />
+    <Compile Include="Infrastructure\ObservablePipeline\MockPipelineEvent1.cs" />
+    <Compile Include="Infrastructure\ObservablePipeline\ObservablePipelineTest.cs" />
+    <Compile Include="Infrastructure\TypeSpecificationsTest.cs" />
+    <Compile Include="Infrastructure\StreamExtensionsTest.cs" />
+    <Compile Include="Infrastructure\TypeExtensionsTest.cs" />
+    <Compile Include="Mappers\ClientContactMapper.cs" />
+    <Compile Include="Mappers\ClientMapper.cs" />
+    <Compile Include="Fixture.cs" />
+    <Compile Include="Mocks\FirstInterface.cs" />
+    <Compile Include="Mocks\HasGenericParameterGeneric.cs" />
+    <Compile Include="Mocks\HasGenericParameterString.cs" />
+    <Compile Include="Mocks\IAnotherGeneric.cs" />
+    <Compile Include="Mocks\IHaveGenericParameter.cs" />
+    <Compile Include="Mocks\IMockEntity.cs" />
+    <Compile Include="Mocks\ISubClassGenericParameterString.cs" />
+    <Compile Include="Mocks\MockUnitOfWorkFactory.cs" />
+    <Compile Include="Mocks\SubClassGenericParameterString.cs" />
+    <Compile Include="ObjectSerializerTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MappedColumnTest.cs" />
+    <Compile Include="ResultTest.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="TestResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UnitOfWorkTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shuttle.Core.Data\Shuttle.Core.Data.csproj">
+      <Project>{3B7F096A-68DB-4D4B-A823-CB147A310837}</Project>
+      <Name>Shuttle.Core.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shuttle.Core.Domain\Shuttle.Core.Domain.csproj">
+      <Project>{3EF67763-745B-48A2-855D-F87B0B40C0DD}</Project>
+      <Name>Shuttle.Core.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shuttle.Core.Infrastructure\Shuttle.Core.Infrastructure.csproj">
+      <Project>{F7F8F139-30B0-4B71-AB09-1A3127DAC4BD}</Project>
+      <Name>Shuttle.Core.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shuttle.Core.SqlServer\Shuttle.Core.SqlServer.csproj">
+      <Project>{F26F73FA-2277-4FD7-B8B7-999820A65D45}</Project>
+      <Name>Shuttle.Core.SqlServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shuttle.Core.Validation\Shuttle.Core.Validation.csproj">
+      <Project>{BAE5D254-44A0-499C-8759-0157CDC8CB7D}</Project>
+      <Name>Shuttle.Core.Validation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shuttle.Core.Web\Shuttle.Core.Web.csproj">
+      <Project>{C00DDF0A-A076-40D0-9EDC-85E05BDA3DC6}</Project>
+      <Name>Shuttle.Core.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.9.2">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2005 Express Edition SP2 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TestResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Infrastructure\Images\NotAnImage.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

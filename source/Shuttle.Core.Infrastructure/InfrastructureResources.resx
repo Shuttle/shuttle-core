@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountInvalid" xml:space="preserve">
+    <value>Account '{0}' is invalid.</value>
+    <comment>{0} = invalid account</comment>
+  </data>
+  <data name="ConfigurationItem" xml:space="preserve">
+    <value>configuration item</value>
+  </data>
+  <data name="ConfigurationItemEmptyUsingDefault" xml:space="preserve">
+    <value>Configuration item '{0}' is specified but empty.  Using the specified default '{1}'.</value>
+    <comment>{0} = configuration item name, {1} = specified default</comment>
+  </data>
+  <data name="ConfigurationItemMissing" xml:space="preserve">
+    <value>Application setting '{0}' is missing or has an empty value.</value>
+    <comment>{0} = requested setting in application configuration file</comment>
+  </data>
+  <data name="ConfigurationItemMissingUsingDefault" xml:space="preserve">
+    <value>configuration item not specified - using default</value>
+  </data>
+  <data name="CronBothDaysSpecified" xml:space="preserve">
+    <value>Cron expression '{0}' is invalid since you cannot specify both day-of-month and day-of-week.  Specify one of the two as '?'.</value>
+    <comment>{0} = invalid cron expression</comment>
+  </data>
+  <data name="CronEndValueTooLarge" xml:space="preserve">
+    <value>End value '{0}' is higher than the maximum permitted value of '{1}'.</value>
+    <comment>{0} = end value, {1} = maximum</comment>
+  </data>
+  <data name="CronEndValueTooSmall" xml:space="preserve">
+    <value>End value '{0}' is lower than the minimum permitted value of '{1}'.</value>
+    <comment>{0} = end value, {1} = minimum</comment>
+  </data>
+  <data name="CronInvalidExpression" xml:space="preserve">
+    <value>Expression '{0}' is not valid.</value>
+    <comment>{0} = invalid expression</comment>
+  </data>
+  <data name="CronInvalidFieldCount" xml:space="preserve">
+    <value>A CronExpression must contain exactly 5 fields.  {0} fields have specified.</value>
+    <comment>{0} = number of fields specified</comment>
+  </data>
+  <data name="CronInvalidSpecificationCandidate" xml:space="preserve">
+    <value>Specification exptected candidate of type '{0}' but was '{1}'.</value>
+    <comment>{0} = expected type full name, {1} = actual type full name</comment>
+  </data>
+  <data name="CronNoDaysSpecified" xml:space="preserve">
+    <value>No days specified in expression '{0}'.  You should not specify both day-of-month and day-of-week as '?'.</value>
+    <comment>{0} = invalid cron expression</comment>
+  </data>
+  <data name="CronStartValueLargerThanEndValue" xml:space="preserve">
+    <value>The start value may not be greater than the end value.</value>
+  </data>
+  <data name="CronStartValueTooLarge" xml:space="preserve">
+    <value>Start value '{0}' is higher than the maximum permitted value of '{1}'.</value>
+    <comment>{0} = start value, {1} = maximum</comment>
+  </data>
+  <data name="CronStartValueTooSmall" xml:space="preserve">
+    <value>Start value '{0}' is lower than the minimum permitted value of '{1}'.</value>
+    <comment>{0} = start value, {1} = minimum</comment>
+  </data>
+  <data name="DuplicateEntityException" xml:space="preserve">
+    <value>Cannot perform operation since it will result in a duplicate '{0}' since there is already an entity attribute '{1}' with value '{2}'.</value>
+    <comment>{0} = type name, {1} = attribute name, {2} = attribute value</comment>
+  </data>
+  <data name="DuplicateEntryException" xml:space="preserve">
+    <value>Key '{0}' already exists in collection '{1}'.</value>
+    <comment>{0} = key name, {1} = collection name</comment>
+  </data>
+  <data name="EnteringPipelineStage" xml:space="preserve">
+    <value>Entering pipeline stage '{0}'.</value>
+    <comment>{0} = pipeline stage</comment>
+  </data>
+  <data name="ExecutingPipeline" xml:space="preserve">
+    <value>Executing pipeline '{0}'.</value>
+    <comment>{0} = pipeline full type name</comment>
+  </data>
+  <data name="FirstChanceExceptionHandledByPipeline" xml:space="preserve">
+    <value>First chance exception handled by pipeline: {0}</value>
+    <comment>{0} = exception message</comment>
+  </data>
+  <data name="GetTypesFromAssembly" xml:space="preserve">
+    <value>GetTypes from assembly '{0}'.</value>
+    <comment>{0} = assembly</comment>
+  </data>
+  <data name="ImageEncoderNotFoundException" xml:space="preserve">
+    <value>No image encoder found for mime type '{0}'.</value>
+    <comment>{0} = mime type</comment>
+  </data>
+  <data name="InterfaceResolutionException" xml:space="preserve">
+    <value>Failed to resolve an implementation of an {0}.</value>
+    <comment>{0} = type to resolve</comment>
+  </data>
+  <data name="InvalidActiveFromTime" xml:space="preserve">
+    <value>ActiveFromTime '{0}' is not a valid time.</value>
+    <comment>{0} = invalid time</comment>
+  </data>
+  <data name="InvalidActiveToTime" xml:space="preserve">
+    <value>ActiveToTime '{0}' is not a valid time.</value>
+    <comment>{0} = invalid time</comment>
+  </data>
+  <data name="InvalidArgumentException" xml:space="preserve">
+    <value>There is no argument with name '{0}'.</value>
+    <comment>{0} = name of the requested argument</comment>
+  </data>
+  <data name="InvalidGuardExceptionType" xml:space="preserve">
+    <value>Exception type '{0}' used with Guard possibly does not have a constructor that takes 1 string parameter (message).  Exception reported: {1}</value>
+    <comment>{0} = full type name of exception type, {1} = actual exception thrown</comment>
+  </data>
+  <data name="KeyNotFoundException" xml:space="preserve">
+    <value>Key '{0}' could not be found in collection '{1}'.</value>
+    <comment>{0} = key name, {1} = collection name</comment>
+  </data>
+  <data name="MissingEntityException" xml:space="preserve">
+    <value>Entity '{0}' with id '{1}' could not be located.</value>
+    <comment>{0} = entity name, {1} = entity id</comment>
+  </data>
+  <data name="NullDependencyException" xml:space="preserve">
+    <value>Dependency '{0}' has been accessed but it has not been set.</value>
+    <comment>{0} = dependency name</comment>
+  </data>
+  <data name="NullReferenceException" xml:space="preserve">
+    <value>A required value is null: {0}</value>
+    <comment>{0} = the required value name</comment>
+  </data>
+  <data name="NullSafeCasting" xml:space="preserve">
+    <value>Safe casting from '{0}' to '{1}' resulted in a null.</value>
+    <comment>{0} = full type name for 'from' type, {1} = full type name for 'to' type</comment>
+  </data>
+  <data name="ObserverAlreadyRegisterAgainstEvent" xml:space="preserve">
+    <value>Observer instance already registered against event '{0}'.</value>
+    <comment>{0} = event name</comment>
+  </data>
+  <data name="PathHasNoExtensionException" xml:space="preserve">
+    <value>Path '{0}' has no extension.</value>
+    <comment>{0} = path</comment>
+  </data>
+  <data name="PipelineStageEventNotRegistered" xml:space="preserve">
+    <value>Pipeline stage '{0}' has no event of type '{1}'.</value>
+    <comment>{0} = pipeline stage name, {1} = unknown event type name</comment>
+  </data>
+  <data name="PipelineStageNotFound" xml:space="preserve">
+    <value>There is no pipeline stage with a name of '{0}'.</value>
+    <comment>{0} = unknown stage name</comment>
+  </data>
+  <data name="RaisingPipelineEvent" xml:space="preserve">
+    <value>Raising pipeline event '{0}' in stage '{1}' for observer '{2}'.</value>
+    <comment>{0} = pipeline event name, {1}= pipeline stage name, {2} = observer name</comment>
+  </data>
+  <data name="RangeException" xml:space="preserve">
+    <value>Invalid range.  The from value '{0}' must be less than the to value '{1}'.</value>
+    <comment>{0} = from value, {1} = to value</comment>
+  </data>
+  <data name="ReassignmentException" xml:space="preserve">
+    <value>Attempt to assign a value to '{0}' but it has already been assigned a value.</value>
+    <comment>{0} = name of variable that cannot be reassigned a value</comment>
+  </data>
+  <data name="StreamCannotSeek" xml:space="preserve">
+    <value>[{0}] : Stream position is not 0 but seek is not permitted.</value>
+    <comment>{0} = source</comment>
+  </data>
+  <data name="StringCannotBeEmpty" xml:space="preserve">
+    <value>The provided string argument {0} must not be empty.</value>
+    <comment>{0} = argument name</comment>
+  </data>
+  <data name="TaskPoolStatusChange" xml:space="preserve">
+    <value>{0} task pool has {1} successfully.</value>
+    <comment>{0} = task pool name , {1} = new status</comment>
+  </data>
+  <data name="ThreadActivityWaiting" xml:space="preserve">
+    <value>Thread with managed id '{0}' has no work and will sleep for {1} ms.</value>
+    <comment>{0} = thread managed id, {1} = milliseconds to sleep</comment>
+  </data>
+  <data name="ThreadCountZeroException" xml:space="preserve">
+    <value>The queue handler configuration requires thread count of at least 1.  The input queue can not be processed.</value>
+  </data>
+  <data name="TraceProcessorThreadActive" xml:space="preserve">
+    <value>[processor thread active] : managed thread id = {0} / processor type = {1}</value>
+    <comment>{0} = managed thread id, {1} = full type name of processor</comment>
+  </data>
+  <data name="TraceProcessorThreadStarting" xml:space="preserve">
+    <value>[processor thread starting] : managed thread id = {0} / processor type = {1}</value>
+    <comment>{0} = managed thread id, {1} = full type name of processor</comment>
+  </data>
+  <data name="TraceProcessorThreadStopped" xml:space="preserve">
+    <value>[processor thread stopped] : managed thread id = {0} / processor type = {1}</value>
+    <comment>{0} = managed thread id, {1} = full type name of processor</comment>
+  </data>
+  <data name="TraceProcessorThreadStopping" xml:space="preserve">
+    <value>[processor thread stopping] : managed thread id = {0} / processor type = {1}</value>
+    <comment>{0} = managed thread id, {1} = full type name of processor</comment>
+  </data>
+  <data name="UnhandledPipelineException" xml:space="preserve">
+    <value>Unhandled exception during event '{0}': {1}</value>
+    <comment>{0} = event name, {1} = exception message</comment>
+  </data>
+  <data name="UninitializedStaticInstanceException" xml:space="preserve">
+    <value>Static instance '{0}' is null.  Initialize it by calling '{0}' before accessing it for the first time.</value>
+    <comment>{0} = instance name, {1} = initialization method</comment>
+  </data>
+  <data name="VerboseProcessorExecuting" xml:space="preserve">
+    <value>[processor thread executing] : managed thread id = {0} / processor type = {1}</value>
+    <comment>{0} = managed thread id, {1} = full type name of processor</comment>
+  </data>
+</root>
