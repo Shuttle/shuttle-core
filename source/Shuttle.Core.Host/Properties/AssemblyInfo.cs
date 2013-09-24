@@ -1,4 +1,4 @@
 ﻿using System.Reflection;
 
 [assembly: AssemblyTitle("Shuttle.Core.Host")]
-[assembly: AssemblyVersion("1.8.0.0")]
+[assembly: AssemblyVersion("2.1.1.0")]
