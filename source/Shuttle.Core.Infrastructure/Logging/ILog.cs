@@ -46,7 +46,9 @@ namespace Shuttle.Core.Infrastructure
 
         LogLevel LogLevel { get; }
 
-		bool IsVerboseEnabled { get; }
+        bool IsEnabled(LogLevel level);
+        
+        bool IsVerboseEnabled { get; }
         bool IsTraceEnabled { get; }
         bool IsDebugEnabled { get; }
         bool IsInformationEnabled { get; }

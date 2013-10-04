@@ -165,7 +165,7 @@ namespace Shuttle.Core.Infrastructure
 
 			try
 			{
-				Log.For(this).Verbose(string.Format(InfrastructureResources.GetTypesFromAssembly, assembly.ToString()));
+				log.Verbose(string.Format(InfrastructureResources.GetTypesFromAssembly, assembly.ToString()));
 
 				types = assembly.GetTypes();
 			}
@@ -177,12 +177,12 @@ namespace Shuttle.Core.Infrastructure
 				{
 					foreach (var exception in reflection.LoaderExceptions)
 					{
-						Log.For(this).Error(string.Format("'{0}'.", exception.CompactMessages()));
+						log.Error(string.Format("'{0}'.", exception.CompactMessages()));
 					}
 				}
 				else
 				{
-					Log.For(this).Error(string.Format("{0}: '{1}'.", ex.GetType(), ex.CompactMessages()));
+					log.Error(string.Format("{0}: '{1}'.", ex.GetType(), ex.CompactMessages()));
 				}
 
 				return new List<Type>();

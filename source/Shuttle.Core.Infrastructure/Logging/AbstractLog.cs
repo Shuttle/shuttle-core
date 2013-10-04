@@ -180,7 +180,12 @@ namespace Shuttle.Core.Infrastructure
 
 		public LogLevel LogLevel { get; protected set; }
 
-		public virtual bool IsVerboseEnabled
+        public virtual bool IsEnabled(LogLevel level)
+        {
+            return LogLevel <= level;
+        }
+
+	    public virtual bool IsVerboseEnabled
 		{
 			get { return LogLevel < LogLevel.Trace; }
 		}

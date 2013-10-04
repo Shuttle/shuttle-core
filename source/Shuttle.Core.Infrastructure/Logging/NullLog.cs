@@ -106,7 +106,12 @@ namespace Shuttle.Core.Infrastructure
             }
         }
 
-    	public bool IsVerboseEnabled
+        public bool IsEnabled(LogLevel level)
+        {
+            return false;
+        }
+
+        public bool IsVerboseEnabled
     	{
     		get { return false; }
     	}
