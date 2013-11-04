@@ -25,7 +25,8 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -126,6 +127,7 @@
     <Compile Include="Resolver\InterfaceResolutionException.cs" />
     <Compile Include="Resolver\TypeNameStartsWithSpecification.cs" />
     <Compile Include="Roles\IAssign.cs" />
+    <Compile Include="Singleton.cs" />
     <Compile Include="Threading\IProcessor.cs" />
     <Compile Include="Threading\IProcessorFactory.cs" />
     <Compile Include="Range.cs" />
