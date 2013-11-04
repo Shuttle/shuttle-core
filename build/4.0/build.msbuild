@@ -1,9 +1,25 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
-  <ItemGroup>
-	<Framework Include="net35-full;net40-full;net45-full" />
-  </ItemGroup>
-  <Target Name="Build">
-    <MSBuild Projects="debug.msbuild" Properties="Framework=%(Framework.Identity)"></MSBuild>
-    <MSBuild Projects="release.msbuild" Properties="Framework=%(Framework.Identity)"></MSBuild>
-  </Target>
+	<PropertyGroup>
+		<DeploymentFolder>..\deployment</DeploymentFolder>
+	</PropertyGroup>
+	<ItemGroup>
+		<Framework Include="net35-full;net40-full;net45-full" />
+	</ItemGroup>
+	<Target Name="Build">
+		<MSBuild Projects="debug.msbuild" Properties="Framework=%(Framework.Identity)"/>
+		<MSBuild Projects="release.msbuild" Properties="Framework=%(Framework.Identity)"/>
+		
+		<CallTarget Targets="NugetDeployment"/>
+	</Target>
+	
+	<Target Name="NugetDeployment">
+		<ItemGroup>
+			<ReleaseBinaries Include="..\release\**\*.*" />
+		</ItemGroup>
+	
+		<Copy SourceFiles="shuttle-core.nuspec" DestinationFolder="$(DeploymentFolder)\nuget" SkipUnchangedFiles="false" />
+		<Copy SourceFiles="@(ReleaseBinaries)" DestinationFolder="$(DeploymentFolder)\nuget\lib\%(RecursiveDir)" SkipUnchangedFiles="false" />
+		
+		<Exec Command="nuget pack shuttle-core.nuspec" WorkingDirectory="$(DeploymentFolder)\nuget" />
+	</Target>
 </Project>
