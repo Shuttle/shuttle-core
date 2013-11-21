@@ -1,6 +1,8 @@
 ﻿using System;
 
-namespace Shuttle.ESB.Core.Queues
+
+namespace Shuttle.Core.Infrastructure
+
 {
 	public class Singleton<TClass>
 		where TClass : class, new()
@@ -22,17 +24,17 @@ namespace Shuttle.ESB.Core.Queues
 							Console.CancelKeyPress += (sender, args) => Dispose();
 						else
 							AppDomain.CurrentDomain.ProcessExit += (sender, args) => Dispose();
+
 					}
 				}
 				return _instance;
 			}
 		}
-
+		
 		private static void Dispose()
 		{
 			if (_instance != null && _instance as IDisposable != null)
 				(_instance as IDisposable).Dispose();
 		}
-
 	}
 }
