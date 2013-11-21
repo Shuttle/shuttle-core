@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shuttle.Core.Infrastructure
+namespace Shuttle.ESB.Core.Queues
 {
 	public class Singleton<TClass>
 		where TClass : class, new()
@@ -17,15 +17,22 @@ namespace Shuttle.Core.Infrastructure
 					if (_instance == null)
 					{
 						_instance = new TClass();
-						AppDomain.CurrentDomain.ProcessExit += (sender, args) =>
-						{
-							if (_instance as IDisposable != null)
-								(_instance as IDisposable).Dispose();
-						};
+
+						if (Environment.UserInteractive)
+							Console.CancelKeyPress += (sender, args) => Dispose();
+						else
+							AppDomain.CurrentDomain.ProcessExit += (sender, args) => Dispose();
 					}
 				}
 				return _instance;
 			}
 		}
+
+		private static void Dispose()
+		{
+			if (_instance != null && _instance as IDisposable != null)
+				(_instance as IDisposable).Dispose();
+		}
+
 	}
 }
