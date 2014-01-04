@@ -1,0 +1,10 @@
+name: "shuttle-core"
+description: "Shuttle Core is a free open-source library"
+
+baseurl: "http://shuttle.github.io/shuttle-core"
+
+paginate: 10
+
+markdown: redcarpet
+permalink: pretty
+pygments: true
