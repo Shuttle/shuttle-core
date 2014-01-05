@@ -5,6 +5,9 @@ baseurl: "http://shuttle.github.io/shuttle-core"
 
 paginate: 10
 
-markdown: redcarpet
 permalink: pretty
 pygments: true
+
+markdown: redcarpet
+redcarpet:
+  extensions: ["tables"]
