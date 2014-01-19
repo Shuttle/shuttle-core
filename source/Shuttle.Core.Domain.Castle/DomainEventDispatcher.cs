@@ -1,6 +1,5 @@
 ﻿using Castle.Windsor;
 using Shuttle.Core.Infrastructure;
-using Shuttle.Core.Infrastructure.Castle;
 
 namespace Shuttle.Core.Domain.Castle
 {
@@ -17,7 +16,7 @@ namespace Shuttle.Core.Domain.Castle
 
         public void Dispatch<T>(T @event) where T : IDomainEvent
         {
-            foreach (var handler in container.ResolveAssignable<IDomainEventHandler<T>>())
+            foreach (var handler in container.ResolveAll<IDomainEventHandler<T>>())
             {
                 handler.Handle(@event);
             }

@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using Shuttle.Core.Infrastructure;
 
-namespace Test.All.Cron
+namespace Test.All
 {
 	public class CronDayOfMonthTest : Fixture
 	{
@@ -160,7 +160,7 @@ namespace Test.All.Cron
 		[Test]
 		public void Should_throw_exceptions_on_invalid_expressions()
 		{
-			Assert.Throws<ArgumentException>(() => new CronDayOfMonth(""));
+			Assert.Throws<EmptyStringException>(() => new CronDayOfMonth(""));
 			Assert.Throws<CronException>(() => new CronDayOfMonth("invalid"));
 			Assert.Throws<CronException>(() => new CronDayOfMonth("10-60"));
 			Assert.Throws<CronException>(() => new CronDayOfMonth("60-60"));

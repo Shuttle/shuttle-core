@@ -11,7 +11,7 @@ namespace Test.All
 		{
 			var pipeline = new ObservablePipeline();
 
-			Assert.Throws<ArgumentNullException>(() => pipeline.RegisterStage("Stage").WithEvent(null));
+			Assert.Throws<NullReferenceException>(() => pipeline.RegisterStage("Stage").WithEvent(null));
 		}
 
 		[Test]

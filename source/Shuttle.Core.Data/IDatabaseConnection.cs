@@ -7,7 +7,7 @@ namespace Shuttle.Core.Data
     {
         IDbTransaction Transaction { get; }
         IDbConnection Connection { get; }
-        IDbCommand CreateCommandToExecute(IExecutableQuery executableQuery);
+        IDbCommand CreateCommandToExecute(IQuery query);
 
         bool HasTransaction { get; }
 

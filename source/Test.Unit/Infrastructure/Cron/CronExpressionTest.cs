@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using Shuttle.Core.Infrastructure;
 
-namespace Test.All.Cron
+namespace Test.All
 {
 	public class CronExpressionTest : Fixture
 	{

@@ -16,11 +16,12 @@ namespace Shuttle.Core.Infrastructure
 
 			try
 			{
-				exception = (TException)Activator.CreateInstance(typeof(TException), message);
+				exception = (TException) Activator.CreateInstance(typeof (TException), message);
 			}
 			catch (Exception ex)
 			{
-				throw new InvalidOperationException(string.Format(InfrastructureResources.InvalidGuardExceptionType, typeof(TException).FullName, ex.CompactMessages()));
+				throw new InvalidOperationException(string.Format(InfrastructureResources.InvalidGuardExceptionType,
+				                                                  typeof (TException).FullName, ex.CompactMessages()));
 			}
 
 			throw exception;
@@ -31,18 +32,22 @@ namespace Shuttle.Core.Infrastructure
 			Against<TException>(assertion(), message);
 		}
 
-		public static void AgainstNull(object argumentValue, string argumentName)
+		public static void AgainstNull(object value, string name)
 		{
-			if (argumentValue == null) throw new ArgumentNullException(argumentName);
+			if (value == null)
+			{
+				throw new NullReferenceException(string.Format(CultureInfo.CurrentCulture,
+				                                               InfrastructureResources.NullValueException,
+				                                               name));
+			}
 		}
 
-		public static void AgainstNullOrEmptyString(string argumentValue, string argumentName)
+		public static void AgainstNullOrEmptyString(string value, string name)
 		{
-			AgainstNull(argumentValue, argumentName);
+			AgainstNull(value, name);
 
-			if (argumentValue.Length == 0)
-				throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, InfrastructureResources.StringCannotBeEmpty,
-														  argumentName));
+			if (value.Length == 0)
+				throw new EmptyStringException(string.Format(CultureInfo.CurrentCulture, InfrastructureResources.EmptyStringException, name));
 		}
 
 		public static void Implements<TInterface>(object instance, string message)
@@ -52,7 +57,7 @@ namespace Shuttle.Core.Infrastructure
 
 		public static void Implements<TInterface>(Type type, string message)
 		{
-			if (!typeof(TInterface).IsAssignableFrom(type)) throw new InvalidOperationException(message);
+			if (!typeof (TInterface).IsAssignableFrom(type)) throw new InvalidOperationException(message);
 		}
 
 		public static void InheritsFrom<TBase>(object instance, string message) where TBase : Type
@@ -62,13 +67,13 @@ namespace Shuttle.Core.Infrastructure
 
 		public static void InheritsFrom<TBase>(Type type, string message)
 		{
-			if (type.BaseType != typeof(TBase)) throw new InvalidOperationException(message);
+			if (type.BaseType != typeof (TBase)) throw new InvalidOperationException(message);
 		}
 
 		public static void IsEqual<TException>(object compare, object instance, string message)
 			where TException : Exception
 		{
-			if (compare != instance) throw (TException)Activator.CreateInstance(typeof(TException), message);
+			if (compare != instance) throw (TException) Activator.CreateInstance(typeof (TException), message);
 		}
 
 		public static void TypeOf<TType>(object instance, string message)
@@ -103,7 +108,7 @@ namespace Shuttle.Core.Infrastructure
 				return;
 			}
 
-			throw new MissingEntityException(string.Format(InfrastructureResources.MissingEntityException, typeof(T).Name, key));
+			throw new MissingEntityException(string.Format(InfrastructureResources.MissingEntityException, typeof (T).Name, key));
 		}
 
 		public static void AgainstDuplicate<T>(bool assertion, string attribute, string value)
@@ -113,7 +118,8 @@ namespace Shuttle.Core.Infrastructure
 				return;
 			}
 
-			throw new DuplicateEntityException(string.Format(InfrastructureResources.DuplicateEntityException, typeof(T).Name, attribute, value));
+			throw new DuplicateEntityException(string.Format(InfrastructureResources.DuplicateEntityException, typeof (T).Name,
+			                                                 attribute, value));
 		}
 	}
 }

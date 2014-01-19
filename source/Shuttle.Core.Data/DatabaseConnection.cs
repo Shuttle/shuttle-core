@@ -13,13 +13,18 @@ namespace Shuttle.Core.Data
 
         private bool disposed;
 
-        public DatabaseConnection(DataSource source, IDbConnectionFactory dbConnectionFactory, IDbCommandFactory dbCommandFactory, IDatabaseConnectionCache databaseConnectionCache)
+        public DatabaseConnection(DataSource source, IDbConnection connection, IDbCommandFactory dbCommandFactory, IDatabaseConnectionCache databaseConnectionCache)
         {
+			Guard.AgainstNull(source, "source");
+			Guard.AgainstNull(connection, "connection");
+			Guard.AgainstNull(dbCommandFactory, "dbCommandFactory");
+			Guard.AgainstNull(databaseConnectionCache, "databaseConnectionCache");
+
             this.source = source;
             this.dbCommandFactory = dbCommandFactory;
             this.databaseConnectionCache = databaseConnectionCache;
 
-            Connection = dbConnectionFactory.CreateConnection(source);
+            Connection = connection;
 
             log = Log.For(this);
 
@@ -33,7 +38,7 @@ namespace Shuttle.Core.Data
             }
             catch (Exception ex)
             {
-                log.Error(string.Format(DataResources.DbConnectionOpenException, source.Name, ex.CompactMessages()));
+                log.Error(string.Format(DataResources.DbConnectionOpenException, source.Name, ex.Message));
 
                 throw;
             }
@@ -41,9 +46,9 @@ namespace Shuttle.Core.Data
             databaseConnectionCache.Add(source, this);
         }
 
-        public IDbCommand CreateCommandToExecute(IExecutableQuery executableQuery)
+        public IDbCommand CreateCommandToExecute(IQuery query)
         {
-            var command = dbCommandFactory.CreateCommandUsing(source, Connection, executableQuery);
+            var command = dbCommandFactory.CreateCommandUsing(source, Connection, query);
             command.Transaction = Transaction;
             return command;
         }

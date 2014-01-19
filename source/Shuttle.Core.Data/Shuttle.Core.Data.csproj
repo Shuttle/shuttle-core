@@ -53,43 +53,27 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Transactions" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
     <Reference Include="Shuttle.Core.Infrastructure">
       <HintPath>..\..\build\$(Configuration)\$(Framework)\Shuttle.Core.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="ConnectionStrings.cs" />
+    <Compile Include="ConnectionStringService.cs" />
     <Compile Include="DataSource.cs" />
-    <Compile Include="ContainsBuilder\ContainsBuilder.cs" />
-    <Compile Include="ContainsBuilder\IContainsBuilder.cs" />
-    <Compile Include="ContainsBuilder\IContainsBuilderLogical.cs" />
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="DataRepository.cs" />
-    <Compile Include="DeleteBuilder\DeleteBuilder.cs" />
-    <Compile Include="DeleteBuilder\IDeleteBuilder.cs" />
-    <Compile Include="DeleteBuilder\IDeleteBuilderLogical.cs" />
+    <Compile Include="IConnectionStringService.cs" />
+    <Compile Include="IMappedColumn.cs" />
     <Compile Include="IQuery.cs" />
-    <Compile Include="QueryBuilder.cs" />
     <Compile Include="RawQuery.cs" />
     <Compile Include="Extensions\AssemblerExtensions.cs" />
-    <Compile Include="Extensions\DataRowExtensions.cs" />
     <Compile Include="IAssembler.cs" />
     <Compile Include="IDataRowMapper.cs" />
-    <Compile Include="InsertBuilder\IInsertBuilder.cs" />
-    <Compile Include="InsertBuilder\IInsertBuilderAdd.cs" />
-    <Compile Include="InsertBuilder\InsertBuilder.cs" />
-    <Compile Include="IQueryFactory.cs" />
     <Compile Include="MappedData.cs" />
     <Compile Include="MappedRow.cs" />
     <Compile Include="Extensions\MappingExtensions.cs" />
@@ -99,19 +83,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="QueryDefinition.cs" />
-    <Compile Include="SelectBuilder\IOrderByClauseItem.cs" />
-    <Compile Include="SelectBuilder\IOrderByItem.cs" />
-    <Compile Include="SelectBuilder\ISelectBuilder.cs" />
-    <Compile Include="SelectBuilder\ISelectBuilderBuild.cs" />
-    <Compile Include="SelectBuilder\ISelectBuilderLogical.cs" />
-    <Compile Include="SelectBuilder\ISelectBuilderOrderBy.cs" />
-    <Compile Include="SelectBuilder\ISelectBuilderOrderByThen.cs" />
-    <Compile Include="SelectBuilder\ISelectBuilderSelect.cs" />
-    <Compile Include="SelectBuilder\ISelectBuilderWhere.cs" />
-    <Compile Include="SelectBuilder\OrderByClauseItem.cs" />
-    <Compile Include="SelectBuilder\OrderByItem.cs" />
-    <Compile Include="SelectBuilder\SelectBuilder.cs" />
+    <Compile Include="SqlDbDataParameterFactory.cs" />
     <Compile Include="ThreadStaticDatabaseConnectionCache.cs" />
     <Compile Include="DatabaseConnectionFactory.cs" />
     <Compile Include="DatabaseGateway.cs" />
@@ -129,23 +101,9 @@
     <Compile Include="IDbConnectionConfigurationProvider.cs" />
     <Compile Include="IDbConnectionFactory.cs" />
     <Compile Include="IDbDataParameterFactory.cs" />
-    <Compile Include="IExecutableQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MappedColumn.cs" />
     <Compile Include="ExistingDatabaseConnection.cs" />
-    <Compile Include="UpdateBuilder\IUpdateBuilderLogical.cs" />
-    <Compile Include="UpdateBuilder\IUpdateBuilder.cs" />
-    <Compile Include="UpdateBuilder\IUpdateBuilderFor.cs" />
-    <Compile Include="UpdateBuilder\IUpdateBuilderUpdate.cs" />
-    <Compile Include="UpdateBuilder\IUpdateBuilderWhere.cs" />
-    <Compile Include="UpdateBuilder\UpdateBuilder.cs" />
-    <Compile Include="WhereBuilder\IWhereBuilderLogical.cs" />
-    <Compile Include="WhereBuilder\IWhereExpression.cs" />
-    <Compile Include="WhereBuilder\IWhereExpressionBuilder.cs" />
-    <Compile Include="WhereBuilder\IWhereExpressionBuilderLogical.cs" />
-    <Compile Include="WhereBuilder\IWhereExpressionContainer.cs" />
-    <Compile Include="WhereBuilder\WhereExpression.cs" />
-    <Compile Include="WhereBuilder\WhereExpressionBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DataResources.resx">

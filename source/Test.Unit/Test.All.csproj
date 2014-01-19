@@ -47,13 +47,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\external-bin\NUnit\nunit.framework.dll</HintPath>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1312.1622\lib\net35\Moq.dll</HintPath>
     </Reference>
-    <Reference Include="Rhino.Mocks">
-      <HintPath>..\..\external-bin\RhinoMocks\Rhino.Mocks.dll</HintPath>
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -72,9 +74,26 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Assembler\ClientAssembler.cs" />
-    <Compile Include="Entities\Client.cs" />
-    <Compile Include="Entities\ClientContact.cs" />
+    <Compile Include="Data\AssemblerExtensionsTests.cs" />
+    <Compile Include="Data\ConnectionStringServiceTests.cs" />
+    <Compile Include="Data\DatabaseConnectionFactoryTests.cs" />
+    <Compile Include="Data\DatabaseConnectionTests.cs" />
+    <Compile Include="Data\DatabaseGatewayTests.cs" />
+    <Compile Include="Data\DataRepositoryTests.cs" />
+    <Compile Include="Data\DataSourceTests.cs" />
+    <Compile Include="Data\DbCommandFactoryTests.cs" />
+    <Compile Include="Data\DbConnectionConfigurationProviderTests.cs" />
+    <Compile Include="Data\DbConnectionFactoryTests.cs" />
+    <Compile Include="Data\ExistingDatabaseConnectionTests.cs" />
+    <Compile Include="Data\MappedColumnTests.cs" />
+    <Compile Include="Data\MappedDataTests.cs" />
+    <Compile Include="Data\ProcedureQueryTests.cs" />
+    <Compile Include="Data\RawQueryTests.cs" />
+    <Compile Include="Data\SqlDbDataParameterFactoryTests.cs" />
+    <Compile Include="Data\Stubs\Order.cs" />
+    <Compile Include="Data\Stubs\OrderAssembler.cs" />
+    <Compile Include="Data\Stubs\OrderLine.cs" />
+    <Compile Include="Data\ThreadStaticDatabaseConnectionCacheTests.cs" />
     <Compile Include="Infrastructure\ArgumentsTest.cs" />
     <Compile Include="Infrastructure\Cron\CronDayOfMonthTest.cs" />
     <Compile Include="Infrastructure\Cron\CronDayOfWeekTest.cs" />
@@ -92,17 +111,12 @@
     <Compile Include="Infrastructure\TypeSpecificationsTest.cs" />
     <Compile Include="Infrastructure\StreamExtensionsTest.cs" />
     <Compile Include="Infrastructure\TypeExtensionsTest.cs" />
-    <Compile Include="Mappers\ClientContactMapper.cs" />
-    <Compile Include="Mappers\ClientMapper.cs" />
     <Compile Include="Fixture.cs" />
     <Compile Include="Mocks\FirstInterface.cs" />
-    <Compile Include="Mocks\HasGenericParameterGeneric.cs" />
     <Compile Include="Mocks\HasGenericParameterString.cs" />
-    <Compile Include="Mocks\IAnotherGeneric.cs" />
     <Compile Include="Mocks\IHaveGenericParameter.cs" />
     <Compile Include="Mocks\IMockEntity.cs" />
     <Compile Include="Mocks\ISubClassGenericParameterString.cs" />
-    <Compile Include="Mocks\MockUnitOfWorkFactory.cs" />
     <Compile Include="Mocks\SubClassGenericParameterString.cs" />
     <Compile Include="ObjectSerializerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,7 +125,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="MappedColumnTest.cs" />
     <Compile Include="ResultTest.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="TestResources.Designer.cs">
@@ -134,15 +147,7 @@
       <Project>{F7F8F139-30B0-4B71-AB09-1A3127DAC4BD}</Project>
       <Name>Shuttle.Core.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shuttle.Core.SqlServer\Shuttle.Core.SqlServer.csproj">
-      <Project>{F26F73FA-2277-4FD7-B8B7-999820A65D45}</Project>
-      <Name>Shuttle.Core.SqlServer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shuttle.Core.Validation\Shuttle.Core.Validation.csproj">
-      <Project>{BAE5D254-44A0-499C-8759-0157CDC8CB7D}</Project>
-      <Name>Shuttle.Core.Validation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shuttle.Core.Web\Shuttle.Core.Web.csproj">
+    <ProjectReference Include="..\Shuttle.Core.Data.Http\Shuttle.Core.Data.Http.csproj">
       <Project>{C00DDF0A-A076-40D0-9EDC-85E05BDA3DC6}</Project>
       <Name>Shuttle.Core.Web</Name>
     </ProjectReference>
@@ -186,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -203,6 +209,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

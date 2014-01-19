@@ -1,6 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
 	<PropertyGroup>
 		<DeploymentFolder>..\deployment</DeploymentFolder>
+		<ShuttleVersion>2.1.2.0</ShuttleVersion>
 	</PropertyGroup>
 	<ItemGroup>
 		<Framework Include="net35-full;net40-full;net45-full" />
@@ -8,18 +9,29 @@
 	<Target Name="Build">
 		<MSBuild Projects="debug.msbuild" Properties="Framework=%(Framework.Identity)"/>
 		<MSBuild Projects="release.msbuild" Properties="Framework=%(Framework.Identity)"/>
-		
-		<CallTarget Targets="NugetDeployment"/>
+
+		<CallTarget Targets="NugetDeployments" />
+	</Target>
+	
+	<Target Name="NugetDeployments">
+		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-infrastructure;include=..\release\**\Shuttle.Core.Infrastructure.dll"/>
+		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-host;include=..\release\**\Shuttle.Core.Host.exe"/>
+		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-domain;include=..\release\**\Shuttle.Core.Domain.dll"/>
+		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-data;include=..\release\**\Shuttle.Core.Data.dll"/>
+		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-data-http;include=..\release\**\Shuttle.Core.Data.Http.dll"/>
+		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-infrastructure-log4net;include=..\release\**\Shuttle.Core.Infrastructure.Log4Net.dll"/>
 	</Target>
 	
 	<Target Name="NugetDeployment">
-		<ItemGroup>
-			<ReleaseBinaries Include="..\release\**\*.*" />
-		</ItemGroup>
+		<Message Text="$(include)"/>
+		<CreateItem Include="$(include)">
+			<Output TaskParameter="Include" ItemName="NugetBinaries"/>
+		</CreateItem>
 	
-		<Copy SourceFiles="shuttle-core.nuspec" DestinationFolder="$(DeploymentFolder)\nuget" SkipUnchangedFiles="false" />
-		<Copy SourceFiles="@(ReleaseBinaries)" DestinationFolder="$(DeploymentFolder)\nuget\lib\%(RecursiveDir)" SkipUnchangedFiles="false" />
-		
-		<Exec Command="nuget pack shuttle-core.nuspec" WorkingDirectory="$(DeploymentFolder)\nuget" />
+		<Copy SourceFiles="$(name).nuspec" DestinationFolder="$(DeploymentFolder)\nuget\$(name)" SkipUnchangedFiles="false" />
+		<Copy SourceFiles="@(NugetBinaries)" DestinationFolder="$(DeploymentFolder)\nuget\$(name)\lib\%(RecursiveDir)" SkipUnchangedFiles="false" />
+
+		<Exec Command="nuget pack $(name).nuspec" WorkingDirectory="$(DeploymentFolder)\nuget\$(name)" />
+		<Exec Command="nuget push $(DeploymentFolder)\nuget\$(name)\$(name).$(ShuttleVersion).nupkg 43870056-03cf-4cf1-a43d-bb842c07e4ba" />
 	</Target>
 </Project>

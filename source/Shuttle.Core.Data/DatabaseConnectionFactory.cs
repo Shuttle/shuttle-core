@@ -36,16 +36,11 @@ namespace Shuttle.Core.Data
 				return existingDatabaseConnection;
 			}
 
-			var databaseConnection = new DatabaseConnection(source, dbConnectionFactory, dbCommandFactory, databaseConnectionCache);
+			var databaseConnection = new DatabaseConnection(source, dbConnectionFactory.CreateConnection(source), dbCommandFactory, databaseConnectionCache);
 
 			log.Verbose(string.Format(DataResources.DatabaseConnectionCreated, source.Name));
 
 			return databaseConnection;
-		}
-
-	    public IDatabaseConnection Get(DataSource source)
-		{
-			return databaseConnectionCache.Get(source);
 		}
 	}
 }

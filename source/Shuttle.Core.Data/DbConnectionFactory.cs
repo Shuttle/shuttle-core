@@ -50,8 +50,8 @@ namespace Shuttle.Core.Data
             var dbProviderFactory = dbProviderFactories[source.Key];
 
             var connection = dbProviderFactory.CreateConnection();
-            
-			connection.ConnectionString = dbConnectionConfiguration.ConnectionString;
+
+	        connection.ConnectionString = dbConnectionConfiguration.ConnectionString;
 
 			log.Verbose(string.Format(DataResources.DbConnectionCreated, source.Name));
 

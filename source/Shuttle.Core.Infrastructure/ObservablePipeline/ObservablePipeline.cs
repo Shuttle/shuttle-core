@@ -177,7 +177,7 @@ namespace Shuttle.Core.Infrastructure
 
 			foreach (var observer in observersForEvent)
 			{
-				log.Verbose(string.Format(RaisingPipelineEvent, @event.Name, StageName, observer.FullName()));
+				log.Verbose(string.Format(RaisingPipelineEvent, @event.Name, StageName, observer.GetType().FullName));
 
 				observer.GetType().InvokeMember("Execute",
 				                                BindingFlags.FlattenHierarchy | BindingFlags.Instance |

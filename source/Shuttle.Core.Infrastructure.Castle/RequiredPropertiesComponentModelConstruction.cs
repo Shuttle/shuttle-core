@@ -18,7 +18,7 @@ namespace Shuttle.Core.Infrastructure.Castle
         }
 
         public RequiredPropertiesComponentModelConstruction()
-            : this((PropertySet) => true)
+            : this(propertySet => true)
         {
         }
 

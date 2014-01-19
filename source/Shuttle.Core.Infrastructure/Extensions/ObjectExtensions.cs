@@ -13,15 +13,5 @@ namespace Shuttle.Core.Infrastructure
 				disposable.Dispose();
 			}
 		}
-
-		public static string FullName(this Object instance)
-		{
-			return instance.GetType().FullName;
-		}
-
-		public static bool IsNull(this Object instance)
-		{
-			return instance == null;
-		}
 	}
 }

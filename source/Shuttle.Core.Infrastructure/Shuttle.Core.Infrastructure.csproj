@@ -82,6 +82,8 @@
     <Compile Include="Cron\Specifications\LastWeekDayOfMonthSpecification.cs" />
     <Compile Include="Cron\Specifications\RangeSpecification.cs" />
     <Compile Include="Cron\Specifications\WeekDayOccurenceSpecification.cs" />
+    <Compile Include="Exceptions\EmptyStringException.cs" />
+    <Compile Include="Exceptions\NullValueException.cs" />
     <Compile Include="Exceptions\PipelineContextRequiredException.cs" />
     <Compile Include="Exceptions\ThreadCountZeroException.cs" />
     <Compile Include="Extensions\ColoredConsole.cs" />
@@ -127,7 +129,6 @@
     <Compile Include="Resolver\InterfaceResolutionException.cs" />
     <Compile Include="Resolver\TypeNameStartsWithSpecification.cs" />
     <Compile Include="Roles\IAssign.cs" />
-    <Compile Include="Singleton.cs" />
     <Compile Include="Threading\IProcessor.cs" />
     <Compile Include="Threading\IProcessorFactory.cs" />
     <Compile Include="Range.cs" />

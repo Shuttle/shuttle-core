@@ -182,6 +182,10 @@
     <value>Key '{0}' already exists in collection '{1}'.</value>
     <comment>{0} = key name, {1} = collection name</comment>
   </data>
+  <data name="EmptyStringException" xml:space="preserve">
+    <value>The string with name '{0}' may not be empty.</value>
+    <comment>{0} = string name</comment>
+  </data>
   <data name="EnteringPipelineStage" xml:space="preserve">
     <value>Entering pipeline stage '{0}'.</value>
     <comment>{0} = pipeline stage</comment>
@@ -242,6 +246,10 @@
     <value>Safe casting from '{0}' to '{1}' resulted in a null.</value>
     <comment>{0} = full type name for 'from' type, {1} = full type name for 'to' type</comment>
   </data>
+  <data name="NullValueException" xml:space="preserve">
+    <value>Value with name '{0}' may not be null.</value>
+    <comment>{0} = value name</comment>
+  </data>
   <data name="ObserverAlreadyRegisterAgainstEvent" xml:space="preserve">
     <value>Observer instance already registered against event '{0}'.</value>
     <comment>{0} = event name</comment>
@@ -273,10 +281,6 @@
   <data name="StreamCannotSeek" xml:space="preserve">
     <value>[{0}] : Stream position is not 0 but seek is not permitted.</value>
     <comment>{0} = source</comment>
-  </data>
-  <data name="StringCannotBeEmpty" xml:space="preserve">
-    <value>The provided string argument {0} must not be empty.</value>
-    <comment>{0} = argument name</comment>
   </data>
   <data name="TaskPoolStatusChange" xml:space="preserve">
     <value>{0} task pool has {1} successfully.</value>

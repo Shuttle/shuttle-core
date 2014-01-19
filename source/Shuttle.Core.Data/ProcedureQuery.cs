@@ -1,21 +1,18 @@
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 using Shuttle.Core.Infrastructure;
 
 namespace Shuttle.Core.Data
 {
-    public class ProcedureQuery : IExecutableQuery
+    public class ProcedureQuery : IQuery
     {
-    	private const string QUERY_TYPE = "PROCEDURE";
-
-        private readonly Dictionary<MappedColumn, object> parameterValues;
+        private readonly Dictionary<IMappedColumn, object> parameterValues;
         private readonly string procedure;
 
         public ProcedureQuery(string procedure)
         {
             this.procedure = procedure;
-            parameterValues = new Dictionary<MappedColumn, object>();
+            parameterValues = new Dictionary<IMappedColumn, object>();
         }
 
         public void Prepare(DataSource source, IDbCommand command)
@@ -32,33 +29,16 @@ namespace Shuttle.Core.Data
             }
         }
 
-        public string Build()
-        {
-            var result = new StringBuilder(procedure);
-
-            foreach (var pair in parameterValues)
-            {
-                result.AppendFormat(" @{0}={1}", pair.Key, pair.Value);
-            }
-
-            return result.ToString();
-        }
-
-        public IExecutableQuery AddParameterValue(MappedColumn column, object value)
+	    public IQuery AddParameterValue(IMappedColumn column, object value)
         {
             parameterValues.Add(column, value);
 
             return this;
         }
 
-        public static IExecutableQuery CreateFor(string procedure)
+        public static IQuery Create(string procedure)
         {
             return new ProcedureQuery(procedure);
         }
-
-    	public string QueryType
-    	{
-    		get { return QUERY_TYPE; }
-    	}
     }
 }

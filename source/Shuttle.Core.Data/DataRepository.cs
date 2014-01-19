@@ -14,58 +14,33 @@ namespace Shuttle.Core.Data
 			this.mapper = mapper;
 		}
 
-		public IEnumerable<T> FetchAllUsing(DataSource source, IExecutableQuery executableQuery)
-		{
-			return gateway.GetRowsUsing(source, executableQuery).MappedRowsUsing(mapper).Select(row => row.Result).ToList();
-		}
-
-		public T FetchItemUsing(DataSource source, IExecutableQuery executableQuery)
-		{
-			var row = gateway.GetSingleRowUsing(source, executableQuery);
-
-			return row == null ? default(T) : mapper.Map(row).Result;
-		}
-
-		public MappedRow<T> FetchMappedRowUsing(DataSource source, IExecutableQuery executableQuery)
-		{
-			var row = gateway.GetSingleRowUsing(source, executableQuery);
-
-			return row == null ? null : mapper.Map(row);
-		}
-
-		public IEnumerable<MappedRow<T>> FetchMappedRowsUsing(DataSource source, IExecutableQuery executableQuery)
-		{
-			return gateway.GetRowsUsing(source, executableQuery).MappedRowsUsing(mapper);
-		}
-
-		public bool Contains(DataSource source, IExecutableQuery executableQuery)
-		{
-			return (gateway.GetScalarUsing<int>(source, executableQuery) == 1);
-		}
-
 		public IEnumerable<T> FetchAllUsing(DataSource source, IQuery query)
 		{
-			return FetchAllUsing(source, source.GetExecutableQuery(query));
+			return gateway.GetRowsUsing(source, query).MappedRowsUsing(mapper).Select(row => row.Result).ToList();
 		}
 
 		public T FetchItemUsing(DataSource source, IQuery query)
 		{
-			return FetchItemUsing(source, source.GetExecutableQuery(query));
+			var row = gateway.GetSingleRowUsing(source, query);
+
+			return row == null ? default(T) : mapper.Map(row).Result;
 		}
 
 		public MappedRow<T> FetchMappedRowUsing(DataSource source, IQuery query)
 		{
-			return FetchMappedRowUsing(source, source.GetExecutableQuery(query));
+			var row = gateway.GetSingleRowUsing(source, query);
+
+			return row == null ? null : mapper.Map(row);
 		}
 
 		public IEnumerable<MappedRow<T>> FetchMappedRowsUsing(DataSource source, IQuery query)
 		{
-			return FetchMappedRowsUsing(source, source.GetExecutableQuery(query));
+			return gateway.GetRowsUsing(source, query).MappedRowsUsing(mapper);
 		}
 
 		public bool Contains(DataSource source, IQuery query)
 		{
-			return Contains(source, source.GetExecutableQuery(query));
+			return (gateway.GetScalarUsing<int>(source, query) == 1);
 		}
 	}
 }

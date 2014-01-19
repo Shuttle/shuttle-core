@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using Shuttle.Core.Infrastructure;
 
-namespace Test.All.Cron
+namespace Test.All
 {
 	public class CronMinuteTest : Fixture
 	{
@@ -93,7 +93,7 @@ namespace Test.All.Cron
 		[Test]
 		public void Should_throw_exceptions_on_invalid_expressions()
 		{
-			Assert.Throws<ArgumentException>(() => new CronMinute(""));
+			Assert.Throws<EmptyStringException>(() => new CronMinute(""));
 			Assert.Throws<CronException>(() => new CronMinute("invalid"));
 			Assert.Throws<CronException>(() => new CronMinute("10-60"));
 			Assert.Throws<CronException>(() => new CronMinute("60-60"));

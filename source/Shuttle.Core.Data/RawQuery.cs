@@ -4,17 +4,15 @@ using Shuttle.Core.Infrastructure;
 
 namespace Shuttle.Core.Data
 {
-	public class RawQuery : IExecutableQuery
+	public class RawQuery : IQuery
 	{
-		private const string QUERY_TYPE = "RAW";
-
-		private readonly Dictionary<MappedColumn, object> parameterValues;
+		private readonly Dictionary<IMappedColumn, object> parameterValues;
 		private readonly string sql;
 
 		public RawQuery(string sql)
 		{
 			this.sql = sql;
-			parameterValues = new Dictionary<MappedColumn, object>();
+			parameterValues = new Dictionary<IMappedColumn, object>();
 		}
 
 		public void Prepare(DataSource source, IDbCommand command)
@@ -31,31 +29,16 @@ namespace Shuttle.Core.Data
 			}
 		}
 
-		public string Build()
-		{
-			return sql;
-		}
-
-		public IExecutableQuery AddParameterValue(MappedColumn column, object value)
+		public IQuery AddParameterValue(IMappedColumn column, object value)
 		{
 			parameterValues.Add(column, value);
 
 			return this;
 		}
 
-		public static IExecutableQuery CreateFrom(string sql)
-		{
-			return new RawQuery(sql);
-		}
-
-		public static IExecutableQuery CreateFrom(string sql, params string[] args)
+		public static IQuery Create(string sql, params object[] args)
 		{
 			return new RawQuery(string.Format(sql, args));
-		}
-
-		public string QueryType
-		{
-			get { return QUERY_TYPE; }
 		}
 	}
 }

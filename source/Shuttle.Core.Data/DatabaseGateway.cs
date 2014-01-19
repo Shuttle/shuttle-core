@@ -9,55 +9,36 @@ namespace Shuttle.Core.Data
 {
 	public class DatabaseGateway : IDatabaseGateway
 	{
-		private readonly IDatabaseConnectionFactory databaseConnectionFactory;
+		private readonly IDatabaseConnectionCache _databaseConnectionCache;
 
-		private readonly ILog log;
+		private readonly ILog _log;
 
 		public static IDatabaseGateway Default()
 		{
-			return new DatabaseGateway(DatabaseConnectionFactory.Default());
+			return new DatabaseGateway(new ThreadStaticDatabaseConnectionCache());
 		}
 
-		public DatabaseGateway(IDatabaseConnectionFactory databaseConnectionFactory)
+		public DatabaseGateway(IDatabaseConnectionCache databaseConnectionCache)
 		{
-			Guard.AgainstNull(databaseConnectionFactory, "databaseConnectionFactory");
+			Guard.AgainstNull(databaseConnectionCache, "databaseConnectionCache");
 
-			this.databaseConnectionFactory = databaseConnectionFactory;
+			_databaseConnectionCache = databaseConnectionCache;
 
-			log = Log.For(this);
+			_log = Log.For(this);
 		}
 
-		private DataTable GetDataTableFor(DataSource source, IExecutableQuery executableQuery)
+		public DataTable GetDataTableFor(DataSource source, IQuery query)
 		{
-			var connection = databaseConnectionFactory.Get(source);
-
-			if (connection == null)
+			using (var reader = GetReaderUsing(source, query))
 			{
-				throw new NullReferenceException("There is no open connection.");
-			}
+				var results = new DataTable();
 
-			try
-			{
-				using (var command = connection.CreateCommandToExecute(executableQuery))
+				if (reader != null)
 				{
-					if (Log.IsTraceEnabled)
-					{
-						Trace(command);
-					}
-
-					using (var reader = command.ExecuteReader())
-					{
-						var results = new DataTable();
-						results.Load(reader);
-						return results;
-					}
+					results.Load(reader);
 				}
-			}
-			catch (Exception ex)
-			{
-				log.Error(string.Format(@"{0}\r\n\SQL: {1}", ex, executableQuery.Build()));
 
-				throw;
+				return results;
 			}
 		}
 
@@ -70,17 +51,17 @@ namespace Shuttle.Core.Data
 				parameters.AppendFormat(" / {0} = {1}", parameter.ParameterName, parameter.Value);
 			}
 
-			log.Trace(string.Format("{0} {1}", command.CommandText, parameters));
+			_log.Trace(string.Format("{0} {1}", command.CommandText, parameters));
 		}
 
-		private IEnumerable<DataRow> GetRowsUsing(DataSource source, IExecutableQuery executableQuery)
+		public IEnumerable<DataRow> GetRowsUsing(DataSource source, IQuery query)
 		{
-			return GetDataTableFor(source, executableQuery).Rows.Cast<DataRow>();
+			return GetDataTableFor(source, query).Rows.Cast<DataRow>();
 		}
 
-		private DataRow GetSingleRowUsing(DataSource source, IExecutableQuery executableQuery)
+		public DataRow GetSingleRowUsing(DataSource source, IQuery query)
 		{
-			var table = GetDataTableFor(source, executableQuery);
+			var table = GetDataTableFor(source, query);
 
 			if ((table == null) || (table.Rows.Count == 0))
 			{
@@ -90,9 +71,9 @@ namespace Shuttle.Core.Data
 			return table.Rows[0];
 		}
 
-		private IDataReader GetReaderUsing(DataSource source, IExecutableQuery executableQuery)
+		public IDataReader GetReaderUsing(DataSource source, IQuery query)
 		{
-			using (var command = databaseConnectionFactory.Get(source).CreateCommandToExecute(executableQuery))
+			using (var command = _databaseConnectionCache.Get(source).CreateCommandToExecute(query))
 			{
 				if (Log.IsTraceEnabled)
 				{
@@ -103,9 +84,9 @@ namespace Shuttle.Core.Data
 			}
 		}
 
-		private int ExecuteUsing(DataSource source, IExecutableQuery executableQuery)
+		public int ExecuteUsing(DataSource source, IQuery query)
 		{
-			using (var command = databaseConnectionFactory.Get(source).CreateCommandToExecute(executableQuery))
+			using (var command = _databaseConnectionCache.Get(source).CreateCommandToExecute(query))
 			{
 				if (Log.IsTraceEnabled)
 				{
@@ -116,9 +97,9 @@ namespace Shuttle.Core.Data
 			}
 		}
 
-		private T GetScalarUsing<T>(DataSource source, IExecutableQuery executableQuery)
+		public T GetScalarUsing<T>(DataSource source, IQuery query)
 		{
-			using (var command = databaseConnectionFactory.Get(source).CreateCommandToExecute(executableQuery))
+			using (var command = _databaseConnectionCache.Get(source).CreateCommandToExecute(query))
 			{
 				if (Log.IsTraceEnabled)
 				{
@@ -129,36 +110,6 @@ namespace Shuttle.Core.Data
 
 				return (scalar != null && scalar != DBNull.Value) ? (T)scalar : default(T);
 			}
-		}
-
-		public IDataReader GetReaderUsing(DataSource source, IQuery query)
-		{
-			return GetReaderUsing(source, source.GetExecutableQuery(query));
-		}
-
-		public int ExecuteUsing(DataSource source, IQuery query)
-		{
-			return ExecuteUsing(source, source.GetExecutableQuery(query));
-		}
-
-		public T GetScalarUsing<T>(DataSource source, IQuery query)
-		{
-			return GetScalarUsing<T>(source, source.GetExecutableQuery(query));
-		}
-
-		public DataTable GetDataTableFor(DataSource source, IQuery query)
-		{
-			return GetDataTableFor(source, source.GetExecutableQuery(query));
-		}
-
-		public IEnumerable<DataRow> GetRowsUsing(DataSource source, IQuery query)
-		{
-			return GetRowsUsing(source, source.GetExecutableQuery(query));
-		}
-
-		public DataRow GetSingleRowUsing(DataSource source, IQuery query)
-		{
-			return GetSingleRowUsing(source, source.GetExecutableQuery(query));
 		}
 	}
 }

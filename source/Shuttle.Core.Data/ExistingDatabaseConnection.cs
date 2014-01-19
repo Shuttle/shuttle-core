@@ -15,9 +15,9 @@ namespace Shuttle.Core.Data
         {
         }
 
-        public IDbCommand CreateCommandToExecute(IExecutableQuery executableQuery)
+        public IDbCommand CreateCommandToExecute(IQuery query)
         {
-            return databaseConnection.CreateCommandToExecute(executableQuery);
+            return databaseConnection.CreateCommandToExecute(query);
         }
 
         public bool HasTransaction
