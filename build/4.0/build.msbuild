@@ -14,12 +14,12 @@
 	</Target>
 	
 	<Target Name="NugetDeployments">
-		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-infrastructure;include=..\release\**\Shuttle.Core.Infrastructure.dll"/>
-		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-host;include=..\release\**\Shuttle.Core.Host.exe"/>
-		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-domain;include=..\release\**\Shuttle.Core.Domain.dll"/>
-		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-data;include=..\release\**\Shuttle.Core.Data.dll"/>
-		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-data-http;include=..\release\**\Shuttle.Core.Data.Http.dll"/>
-		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-infrastructure-log4net;include=..\release\**\Shuttle.Core.Infrastructure.Log4Net.dll"/>
+		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-infrastructure;include=..\release\**\Shuttle.Core.Infrastructure.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-infrastructure'"/>
+		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-host;include=..\release\**\Shuttle.Core.Host.exe" Condition="$(name) == '' Or $(name) == 'shuttle-core-host'"/>
+		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-domain;include=..\release\**\Shuttle.Core.Domain.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-domain'"/>
+		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-data;include=..\release\**\Shuttle.Core.Data.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-data'"/>
+		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-data-http;include=..\release\**\Shuttle.Core.Data.Http.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-data-http'"/>
+		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-infrastructure-log4net;include=..\release\**\Shuttle.Core.Infrastructure.Log4Net.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-infrastructure-log4net'"/>
 	</Target>
 	
 	<Target Name="NugetDeployment">
