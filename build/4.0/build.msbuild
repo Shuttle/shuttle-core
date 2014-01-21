@@ -32,6 +32,6 @@
 		<Copy SourceFiles="@(NugetBinaries)" DestinationFolder="$(DeploymentFolder)\nuget\$(name)\lib\%(RecursiveDir)" SkipUnchangedFiles="false" />
 
 		<Exec Command="nuget pack $(name).nuspec" WorkingDirectory="$(DeploymentFolder)\nuget\$(name)" />
-		<Exec Command="nuget push $(DeploymentFolder)\nuget\$(name)\$(name).$(ShuttleVersion).nupkg 43870056-03cf-4cf1-a43d-bb842c07e4ba" />
+		<Exec Command="nuget push $(DeploymentFolder)\nuget\$(name)\$(name).$(ShuttleVersion).nupkg" />
 	</Target>
 </Project>
