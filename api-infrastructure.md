@@ -3,22 +3,20 @@ title: Shuttle.Core.Infrastructure
 layout: api 
 ---
 
-dog | bird | cat
-----|------|----
-foo | foo  | foo
-bar | bar  | bar
-baz | baz  | baz
-
 # `Shuttle.Core.Infrastructure`
 
 ## `ObjectExtensions`
 
-### Methods
+### `AttemptDispose`
 
-| Method		| Return Type	| Description |
-| `AttemptDispose` | `void`	| If the given object can be cast to `IDisposable` the `Dispose()` method is invoked; else does nothing. |
+_Parameters_
 
-### FullName
+Parameter | Type | Description
+--- | --- | ---
+`o` | `object` | The object to attempt the `Dispose()` on.
 
-Returns the `FullName` of the given 
+If the given object can be cast to `IDisposable` the `Dispose()` method is invoked; else does nothing.
 
+_Returns_
+
+`void`
