@@ -57,9 +57,7 @@ namespace Shuttle.Core.Infrastructure
                     pool.Add(instance.GetType(), new List<TReusableObject>());
                 }
 
-                var reusableObjects = pool[instance.GetType()];
-
-                reusableObjects.Add(instance);
+                pool[instance.GetType()].Add(instance);
             }
         }
     }
