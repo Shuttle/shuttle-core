@@ -1,37 +1,9 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
-	<PropertyGroup>
-		<DeploymentFolder>..\deployment</DeploymentFolder>
-		<ShuttleVersion>2.1.2.0</ShuttleVersion>
-	</PropertyGroup>
 	<ItemGroup>
 		<Framework Include="net35-full;net40-full;net45-full" />
 	</ItemGroup>
 	<Target Name="Build">
 		<MSBuild Projects="debug.msbuild" Properties="Framework=%(Framework.Identity)"/>
 		<MSBuild Projects="release.msbuild" Properties="Framework=%(Framework.Identity)"/>
-
-		<CallTarget Targets="NugetDeployments" />
-	</Target>
-	
-	<Target Name="NugetDeployments">
-		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-infrastructure;include=..\release\**\Shuttle.Core.Infrastructure.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-infrastructure'"/>
-		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-host;include=..\release\**\Shuttle.Core.Host.exe" Condition="$(name) == '' Or $(name) == 'shuttle-core-host'"/>
-		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-domain;include=..\release\**\Shuttle.Core.Domain.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-domain'"/>
-		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-data;include=..\release\**\Shuttle.Core.Data.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-data'"/>
-		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-data-http;include=..\release\**\Shuttle.Core.Data.Http.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-data-http'"/>
-		<MSBuild Projects="build.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-infrastructure-log4net;include=..\release\**\Shuttle.Core.Infrastructure.Log4Net.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-infrastructure-log4net'"/>
-	</Target>
-	
-	<Target Name="NugetDeployment">
-		<Message Text="$(include)"/>
-		<CreateItem Include="$(include)">
-			<Output TaskParameter="Include" ItemName="NugetBinaries"/>
-		</CreateItem>
-	
-		<Copy SourceFiles="$(name).nuspec" DestinationFolder="$(DeploymentFolder)\nuget\$(name)" SkipUnchangedFiles="false" />
-		<Copy SourceFiles="@(NugetBinaries)" DestinationFolder="$(DeploymentFolder)\nuget\$(name)\lib\%(RecursiveDir)" SkipUnchangedFiles="false" />
-
-		<Exec Command="nuget pack $(name).nuspec" WorkingDirectory="$(DeploymentFolder)\nuget\$(name)" />
-		<Exec Command="nuget push $(DeploymentFolder)\nuget\$(name)\$(name).$(ShuttleVersion).nupkg" />
 	</Target>
 </Project>
