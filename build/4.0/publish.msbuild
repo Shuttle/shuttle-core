@@ -1,16 +1,56 @@
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
+	<UsingTask AssemblyFile="MSBuildCommunityTasks\MSBuild.Community.Tasks.dll" TaskName="MSBuild.Community.Tasks.FileUpdate" />
+	<UsingTask AssemblyFile="MSBuildCommunityTasks\MSBuild.Community.Tasks.dll" TaskName="MSBuild.Community.Tasks.Prompt" />
+
 	<PropertyGroup>
 		<DeploymentFolder>..\deployment</DeploymentFolder>
-		<ShuttleVersion>2.1.2.0</ShuttleVersion>
 	</PropertyGroup>
+	
 	<Target Name="Build">
+		<Prompt Text="Enter new version number:" Condition="$(DeploymentVersionNumber) == ''">
+			<Output TaskParameter="UserInput" PropertyName="DeploymentVersionNumber" />
+		</Prompt>
+		
+		<Error Text="Please enter a version number." Condition="$(DeploymentVersionNumber) == ''" />
+
+		<Prompt Text="Enter semantic version:" Condition="$(SemanticVersion) == ''">
+			<Output TaskParameter="UserInput" PropertyName="SemanticVersion" />
+		</Prompt>
+		
+		<PropertyGroup>
+			<SemanticVersion Condition="$(SemanticVersion) == ''">$(DeploymentVersionNumber)</SemanticVersion>
+		</PropertyGroup>
+
+        <MSBuild
+            Projects="$(MSBuildProjectFile)"
+            Targets="ApplyDeploymentVersionNumber"
+            Properties="DeploymentVersionNumber=$(DeploymentVersionNumber);SemanticVersion=$(SemanticVersion)"
+        />
+
 		<MSBuild Projects="build.msbuild" />
 
-		<CallTarget Targets="NugetDeployments" />
+        <MSBuild
+            Projects="$(MSBuildProjectFile)"
+            Targets="NugetDeployments"
+            Properties="DeploymentVersionNumber=$(DeploymentVersionNumber);SemanticVersion=$(SemanticVersion)"
+        />
 	</Target>
 	
+	<Target Name="ApplyDeploymentVersionNumber">
+		<Error Text="Please enter a version number." Condition="$(DeploymentVersionNumber) == ''" />
+		
+		<ItemGroup>
+			<AssemblyInfoFiles Include="..\..\**\*AssemblyInfo.cs"/>
+			<NugetFiles Include="..\..\**\*.nuspec"/>
+		</ItemGroup>
+		
+		<FileUpdate Files="@(AssemblyInfoFiles)" Regex="AssemblyInformationalVersion\s*\(\s*&quot;.*&quot;\s*\)" ReplacementText="AssemblyInformationalVersion(&quot;$(SemanticVersion)&quot;)" />
+		<FileUpdate Files="@(AssemblyInfoFiles)" Regex="AssemblyVersion\s*\(\s*&quot;.*&quot;\s*\)" ReplacementText="AssemblyVersion(&quot;$(DeploymentVersionNumber)&quot;)" />
+		<FileUpdate Files="@(NugetFiles)" Regex="\&lt;version\&gt;.*\&lt;/version\&gt;" ReplacementText="&lt;version&gt;$(SemanticVersion)&lt;/version&gt;" />
+	</Target>
+
 	<Target Name="NugetDeployments">
-		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-infrastructure;include=..\release\**\Shuttle.Core.Infrastructure.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-infrastructure'"/>
+		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-infrastructure;include=..\release\**\Shuttle.Core.Infrastructure.dll;" Condition="$(name) == '' Or $(name) == 'shuttle-core-infrastructure'"/>
 		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-host;include=..\release\**\Shuttle.Core.Host.exe" Condition="$(name) == '' Or $(name) == 'shuttle-core-host'"/>
 		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-domain;include=..\release\**\Shuttle.Core.Domain.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-domain'"/>
 		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-data;include=..\release\**\Shuttle.Core.Data.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-data'"/>
@@ -19,7 +59,6 @@
 	</Target>
 	
 	<Target Name="NugetDeployment">
-		<Message Text="$(include)"/>
 		<CreateItem Include="$(include)">
 			<Output TaskParameter="Include" ItemName="NugetBinaries"/>
 		</CreateItem>
@@ -28,6 +67,6 @@
 		<Copy SourceFiles="@(NugetBinaries)" DestinationFolder="$(DeploymentFolder)\nuget\$(name)\lib\%(RecursiveDir)" SkipUnchangedFiles="false" />
 
 		<Exec Command="nuget pack $(name).nuspec" WorkingDirectory="$(DeploymentFolder)\nuget\$(name)" />
-		<Exec Command="nuget push $(DeploymentFolder)\nuget\$(name)\$(name).$(ShuttleVersion).nupkg" />
+		<Exec Command="nuget push $(DeploymentFolder)\nuget\$(name)\$(name).$(Version).nupkg" />
 	</Target>
 </Project>

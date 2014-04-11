@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>shuttle-core-data-http</id>
-    <version>2.1.2.0</version>
+    <version>3.0.0.0</version>
     <authors>Eben Roux</authors>
     <owners>Eben Roux</owners>
     <licenseUrl>https://github.com/shuttle/shuttle-core/blob/master/LICENSE</licenseUrl>
