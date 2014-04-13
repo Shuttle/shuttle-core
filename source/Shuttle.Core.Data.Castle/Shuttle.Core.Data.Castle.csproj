@@ -72,10 +72,6 @@
       <Project>{3B7F096A-68DB-4D4B-A823-CB147A310837}</Project>
       <Name>Shuttle.Core.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shuttle.Core.Infrastructure.Castle\Shuttle.Core.Infrastructure.Castle.csproj">
-      <Project>{A6E99006-7CD7-4B99-9073-B8599015301B}</Project>
-      <Name>Shuttle.Core.Infrastructure.Castle</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shuttle.Core.Infrastructure\Shuttle.Core.Infrastructure.csproj">
       <Project>{F7F8F139-30B0-4B71-AB09-1A3127DAC4BD}</Project>
       <Name>Shuttle.Core.Infrastructure</Name>

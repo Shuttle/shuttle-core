@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <package >
   <metadata>
-    <id>shuttle-core-host</id>
+    <id>shuttle-core-domain-castle</id>
     <version>3.0.1.0</version>
     <authors>Eben Roux</authors>
     <owners>Eben Roux</owners>
@@ -9,10 +9,12 @@
     <projectUrl>https://github.com/shuttle/shuttle-core</projectUrl>
     <iconUrl>https://raw.github.com/shuttle/shuttle-core/master/media/logo-core-small.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>The generic host component enables the hosting of IHost implementation as either a console application or a Windows service.</description>
+    <description>The domain castle component provides an implementation of the IDomainEventDispatcher that uses the WindsorContainer.</description>
     <copyright>Copyright (c) 2011-2014, Eben Roux</copyright>
-    <tags>c# generic Windows service hosting</tags>
+    <tags>c# domain utlity</tags>
 	<dependencies>
+		<dependency id="castle.core" />
+		<dependency id="castle.windsor" />
 		<dependency id="shuttle-core-infrastructure" />
 	</dependencies>
   </metadata>

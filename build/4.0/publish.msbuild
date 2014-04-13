@@ -32,7 +32,7 @@
         <MSBuild
             Projects="$(MSBuildProjectFile)"
             Targets="NugetDeployments"
-            Properties="DeploymentVersionNumber=$(DeploymentVersionNumber);SemanticVersion=$(SemanticVersion)"
+            Properties="DeploymentVersionNumber=$(DeploymentVersionNumber);SemanticVersion=$(SemanticVersion);PackageId=$(PackageId)"
         />
 	</Target>
 	
@@ -50,12 +50,15 @@
 	</Target>
 
 	<Target Name="NugetDeployments">
-		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-infrastructure;include=..\release\**\Shuttle.Core.Infrastructure.dll;" Condition="$(name) == '' Or $(name) == 'shuttle-core-infrastructure'"/>
-		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-host;include=..\release\**\Shuttle.Core.Host.exe" Condition="$(name) == '' Or $(name) == 'shuttle-core-host'"/>
-		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-domain;include=..\release\**\Shuttle.Core.Domain.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-domain'"/>
-		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-data;include=..\release\**\Shuttle.Core.Data.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-data'"/>
-		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-data-http;include=..\release\**\Shuttle.Core.Data.Http.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-data-http'"/>
-		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="name=shuttle-core-infrastructure-log4net;include=..\release\**\Shuttle.Core.Infrastructure.Log4Net.dll" Condition="$(name) == '' Or $(name) == 'shuttle-core-infrastructure-log4net'"/>
+		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-infrastructure;include=..\release\**\Shuttle.Core.Infrastructure.dll;" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-infrastructure'"/>
+		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-infrastructure-log4net;include=..\release\**\Shuttle.Core.Infrastructure.Log4Net.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-infrastructure-log4net'"/>
+		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-infrastructure-castle;include=..\release\**\Shuttle.Core.Infrastructure.Castle.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-infrastructure-castle'"/>
+		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-host;include=..\release\**\Shuttle.Core.Host.exe" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-host'"/>
+		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-domain;include=..\release\**\Shuttle.Core.Domain.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-domain'"/>
+		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-domain-castle;include=..\release\**\Shuttle.Core.Domain.Castle.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-domain-castle'"/>
+		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-data;include=..\release\**\Shuttle.Core.Data.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-data'"/>
+		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-data-http;include=..\release\**\Shuttle.Core.Data.Http.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-data-http'"/>
+		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-data-castle;include=..\release\**\Shuttle.Core.Data.Castle.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-data-castle'"/>
 	</Target>
 	
 	<Target Name="NugetDeployment">
@@ -63,10 +66,10 @@
 			<Output TaskParameter="Include" ItemName="NugetBinaries"/>
 		</CreateItem>
 	
-		<Copy SourceFiles="$(name).nuspec" DestinationFolder="$(DeploymentFolder)\nuget\$(name)" SkipUnchangedFiles="false" />
-		<Copy SourceFiles="@(NugetBinaries)" DestinationFolder="$(DeploymentFolder)\nuget\$(name)\lib\%(RecursiveDir)" SkipUnchangedFiles="false" />
+		<Copy SourceFiles="$(PackageId).nuspec" DestinationFolder="$(DeploymentFolder)\nuget\$(PackageId)" SkipUnchangedFiles="false" />
+		<Copy SourceFiles="@(NugetBinaries)" DestinationFolder="$(DeploymentFolder)\nuget\$(PackageId)\lib\%(RecursiveDir)" SkipUnchangedFiles="false" />
 
-		<Exec Command="nuget pack $(name).nuspec" WorkingDirectory="$(DeploymentFolder)\nuget\$(name)" />
-		<Exec Command="nuget push $(DeploymentFolder)\nuget\$(name)\$(name).$(Version).nupkg" />
+		<Exec Command="nuget pack $(PackageId).nuspec" WorkingDirectory="$(DeploymentFolder)\nuget\$(PackageId)" />
+		<Exec Command="nuget push $(DeploymentFolder)\nuget\$(PackageId)\$(PackageId).$(SemanticVersion).nupkg" />
 	</Target>
 </Project>

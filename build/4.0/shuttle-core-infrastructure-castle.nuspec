@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <package >
   <metadata>
-    <id>shuttle-core-host</id>
+    <id>shuttle-core-infrastructure-castle</id>
     <version>3.0.1.0</version>
     <authors>Eben Roux</authors>
     <owners>Eben Roux</owners>
@@ -9,11 +9,12 @@
     <projectUrl>https://github.com/shuttle/shuttle-core</projectUrl>
     <iconUrl>https://raw.github.com/shuttle/shuttle-core/master/media/logo-core-small.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>The generic host component enables the hosting of IHost implementation as either a console application or a Windows service.</description>
+    <description>The castle component includes an implementation of the ILog interface for Log4Net.</description>
     <copyright>Copyright (c) 2011-2014, Eben Roux</copyright>
     <tags>c# generic Windows service hosting</tags>
 	<dependencies>
 		<dependency id="shuttle-core-infrastructure" />
+		<dependency id="log4net" version="1.2.13.0" />
 	</dependencies>
   </metadata>
 </package>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <package >
   <metadata>
-    <id>shuttle-core-host</id>
+    <id>shuttle-core-data-castle</id>
     <version>3.0.1.0</version>
     <authors>Eben Roux</authors>
     <owners>Eben Roux</owners>
@@ -9,11 +9,14 @@
     <projectUrl>https://github.com/shuttle/shuttle-core</projectUrl>
     <iconUrl>https://raw.github.com/shuttle/shuttle-core/master/media/logo-core-small.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>The generic host component enables the hosting of IHost implementation as either a console application or a Windows service.</description>
+    <description>The data castle component contains extensions for IWindsorContainer that facilitate registration of the data access components.</description>
     <copyright>Copyright (c) 2011-2014, Eben Roux</copyright>
-    <tags>c# generic Windows service hosting</tags>
+    <tags>c# data access orm</tags>
 	<dependencies>
+		<dependency id="castle.core" />
+		<dependency id="castle.windsor" />
 		<dependency id="shuttle-core-infrastructure" />
+		<dependency id="shuttle-core-data" />
 	</dependencies>
   </metadata>
 </package>
