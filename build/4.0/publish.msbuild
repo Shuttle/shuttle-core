@@ -21,10 +21,6 @@
 			<SemanticVersion Condition="$(SemanticVersion) == ''">$(DeploymentVersionNumber)</SemanticVersion>
 		</PropertyGroup>
 
-		<Prompt Text="Enter the version to DELETE:" Condition="$(DeleteVersion) == ''">
-			<Output TaskParameter="UserInput" PropertyName="DeleteVersion" />
-		</Prompt>
-		
         <MSBuild
             Projects="$(MSBuildProjectFile)"
             Targets="ApplyDeploymentVersionNumber"
@@ -36,7 +32,7 @@
         <MSBuild
             Projects="$(MSBuildProjectFile)"
             Targets="NugetDeployments"
-            Properties="DeploymentVersionNumber=$(DeploymentVersionNumber);SemanticVersion=$(SemanticVersion);PackageId=$(PackageId);DeleteVersion=$(DeleteVersion)"
+            Properties="DeploymentVersionNumber=$(DeploymentVersionNumber);SemanticVersion=$(SemanticVersion);PackageId=$(PackageId)"
         />
 	</Target>
 	
@@ -56,13 +52,11 @@
 	<Target Name="NugetDeployments">
 		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-infrastructure;include=..\release\**\Shuttle.Core.Infrastructure.dll;" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-infrastructure'"/>
 		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-infrastructure-log4net;include=..\release\**\Shuttle.Core.Infrastructure.Log4Net.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-infrastructure-log4net'"/>
-		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-infrastructure-castle;include=..\release\**\Shuttle.Core.Infrastructure.Castle.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-infrastructure-castle'"/>
 		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-host;include=..\release\**\Shuttle.Core.Host.exe" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-host'"/>
 		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-domain;include=..\release\**\Shuttle.Core.Domain.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-domain'"/>
 		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-domain-castle;include=..\release\**\Shuttle.Core.Domain.Castle.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-domain-castle'"/>
 		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-data;include=..\release\**\Shuttle.Core.Data.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-data'"/>
 		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-data-http;include=..\release\**\Shuttle.Core.Data.Http.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-data-http'"/>
-		<MSBuild Projects="publish.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-data-castle;include=..\release\**\Shuttle.Core.Data.Castle.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-data-castle'"/>
 	</Target>
 	
 	<Target Name="NugetDeployment">
@@ -73,7 +67,6 @@
 		<Copy SourceFiles="$(PackageId).nuspec" DestinationFolder="$(DeploymentFolder)\nuget\$(PackageId)" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="@(NugetBinaries)" DestinationFolder="$(DeploymentFolder)\nuget\$(PackageId)\lib\%(RecursiveDir)" SkipUnchangedFiles="false" />
 
-		<Exec Command="nuget delete $(PackageId).nuspec -NoPrompt" WorkingDirectory="$(DeploymentFolder)\nuget\$(PackageId)" />
 		<Exec Command="nuget pack $(PackageId).nuspec" WorkingDirectory="$(DeploymentFolder)\nuget\$(PackageId)" />
 		<Exec Command="nuget push $(DeploymentFolder)\nuget\$(PackageId)\$(PackageId).$(SemanticVersion).nupkg" />
 	</Target>
