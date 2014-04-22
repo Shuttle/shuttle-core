@@ -150,7 +150,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Shuttle.Core.Data.Http\Shuttle.Core.Data.Http.csproj">
       <Project>{C00DDF0A-A076-40D0-9EDC-85E05BDA3DC6}</Project>
-      <Name>Shuttle.Core.Web</Name>
+      <Name>Shuttle.Core.Data.Http</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
