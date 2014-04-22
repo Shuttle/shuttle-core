@@ -21,6 +21,10 @@
 			<SemanticVersion Condition="$(SemanticVersion) == ''">$(DeploymentVersionNumber)</SemanticVersion>
 		</PropertyGroup>
 
+		<Prompt Text="Enter the version to DELETE:" Condition="$(DeleteVersion) == ''">
+			<Output TaskParameter="UserInput" PropertyName="DeleteVersion" />
+		</Prompt>
+		
         <MSBuild
             Projects="$(MSBuildProjectFile)"
             Targets="ApplyDeploymentVersionNumber"
@@ -32,7 +36,7 @@
         <MSBuild
             Projects="$(MSBuildProjectFile)"
             Targets="NugetDeployments"
-            Properties="DeploymentVersionNumber=$(DeploymentVersionNumber);SemanticVersion=$(SemanticVersion);PackageId=$(PackageId)"
+            Properties="DeploymentVersionNumber=$(DeploymentVersionNumber);SemanticVersion=$(SemanticVersion);PackageId=$(PackageId);DeleteVersion=$(DeleteVersion)"
         />
 	</Target>
 	
@@ -69,6 +73,7 @@
 		<Copy SourceFiles="$(PackageId).nuspec" DestinationFolder="$(DeploymentFolder)\nuget\$(PackageId)" SkipUnchangedFiles="false" />
 		<Copy SourceFiles="@(NugetBinaries)" DestinationFolder="$(DeploymentFolder)\nuget\$(PackageId)\lib\%(RecursiveDir)" SkipUnchangedFiles="false" />
 
+		<Exec Command="nuget delete $(PackageId).nuspec -NoPrompt" WorkingDirectory="$(DeploymentFolder)\nuget\$(PackageId)" />
 		<Exec Command="nuget pack $(PackageId).nuspec" WorkingDirectory="$(DeploymentFolder)\nuget\$(PackageId)" />
 		<Exec Command="nuget push $(DeploymentFolder)\nuget\$(PackageId)\$(PackageId).$(SemanticVersion).nupkg" />
 	</Target>
