@@ -7,26 +7,31 @@ namespace Shuttle.Core.Infrastructure.Log4Net
 {
 	public class Log4NetLog : AbstractLog
 	{
-		private static bool initialize = true;
-		private static readonly object padlock = new object();
+		private static bool _initialize = true;
+		private static readonly object _padlock = new object();
 
-		private readonly log4net.ILog log;
+		private readonly log4net.ILog _log;
 
 		public Log4NetLog(log4net.ILog logger)
+			: this(logger, true)
 		{
-			lock (padlock)
+		}
+
+		public Log4NetLog(log4net.ILog logger, bool initialize)
+		{
+			lock (_padlock)
 			{
-				if (initialize)
+				if (_initialize && initialize)
 				{
 					XmlConfigurator.Configure();
 
-					initialize = false;
+					_initialize = false;
 				}
 			}
 
 			LogLevel = LogLevel.Off;
 
-			log = logger;
+			_log = logger;
 
 			if (logger.Logger.IsEnabledFor(Level.Verbose))
 			{
@@ -60,43 +65,43 @@ namespace Shuttle.Core.Infrastructure.Log4Net
 
 		public override void Verbose(string message)
 		{
-			if (log.Logger.IsEnabledFor(Level.Verbose))
+			if (_log.Logger.IsEnabledFor(Level.Verbose))
 			{
-				log.Debug(string.Format("VERBOSE: {0}", message));
+				_log.Debug(string.Format("VERBOSE: {0}", message));
 			}
 		}
 
 		public override void Trace(string message)
 		{
-			if (log.Logger.IsEnabledFor(Level.Trace))
+			if (_log.Logger.IsEnabledFor(Level.Trace))
 			{
-				log.Debug(string.Format("TRACE: {0}", message));
+				_log.Debug(string.Format("TRACE: {0}", message));
 			}
 		}
 
 		public override void Debug(string message)
 		{
-			log.Debug(message);
+			_log.Debug(message);
 		}
 
 		public override void Warning(string message)
 		{
-			log.Warn(message);
+			_log.Warn(message);
 		}
 
 		public override void Information(string message)
 		{
-			log.Info(message);
+			_log.Info(message);
 		}
 
 		public override void Error(string message)
 		{
-			log.Error(message);
+			_log.Error(message);
 		}
 
 		public override void Fatal(string message)
 		{
-			log.Fatal(message);
+			_log.Fatal(message);
 		}
 
 		public override ILog For(Type type)
