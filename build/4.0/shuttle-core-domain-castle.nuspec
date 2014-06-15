@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>shuttle-core-domain-castle</id>
-    <version>3.0.2</version>
+    <version>3.1.0</version>
     <authors>Eben Roux</authors>
     <owners>Eben Roux</owners>
     <licenseUrl>https://github.com/shuttle/shuttle-core/blob/master/LICENSE</licenseUrl>
@@ -13,10 +13,10 @@
     <copyright>Copyright (c) 2011-2014, Eben Roux</copyright>
     <tags>c# domain utlity</tags>
 	<dependencies>
-		<dependency id="castle.core" />
-		<dependency id="castle.windsor" />
-		<dependency id="shuttle-core-infrastructure" />
-		<dependency id="shuttle-core-domain" />
+		<dependency id="castle.core" version="" />
+		<dependency id="castle.windsor" version="" />
+		<dependency id="shuttle-core-infrastructure" version="" />
+		<dependency id="shuttle-core-domain" version="" />
 	</dependencies>
   </metadata>
 </package>
