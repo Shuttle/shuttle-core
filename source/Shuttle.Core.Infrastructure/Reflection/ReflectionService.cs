@@ -8,11 +8,11 @@ namespace Shuttle.Core.Infrastructure
 {
 	public class ReflectionService : IReflectionService
 	{
-		private readonly ILog log;
+		private readonly ILog _log;
 
 		public ReflectionService()
 		{
-			log = Log.For(this);
+			_log = Log.For(this);
 		}
 
 		public Assembly GetAssembly(string assembly)
@@ -42,7 +42,7 @@ namespace Shuttle.Core.Infrastructure
 			}
 			catch (Exception ex)
 			{
-				log.Warning(string.Format("[GetAssembly] : could not load assembly '{0}' / exception = {1}", assembly, ex.Message));
+				_log.Warning(string.Format("[GetAssembly] : could not load assembly '{0}' / exception = {1}", assembly, ex.Message));
 
 				return null;
 			}
@@ -67,28 +67,20 @@ namespace Shuttle.Core.Infrastructure
 		{
 			var assemblies = new List<Assembly>(AppDomain.CurrentDomain.GetAssemblies());
 
-			GetAssembliesRecursive(AppDomain.CurrentDomain.BaseDirectory).ForEach(
-				assembly =>
-				{
-					if (assemblies.Find(candidate => candidate == assembly) == null)
-					{
-						assemblies.Add(assembly);
-					}
-				});
+			foreach (var assembly in GetAssembliesRecursive(AppDomain.CurrentDomain.BaseDirectory).Where(assembly => assemblies.Find(candidate => candidate.Equals(assembly)) == null))
+			{
+				assemblies.Add(assembly);
+			}
 
 			var privateBinPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
 											  AppDomain.CurrentDomain.RelativeSearchPath ?? string.Empty);
 
 			if (!privateBinPath.Equals(AppDomain.CurrentDomain.BaseDirectory))
 			{
-				GetAssembliesRecursive(privateBinPath).ForEach(
-					assembly =>
-					{
-						if (assemblies.Find(candidate => candidate == assembly) == null)
-						{
-							assemblies.Add(assembly);
-						}
-					});
+				foreach (var assembly in GetAssembliesRecursive(privateBinPath).Where(assembly => assemblies.Find(candidate => candidate.Equals(assembly)) == null))
+				{
+					assemblies.Add(assembly);
+				}
 			}
 
 			return assemblies;
@@ -117,28 +109,20 @@ namespace Shuttle.Core.Infrastructure
 
 			var assemblies = new List<Assembly>(AppDomain.CurrentDomain.GetAssemblies());
 
-			GetAssembliesRecursive(AppDomain.CurrentDomain.BaseDirectory).ForEach(
-				assembly =>
-				{
-					if (assemblies.Find(candidate => candidate == assembly) == null)
-					{
-						assemblies.Add(assembly);
-					}
-				});
+			foreach (var assembly in GetAssembliesRecursive(AppDomain.CurrentDomain.BaseDirectory).Where(assembly => assemblies.Find(candidate => candidate.Equals(assembly)) == null))
+			{
+				assemblies.Add(assembly);
+			}
 
 			var privateBinPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-											  AppDomain.CurrentDomain.RelativeSearchPath ?? string.Empty);
+											  AppDomain.CurrentDomain.RelativeSearchPath);
 
 			if (!privateBinPath.Equals(AppDomain.CurrentDomain.BaseDirectory))
 			{
-				GetAssembliesRecursive(privateBinPath).ForEach(
-					assembly =>
-					{
-						if (assemblies.Find(candidate => candidate == assembly) == null)
-						{
-							assemblies.Add(assembly);
-						}
-					});
+				foreach (var assembly in GetAssembliesRecursive(privateBinPath).Where(assembly => assemblies.Find(candidate => candidate.Equals(assembly)) == null))
+				{
+					assemblies.Add(assembly);
+				}
 			}
 
 			assemblies.ForEach(assembly => result.AddRange(GetTypes(type, assembly)));
@@ -165,7 +149,7 @@ namespace Shuttle.Core.Infrastructure
 
 			try
 			{
-				log.Verbose(string.Format(InfrastructureResources.GetTypesFromAssembly, assembly.ToString()));
+				_log.Trace(string.Format(InfrastructureResources.TraceGetTypesFromAssembly, assembly));
 
 				types = assembly.GetTypes();
 			}
@@ -177,12 +161,12 @@ namespace Shuttle.Core.Infrastructure
 				{
 					foreach (var exception in reflection.LoaderExceptions)
 					{
-						log.Error(string.Format("'{0}'.", exception.CompactMessages()));
+						_log.Error(string.Format("'{0}'.", exception.AllMessages()));
 					}
 				}
 				else
 				{
-					log.Error(string.Format("{0}: '{1}'.", ex.GetType(), ex.CompactMessages()));
+					_log.Error(string.Format("{0}: '{1}'.", ex.GetType(), ex.AllMessages()));
 				}
 
 				return new List<Type>();

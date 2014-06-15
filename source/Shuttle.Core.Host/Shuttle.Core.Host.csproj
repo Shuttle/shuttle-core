@@ -78,13 +78,13 @@
     <EmbeddedResource Include="Content\Help.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Shuttle.Core.Infrastructure\Shuttle.Core.Infrastructure.csproj">
-      <Project>{F7F8F139-30B0-4B71-AB09-1A3127DAC4BD}</Project>
-      <Name>Shuttle.Core.Infrastructure</Name>
-    </ProjectReference>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <ProjectReference Include="..\Shuttle.Core.Infrastructure\Shuttle.Core.Infrastructure.csproj">
+      <Project>{f7f8f139-30b0-4b71-ab09-1a3127dac4bd}</Project>
+      <Name>Shuttle.Core.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

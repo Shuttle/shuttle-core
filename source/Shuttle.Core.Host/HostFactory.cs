@@ -115,12 +115,12 @@ namespace Shuttle.Core.Host
 					{
 						foreach (var exception in reflection.LoaderExceptions)
 						{
-							Log.For(this).Trace(string.Format("'{0}'.", exception.CompactMessages()));
+							Log.For(this).Trace(string.Format("'{0}'.", exception.AllMessages()));
 						}
 					}
 					else
 					{
-						Log.For(this).Trace(string.Format("{0}: '{1}'.", ex.GetType(), ex.CompactMessages()));
+						Log.For(this).Trace(string.Format("{0}: '{1}'.", ex.GetType(), ex.AllMessages()));
 					}
 
 					continue;

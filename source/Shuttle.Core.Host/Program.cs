@@ -33,7 +33,7 @@ namespace Shuttle.Core.Host
             {
                 if (Environment.UserInteractive)
                 {
-                    ColoredConsole.WriteLine(ConsoleColor.Red, ex.CompactMessages());
+                    ColoredConsole.WriteLine(ConsoleColor.Red, ex.AllMessages());
 
                     Console.WriteLine();
                     ColoredConsole.WriteLine(ConsoleColor.Gray, "Press any key to close...");
@@ -41,7 +41,7 @@ namespace Shuttle.Core.Host
                 }
                 else
                 {
-					Log.Fatal(string.Format("[UNHANDLED EXCEPTION] : exception = {0}", ex.CompactMessages()));
+					Log.Fatal(string.Format("[UNHANDLED EXCEPTION] : exception = {0}", ex.AllMessages()));
 					
 					throw;
                 }
@@ -52,7 +52,7 @@ namespace Shuttle.Core.Host
     	{
     		var ex = e.ExceptionObject as Exception;
 
-			Log.Fatal(string.Format("[UNHANDLED EXCEPTION] : exception = {0}", ex != null ? ex.CompactMessages() : "(the exception object is null)"));
+			Log.Fatal(string.Format("[UNHANDLED EXCEPTION] : exception = {0}", ex != null ? ex.AllMessages() : "(the exception object is null)"));
     	}
 
     	protected static void ShowHelp()

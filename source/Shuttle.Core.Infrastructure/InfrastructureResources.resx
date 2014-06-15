@@ -117,13 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccountInvalid" xml:space="preserve">
-    <value>Account '{0}' is invalid.</value>
-    <comment>{0} = invalid account</comment>
-  </data>
-  <data name="ConfigurationItem" xml:space="preserve">
-    <value>configuration item</value>
-  </data>
   <data name="ConfigurationItemEmptyUsingDefault" xml:space="preserve">
     <value>Configuration item '{0}' is specified but empty.  Using the specified default '{1}'.</value>
     <comment>{0} = configuration item name, {1} = specified default</comment>
@@ -135,88 +128,13 @@
   <data name="ConfigurationItemMissingUsingDefault" xml:space="preserve">
     <value>configuration item not specified - using default</value>
   </data>
-  <data name="CronBothDaysSpecified" xml:space="preserve">
-    <value>Cron expression '{0}' is invalid since you cannot specify both day-of-month and day-of-week.  Specify one of the two as '?'.</value>
-    <comment>{0} = invalid cron expression</comment>
-  </data>
-  <data name="CronEndValueTooLarge" xml:space="preserve">
-    <value>End value '{0}' is higher than the maximum permitted value of '{1}'.</value>
-    <comment>{0} = end value, {1} = maximum</comment>
-  </data>
-  <data name="CronEndValueTooSmall" xml:space="preserve">
-    <value>End value '{0}' is lower than the minimum permitted value of '{1}'.</value>
-    <comment>{0} = end value, {1} = minimum</comment>
-  </data>
-  <data name="CronInvalidExpression" xml:space="preserve">
-    <value>Expression '{0}' is not valid.</value>
-    <comment>{0} = invalid expression</comment>
-  </data>
-  <data name="CronInvalidFieldCount" xml:space="preserve">
-    <value>A CronExpression must contain exactly 5 fields.  {0} fields have specified.</value>
-    <comment>{0} = number of fields specified</comment>
-  </data>
-  <data name="CronInvalidSpecificationCandidate" xml:space="preserve">
-    <value>Specification exptected candidate of type '{0}' but was '{1}'.</value>
-    <comment>{0} = expected type full name, {1} = actual type full name</comment>
-  </data>
-  <data name="CronNoDaysSpecified" xml:space="preserve">
-    <value>No days specified in expression '{0}'.  You should not specify both day-of-month and day-of-week as '?'.</value>
-    <comment>{0} = invalid cron expression</comment>
-  </data>
-  <data name="CronStartValueLargerThanEndValue" xml:space="preserve">
-    <value>The start value may not be greater than the end value.</value>
-  </data>
-  <data name="CronStartValueTooLarge" xml:space="preserve">
-    <value>Start value '{0}' is higher than the maximum permitted value of '{1}'.</value>
-    <comment>{0} = start value, {1} = maximum</comment>
-  </data>
-  <data name="CronStartValueTooSmall" xml:space="preserve">
-    <value>Start value '{0}' is lower than the minimum permitted value of '{1}'.</value>
-    <comment>{0} = start value, {1} = minimum</comment>
-  </data>
-  <data name="DuplicateEntityException" xml:space="preserve">
-    <value>Cannot perform operation since it will result in a duplicate '{0}' since there is already an entity attribute '{1}' with value '{2}'.</value>
-    <comment>{0} = type name, {1} = attribute name, {2} = attribute value</comment>
-  </data>
-  <data name="DuplicateEntryException" xml:space="preserve">
-    <value>Key '{0}' already exists in collection '{1}'.</value>
-    <comment>{0} = key name, {1} = collection name</comment>
-  </data>
   <data name="EmptyStringException" xml:space="preserve">
     <value>The string with name '{0}' may not be empty.</value>
     <comment>{0} = string name</comment>
   </data>
-  <data name="EnteringPipelineStage" xml:space="preserve">
-    <value>Entering pipeline stage '{0}'.</value>
-    <comment>{0} = pipeline stage</comment>
-  </data>
-  <data name="ExecutingPipeline" xml:space="preserve">
-    <value>Executing pipeline '{0}'.</value>
-    <comment>{0} = pipeline full type name</comment>
-  </data>
-  <data name="FirstChanceExceptionHandledByPipeline" xml:space="preserve">
-    <value>First chance exception handled by pipeline: {0}</value>
-    <comment>{0} = exception message</comment>
-  </data>
-  <data name="GetTypesFromAssembly" xml:space="preserve">
-    <value>GetTypes from assembly '{0}'.</value>
+  <data name="TraceGetTypesFromAssembly" xml:space="preserve">
+    <value>Retrieving all type from from assembly '{0}'.</value>
     <comment>{0} = assembly</comment>
-  </data>
-  <data name="ImageEncoderNotFoundException" xml:space="preserve">
-    <value>No image encoder found for mime type '{0}'.</value>
-    <comment>{0} = mime type</comment>
-  </data>
-  <data name="InterfaceResolutionException" xml:space="preserve">
-    <value>Failed to resolve an implementation of an {0}.</value>
-    <comment>{0} = type to resolve</comment>
-  </data>
-  <data name="InvalidActiveFromTime" xml:space="preserve">
-    <value>ActiveFromTime '{0}' is not a valid time.</value>
-    <comment>{0} = invalid time</comment>
-  </data>
-  <data name="InvalidActiveToTime" xml:space="preserve">
-    <value>ActiveToTime '{0}' is not a valid time.</value>
-    <comment>{0} = invalid time</comment>
   </data>
   <data name="InvalidArgumentException" xml:space="preserve">
     <value>There is no argument with name '{0}'.</value>
@@ -226,53 +144,9 @@
     <value>Exception type '{0}' used with Guard possibly does not have a constructor that takes 1 string parameter (message).  Exception reported: {1}</value>
     <comment>{0} = full type name of exception type, {1} = actual exception thrown</comment>
   </data>
-  <data name="KeyNotFoundException" xml:space="preserve">
-    <value>Key '{0}' could not be found in collection '{1}'.</value>
-    <comment>{0} = key name, {1} = collection name</comment>
-  </data>
-  <data name="MissingEntityException" xml:space="preserve">
-    <value>Entity '{0}' with id '{1}' could not be located.</value>
-    <comment>{0} = entity name, {1} = entity id</comment>
-  </data>
-  <data name="NullDependencyException" xml:space="preserve">
-    <value>Dependency '{0}' has been accessed but it has not been set.</value>
-    <comment>{0} = dependency name</comment>
-  </data>
-  <data name="NullReferenceException" xml:space="preserve">
-    <value>A required value is null: {0}</value>
-    <comment>{0} = the required value name</comment>
-  </data>
-  <data name="NullSafeCasting" xml:space="preserve">
-    <value>Safe casting from '{0}' to '{1}' resulted in a null.</value>
-    <comment>{0} = full type name for 'from' type, {1} = full type name for 'to' type</comment>
-  </data>
   <data name="NullValueException" xml:space="preserve">
     <value>Value with name '{0}' may not be null.</value>
     <comment>{0} = value name</comment>
-  </data>
-  <data name="ObserverAlreadyRegisterAgainstEvent" xml:space="preserve">
-    <value>Observer instance already registered against event '{0}'.</value>
-    <comment>{0} = event name</comment>
-  </data>
-  <data name="PathHasNoExtensionException" xml:space="preserve">
-    <value>Path '{0}' has no extension.</value>
-    <comment>{0} = path</comment>
-  </data>
-  <data name="PipelineStageEventNotRegistered" xml:space="preserve">
-    <value>Pipeline stage '{0}' has no event of type '{1}'.</value>
-    <comment>{0} = pipeline stage name, {1} = unknown event type name</comment>
-  </data>
-  <data name="PipelineStageNotFound" xml:space="preserve">
-    <value>There is no pipeline stage with a name of '{0}'.</value>
-    <comment>{0} = unknown stage name</comment>
-  </data>
-  <data name="RaisingPipelineEvent" xml:space="preserve">
-    <value>Raising pipeline event '{0}' in stage '{1}' for observer '{2}'.</value>
-    <comment>{0} = pipeline event name, {1}= pipeline stage name, {2} = observer name</comment>
-  </data>
-  <data name="RangeException" xml:space="preserve">
-    <value>Invalid range.  The from value '{0}' must be less than the to value '{1}'.</value>
-    <comment>{0} = from value, {1} = to value</comment>
   </data>
   <data name="ReassignmentException" xml:space="preserve">
     <value>Attempt to assign a value to '{0}' but it has already been assigned a value.</value>
@@ -281,44 +155,5 @@
   <data name="StreamCannotSeek" xml:space="preserve">
     <value>[{0}] : Stream position is not 0 but seek is not permitted.</value>
     <comment>{0} = source</comment>
-  </data>
-  <data name="TaskPoolStatusChange" xml:space="preserve">
-    <value>{0} task pool has {1} successfully.</value>
-    <comment>{0} = task pool name , {1} = new status</comment>
-  </data>
-  <data name="ThreadActivityWaiting" xml:space="preserve">
-    <value>Thread with managed id '{0}' has no work and will sleep for {1} ms.</value>
-    <comment>{0} = thread managed id, {1} = milliseconds to sleep</comment>
-  </data>
-  <data name="ThreadCountZeroException" xml:space="preserve">
-    <value>The queue handler configuration requires thread count of at least 1.  The input queue can not be processed.</value>
-  </data>
-  <data name="TraceProcessorThreadActive" xml:space="preserve">
-    <value>[processor thread active] : managed thread id = {0} / processor type = {1}</value>
-    <comment>{0} = managed thread id, {1} = full type name of processor</comment>
-  </data>
-  <data name="TraceProcessorThreadStarting" xml:space="preserve">
-    <value>[processor thread starting] : managed thread id = {0} / processor type = {1}</value>
-    <comment>{0} = managed thread id, {1} = full type name of processor</comment>
-  </data>
-  <data name="TraceProcessorThreadStopped" xml:space="preserve">
-    <value>[processor thread stopped] : managed thread id = {0} / processor type = {1}</value>
-    <comment>{0} = managed thread id, {1} = full type name of processor</comment>
-  </data>
-  <data name="TraceProcessorThreadStopping" xml:space="preserve">
-    <value>[processor thread stopping] : managed thread id = {0} / processor type = {1}</value>
-    <comment>{0} = managed thread id, {1} = full type name of processor</comment>
-  </data>
-  <data name="UnhandledPipelineException" xml:space="preserve">
-    <value>Unhandled exception during event '{0}': {1}</value>
-    <comment>{0} = event name, {1} = exception message</comment>
-  </data>
-  <data name="UninitializedStaticInstanceException" xml:space="preserve">
-    <value>Static instance '{0}' is null.  Initialize it by calling '{0}' before accessing it for the first time.</value>
-    <comment>{0} = instance name, {1} = initialization method</comment>
-  </data>
-  <data name="VerboseProcessorExecuting" xml:space="preserve">
-    <value>[processor thread executing] : managed thread id = {0} / processor type = {1}</value>
-    <comment>{0} = managed thread id, {1} = full type name of processor</comment>
   </data>
 </root>

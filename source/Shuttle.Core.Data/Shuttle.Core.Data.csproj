@@ -54,9 +54,6 @@
     </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Data" />
-    <Reference Include="Shuttle.Core.Infrastructure">
-      <HintPath>..\..\build\$(Configuration)\$(Framework)\Shuttle.Core.Infrastructure.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +108,12 @@
       <LastGenOutput>DataResources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shuttle.Core.Infrastructure\Shuttle.Core.Infrastructure.csproj">
+      <Project>{f7f8f139-30b0-4b71-ab09-1a3127dac4bd}</Project>
+      <Name>Shuttle.Core.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

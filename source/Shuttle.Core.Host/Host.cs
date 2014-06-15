@@ -91,7 +91,7 @@ namespace Shuttle.Core.Host
 				{
 					runServiceException = true;
 
-					ColoredConsole.WriteLine(ConsoleColor.Red, ex.CompactMessages());
+					ColoredConsole.WriteLine(ConsoleColor.Red, ex.AllMessages());
 					ColoredConsole.WriteLine(ConsoleColor.Red, ex.StackTrace);
 
 					Console.WriteLine();

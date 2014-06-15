@@ -16,6 +16,7 @@
 		<dependency id="castle.core" />
 		<dependency id="castle.windsor" />
 		<dependency id="shuttle-core-infrastructure" />
+		<dependency id="shuttle-core-domain" />
 	</dependencies>
   </metadata>
 </package>

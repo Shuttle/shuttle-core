@@ -96,20 +96,6 @@
     <Compile Include="Data\Stubs\OrderLine.cs" />
     <Compile Include="Data\ThreadStaticDatabaseConnectionCacheTests.cs" />
     <Compile Include="Infrastructure\ArgumentsTest.cs" />
-    <Compile Include="Infrastructure\Cron\CronDayOfMonthTest.cs" />
-    <Compile Include="Infrastructure\Cron\CronDayOfWeekTest.cs" />
-    <Compile Include="Infrastructure\Cron\CronExpressionTest.cs" />
-    <Compile Include="Infrastructure\Cron\CronHourTest.cs" />
-    <Compile Include="Infrastructure\Cron\CronMinuteTest.cs" />
-    <Compile Include="Infrastructure\Cron\CronMonthTest.cs" />
-    <Compile Include="Infrastructure\CryptographyServiceTest.cs" />
-    <Compile Include="Infrastructure\FileServiceTest.cs" />
-    <Compile Include="Infrastructure\GuidExtensionsTest.cs" />
-    <Compile Include="Infrastructure\ImageServiceTest.cs" />
-    <Compile Include="Infrastructure\ObservablePipeline\MockAuthenticateObserver.cs" />
-    <Compile Include="Infrastructure\ObservablePipeline\MockPipelineEvent1.cs" />
-    <Compile Include="Infrastructure\ObservablePipeline\ObservablePipelineTest.cs" />
-    <Compile Include="Infrastructure\TypeSpecificationsTest.cs" />
     <Compile Include="Infrastructure\StreamExtensionsTest.cs" />
     <Compile Include="Infrastructure\TypeExtensionsTest.cs" />
     <Compile Include="Fixture.cs" />
@@ -119,21 +105,18 @@
     <Compile Include="Mocks\IMockEntity.cs" />
     <Compile Include="Mocks\ISubClassGenericParameterString.cs" />
     <Compile Include="Mocks\SubClassGenericParameterString.cs" />
-    <Compile Include="ObjectSerializerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ResultTest.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="TestResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TestResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UnitOfWorkTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shuttle.Core.Data\Shuttle.Core.Data.csproj">
@@ -204,11 +187,6 @@
       <LastGenOutput>TestResources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Infrastructure\Images\NotAnImage.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -42,21 +42,21 @@ namespace Shuttle.Core.Infrastructure
 					throw new ApplicationException(message);
 				}
 
-				Log.Information(string.Format("[{0}] {1} : {2} ({3})", InfrastructureResources.ConfigurationItem, key, @default, InfrastructureResources.ConfigurationItemMissingUsingDefault));
+				Log.Information(string.Format("[ConfigurationItem] {0} : {1} ({2})", key, @default, InfrastructureResources.ConfigurationItemMissingUsingDefault));
 
 				return new ConfigurationItem<T>(@default);
 			}
 
 			if (string.IsNullOrEmpty(setting))
 			{
-				Log.Information(string.Format("[{0}] {1} : {2} ({3})", InfrastructureResources.ConfigurationItem, key, @default, InfrastructureResources.ConfigurationItemMissingUsingDefault));
+				Log.Information(string.Format("[ConfigurationItem] {0} : {1} ({2})", key, @default, InfrastructureResources.ConfigurationItemMissingUsingDefault));
 
 				return new ConfigurationItem<T>(@default);
 			}
 
 			var item = new ConfigurationItem<T>((T)Convert.ChangeType(setting, Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T)));
 
-			Log.Information(string.Format("[{0}] {1} : {2}", InfrastructureResources.ConfigurationItem, key, ProtectedValue(key, Convert.ToString(item.GetValue()))));
+			Log.Information(string.Format("[ConfigurationItem] {0} : {1}", key, ProtectedValue(key, Convert.ToString(item.GetValue()))));
 
 			return item;
 		}

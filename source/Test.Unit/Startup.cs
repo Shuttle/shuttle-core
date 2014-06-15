@@ -11,10 +11,8 @@ namespace Test.All
         {
             DatabaseConnectionFactory = Shuttle.Core.Data.DatabaseConnectionFactory.Default();
             DatabaseGateway = Shuttle.Core.Data.DatabaseGateway.Default();
-            UnitOfWorkFactory = new UnitOfWorkFactory(new FaultRepositoryProvider());
         }
 
-        public static IUnitOfWorkFactory UnitOfWorkFactory { get; private set; }
 		public static IDatabaseConnectionFactory DatabaseConnectionFactory { get; private set; }
         public static IDatabaseGateway DatabaseGateway { get; private set; }
     }
