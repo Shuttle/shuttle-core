@@ -115,7 +115,7 @@ namespace Shuttle.Core.Infrastructure
 			}
 
 			var privateBinPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-											  AppDomain.CurrentDomain.RelativeSearchPath);
+											  AppDomain.CurrentDomain.RelativeSearchPath ?? string.Empty);
 
 			if (!privateBinPath.Equals(AppDomain.CurrentDomain.BaseDirectory))
 			{
