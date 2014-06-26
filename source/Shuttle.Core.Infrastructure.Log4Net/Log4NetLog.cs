@@ -11,17 +11,19 @@ namespace Shuttle.Core.Infrastructure.Log4Net
 		private static readonly object _padlock = new object();
 
 		private readonly log4net.ILog _log;
+		private readonly bool _configure;
 
-		public Log4NetLog(log4net.ILog logger)
-			: this(logger, true)
+		public Log4NetLog(log4net.ILog logger) : this(logger, true)
 		{
 		}
 
-		public Log4NetLog(log4net.ILog logger, bool initialize)
+		public Log4NetLog(log4net.ILog logger, bool configure)
 		{
+			_configure = configure;
+
 			lock (_padlock)
 			{
-				if (_initialize && initialize)
+				if (_initialize && configure)
 				{
 					XmlConfigurator.Configure();
 
@@ -106,12 +108,42 @@ namespace Shuttle.Core.Infrastructure.Log4Net
 
 		public override ILog For(Type type)
 		{
-			return new Log4NetLog(LogManager.GetLogger(type));
+			return new Log4NetLog(LogManager.GetLogger(type), _configure);
 		}
 
 		public override ILog For(object instance)
 		{
-			return new Log4NetLog(LogManager.GetLogger(instance.GetType()));
+			return new Log4NetLog(LogManager.GetLogger(instance.GetType()), _configure);
+		}
+
+		public override bool IsTraceEnabled
+		{
+			get { return _log.Logger.IsEnabledFor(Level.Trace); }
+		}
+
+		public override bool IsDebugEnabled
+		{
+			get { return _log.IsDebugEnabled; }
+		}
+
+		public override bool IsInformationEnabled
+		{
+			get { return _log.IsInfoEnabled; }
+		}
+
+		public override bool IsWarningEnabled
+		{
+			get { return _log.IsWarnEnabled; }
+		}
+
+		public override bool IsErrorEnabled
+		{
+			get { return _log.IsErrorEnabled; }
+		}
+
+		public override bool IsFatalEnabled
+		{
+			get { return _log.IsFatalEnabled; }
 		}
 	}
 }
