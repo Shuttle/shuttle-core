@@ -2,189 +2,199 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>
-      {% if page.title %}
-        {{ page.title }} - 
-      {% endif %}
-      {{ site.title }}
-    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{{ page.title }}</title>
     {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
     <meta name="author" content="{{ site.author.name }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
     <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ ASSET_PATH }}/css-social-buttons/css/zocial.stripped.css">
-    <link href="{{ ASSET_PATH }}/css/pygments.css" rel="stylesheet" type="text/css" media="all">
-    <link href="{{ ASSET_PATH }}/css/darkstrap.css" rel="stylesheet" type="text/css" media="all">
+    <!-- Optional theme -->
+    <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="{{ ASSET_PATH }}/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
+    
+    <!-- Custom styles -->
     <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
 
-    <!-- fav and touch icons -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
     <!-- Update these with your own images
       <link rel="shortcut icon" href="images/favicon.ico">
       <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
       <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
       <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
     -->
+
+    <!-- atom & rss feed -->
+    <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
   </head>
 
   <body>
-    <div id="page-wrap">
-      <div class="navbar">
-        <div class="navbar-inner">
-          <div class="container">
-            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </a>
-
-            <a class="brand" href="{{ HOME_PATH }}">{{ site.title }}</a>
-
-            <div class="nav-collapse">
-              <ul class="nav">
-				<li class='dropdown'>
-					<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-					Guides
-					<b class='caret'></b>
-					</a>
-					<ul class='dropdown-menu'>
-						<li>
-							<a href='{{ BASE_PATH }}/guides-host/index.html'>Shuttle.Core.Host</a>
-						</li>
-						<li>
-							<a href='{{ site.baseurl }}/guides-infrastructure/index.html'>Shuttle.Core.Infrastructure</a>
-						</li>
-						<li>
-							<a href='{{ site.baseurl }}/guides-data/index.html'>Shuttle.Core.Data</a>
-						</li>
-						<li>
-							<a href='{{ site.baseurl }}/guides-domain/index.html'>Shuttle.Core.Domain</a>
-						</li>
-					</ul>
-				</li>
-				<li class='dropdown'>
-					<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-					API
-					<b class='caret'></b>
-					</a>
-					<ul class='dropdown-menu'>
-						<li>
-							<a href='{{ site.baseurl }}/api-host/index.html'>Shuttle.Core.Host</a>
-						</li>
-						<li>
-							<a href='{{ site.baseurl }}/api-infrastructure/index.html'>Shuttle.Core.Infrastructure</a>
-						</li>
-						<li>
-							<a href='{{ site.baseurl }}/api-data/index.html'>Shuttle.Core.Data</a>
-						</li>
-						<li>
-							<a href='{{ site.baseurl }}/api-domain/index.html'>Shuttle.Core.Domain</a>
-						</li>
-					</ul>
-				</li>
-				<li class='dropdown'>
-					<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-					Extensions
-					<b class='caret'></b>
-					</a>
-					<ul class='dropdown-menu'>
-						<li class='dropdown-header'>Castle</li>
-						<li>
-							<a href='{{ site.baseurl }}/extensions-castle-infrastructure/index.html'>Shuttle.Core.Infrastructure.Castle</a>
-						</li>
-						<li>
-							<a href='{{ site.baseurl }}/extensions-castle-data/index.html'>Shuttle.Core.Data.Castle</a>
-						</li>
-						<li>
-							<a href='{{ site.baseurl }}/extensions-castle-domain/index.html'>Shuttle.Core.Domain.Castle</a>
-						</li>
-						<li class='divider'></li>
-						<li class='dropdown-header'>Log4Net</li>
-						<li>
-							<a href='{{ site.baseurl }}/extensions-log4net-infrastructure/index.html'>Shuttle.Core.Infrastructure.Log4Net</a>
-						</li>
-					</ul>
-				</li>
-				{% assign pages_list = site.pages %}
-                {% assign group = 'navigation' %}
-                {% include JB/pages_list %}
-              </ul>
-              <ul class="nav pull-right social visible-desktop">
-                <li class="divider-vertical"></li>
-                {% if site.github_repository %}
-                <li>
-                  <a href="{{ site.github_repository }}" class="zocial github icon" target="_blank">
-                    <span class="hidden-desktop">Github</span>
-                  </a>
-                </li>
-                {% endif %}
-                {% if site.author.googleplus %}
-                <li>
-                  <a href="https://plus.google.com/{{ site.author.googleplus }}" class="zocial googleplus icon" target="_blank">
-                    <span class="hidden-desktop">Google+</span>
-                  </a>
-                </li>
-                {% endif %}
-                {% if site.author.twitter %}
-                <li>
-                  <a href="https://twitter.com/{{ site.author.twitter }}" class="zocial twitter icon" target="_blank">
-                    <span class="hidden-desktop">Twitter</span>
-                  </a>
-                </li>
-                {% endif %}
-                {% if site.author.facebook %}
-                <li>
-                  <a href="http://www.facebook.com/{{ site.author.facebook }}" class="zocial facebook icon" target="_blank">
-                    <span class="hidden-desktop">Facebook</span>
-                  </a>
-                </li>
-                {% endif %}
-                {% if site.author.linkedin %}
-                <li>
-                  <a href="http://www.linkedin.com/in/{{ site.author.linkedin }}" class="zocial linkedin icon" target="_blank">
-                    <span class="hidden-desktop">LinkedIn</span>
-                  </a>
-                </li>
-                {% endif %}
-                {% if site.author.feedburner %}
-                <li>
-                  <a href="http://feeds.feedburner.com/{{ site.author.feedburner }}" class="zocial rss icon" target="_blank">
-                    <span class="hidden-desktop">FeedBurner</span>
-                  </a>
-                </li>
-                {% endif %}
-              </ul>
-            </div>
-          </div>
+    <div id="wrap">
+      <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jb-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ HOME_PATH }}">{{ site.title }}</a>
         </div>
-      </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+          <ul class="nav navbar-nav">
+			<li class='dropdown'>
+				<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+				Guides
+				<b class='caret'></b>
+				</a>
+				<ul class='dropdown-menu'>
+					<li>
+						<a href='{{ BASE_PATH }}/guides-host/index.html'>Shuttle.Core.Host</a>
+					</li>
+					<li>
+						<a href='{{ site.baseurl }}/guides-infrastructure/index.html'>Shuttle.Core.Infrastructure</a>
+					</li>
+					<li>
+						<a href='{{ site.baseurl }}/guides-data/index.html'>Shuttle.Core.Data</a>
+					</li>
+					<li>
+						<a href='{{ site.baseurl }}/guides-domain/index.html'>Shuttle.Core.Domain</a>
+					</li>
+				</ul>
+			</li>
+			<li class='dropdown'>
+				<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+				API
+				<b class='caret'></b>
+				</a>
+				<ul class='dropdown-menu'>
+					<li>
+						<a href='{{ site.baseurl }}/api-host/index.html'>Shuttle.Core.Host</a>
+					</li>
+					<li>
+						<a href='{{ site.baseurl }}/api-infrastructure/index.html'>Shuttle.Core.Infrastructure</a>
+					</li>
+					<li>
+						<a href='{{ site.baseurl }}/api-data/index.html'>Shuttle.Core.Data</a>
+					</li>
+					<li>
+						<a href='{{ site.baseurl }}/api-domain/index.html'>Shuttle.Core.Domain</a>
+					</li>
+				</ul>
+			</li>
+			<li class='dropdown'>
+				<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+				Extensions
+				<b class='caret'></b>
+				</a>
+				<ul class='dropdown-menu'>
+					<li class='dropdown-header'>Castle</li>
+					<li>
+						<a href='{{ site.baseurl }}/extensions-castle-infrastructure/index.html'>Shuttle.Core.Infrastructure.Castle</a>
+					</li>
+					<li>
+						<a href='{{ site.baseurl }}/extensions-castle-data/index.html'>Shuttle.Core.Data.Castle</a>
+					</li>
+					<li>
+						<a href='{{ site.baseurl }}/extensions-castle-domain/index.html'>Shuttle.Core.Domain.Castle</a>
+					</li>
+					<li class='divider'></li>
+					<li class='dropdown-header'>Log4Net</li>
+					<li>
+						<a href='{{ site.baseurl }}/extensions-log4net-infrastructure/index.html'>Shuttle.Core.Infrastructure.Log4Net</a>
+					</li>
+				</ul>
+			</li>
+            {% assign pages_list = site.pages %}
+            {% assign group = 'navigation' %}
+            {% include JB/pages_list %}
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+			<li class="divider-vertical"></li>
+			{% if site.author.github %}
+			<li>
+			  <a href="https://github.com/{{ site.author.github }}" class="zocial github icon" target="_blank">
+				<span class="hidden-desktop">Github</span>
+			  </a>
+			</li>
+			{% endif %}
+			{% if site.author.googleplus %}
+			<li>
+			  <a href="https://plus.google.com/{{ site.author.googleplus }}" class="zocial googleplus icon" target="_blank">
+				<span class="hidden-desktop">Google+</span>
+			  </a>
+			</li>
+			{% endif %}
+			{% if site.author.twitter %}
+			<li>
+			  <a href="https://twitter.com/{{ site.author.twitter }}" class="zocial twitter icon" target="_blank">
+				<span class="hidden-desktop">Twitter</span>
+			  </a>
+			</li>
+			{% endif %}
+			{% if site.author.facebook %}
+			<li>
+			  <a href="http://www.facebook.com/{{ site.author.facebook }}" class="zocial facebook icon" target="_blank">
+				<span class="hidden-desktop">Facebook</span>
+			  </a>
+			</li>
+			{% endif %}
+			{% if site.author.linkedin %}
+			<li>
+			  <a href="http://www.linkedin.com/in/{{ site.author.linkedin }}" class="zocial linkedin icon" target="_blank">
+				<span class="hidden-desktop">LinkedIn</span>
+			  </a>
+			</li>
+			{% endif %}
+			{% if site.author.feedburner %}
+			<li>
+			  <a href="http://feeds.feedburner.com/{{ site.author.feedburner }}" class="zocial rss icon" target="_blank">
+				<span class="hidden-desktop">FeedBurner</span>
+			  </a>
+			</li>
+			{% endif %}
+		  </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
 
       <div class="container">
-        <div class="content">
-          {{ content }}
-        </div>
-      </div> <!-- /container -->
+        {{ content }}
+      </div>
 
-      <div class="footer-push"></div>
-    </div><!--/.page-wrap -->
+    </div>
 
-    <footer>
+    <div id="footer">
       <div class="container">
         <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
         </p>
       </div>
-    </footer>
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{{ ASSET_PATH }}/js/jquery.min.js"><\/script>')</script>
-    <script src="{{ ASSET_PATH }}/bootstrap/js/bootstrap.min.js"></script>
+    </div id="footer">
 
     {% include JB/analytics %}
+
+
+    <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="{{ ASSET_PATH }}/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>
