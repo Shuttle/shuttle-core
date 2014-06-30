@@ -20,6 +20,7 @@
     
     <!-- Custom styles -->
     <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ ASSET_PATH }}/css/jquery.tocify.css" rel="stylesheet" type="text/css" media="all">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -184,17 +185,17 @@
       <div class="container">
         <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
           with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> / <a href="http://github.com/dhulihan/hooligan" target="_blank">The Hooligan Theme</a>
         </p>
       </div>
     </div id="footer">
 
     {% include JB/analytics %}
 
-
-    <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="{{ ASSET_PATH }}/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ ASSET_PATH }}/js/jquery.min.js"></script>
+	<script src="{{ ASSET_PATH }}/js/jquery-ui.js"></script>
+	<script src="{{ ASSET_PATH }}/bootstrap/js/bootstrap.min.js"></script>
+	<script src="{{ ASSET_PATH }}/js/jquery.tocify.js"></script>
+	<script src="{{ ASSET_PATH }}/js/site.js"></script>
   </body>
 </html>

@@ -1,8 +1,6 @@
 baseurl: "http://shuttle.github.io/shuttle-core"
 safe: true
-# This is the default format. 
-# For more see: http://jekyllrb.com/docs/permalinks/
-# permalink: /:categories/:year/:month/:day/:title 
+
 permalink: pretty
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
