@@ -12,3 +12,8 @@ When the generic host is executed it searches for all classes that implement the
 /hostType="assembly qualified name"
 ```
 
+In order to debug applications that use the `IHost` interface you would simply need to set the `Shuttle.Core.Host.exe` as the startup application for your project:
+
+![Host Debug Image]({{ BASE_PATH }}/assets/images/host-debug.png "Host Debug")
+
+So a typical

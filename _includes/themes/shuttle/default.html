@@ -21,7 +21,8 @@
     <!-- Custom styles -->
     <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
     <link href="{{ ASSET_PATH }}/css/jquery.tocify.css" rel="stylesheet" type="text/css" media="all">
-
+	<link href="{{ ASSET_PATH }}/css/zocial.stripped.css"  rel="stylesheet" type="text/css" media="all">
+	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -132,42 +133,7 @@
 			{% if site.author.github %}
 			<li>
 			  <a href="https://github.com/{{ site.author.github }}" class="zocial github icon" target="_blank">
-				<span class="hidden-desktop">Github</span>
-			  </a>
-			</li>
-			{% endif %}
-			{% if site.author.googleplus %}
-			<li>
-			  <a href="https://plus.google.com/{{ site.author.googleplus }}" class="zocial googleplus icon" target="_blank">
-				<span class="hidden-desktop">Google+</span>
-			  </a>
-			</li>
-			{% endif %}
-			{% if site.author.twitter %}
-			<li>
-			  <a href="https://twitter.com/{{ site.author.twitter }}" class="zocial twitter icon" target="_blank">
-				<span class="hidden-desktop">Twitter</span>
-			  </a>
-			</li>
-			{% endif %}
-			{% if site.author.facebook %}
-			<li>
-			  <a href="http://www.facebook.com/{{ site.author.facebook }}" class="zocial facebook icon" target="_blank">
-				<span class="hidden-desktop">Facebook</span>
-			  </a>
-			</li>
-			{% endif %}
-			{% if site.author.linkedin %}
-			<li>
-			  <a href="http://www.linkedin.com/in/{{ site.author.linkedin }}" class="zocial linkedin icon" target="_blank">
-				<span class="hidden-desktop">LinkedIn</span>
-			  </a>
-			</li>
-			{% endif %}
-			{% if site.author.feedburner %}
-			<li>
-			  <a href="http://feeds.feedburner.com/{{ site.author.feedburner }}" class="zocial rss icon" target="_blank">
-				<span class="hidden-desktop">FeedBurner</span>
+				<span class='visible-xs visible-sm hidden-md hidden-lg'>Github</span>
 			  </a>
 			</li>
 			{% endif %}
