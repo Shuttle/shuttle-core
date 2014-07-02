@@ -16,4 +16,34 @@ In order to debug applications that use the `IHost` interface you would simply n
 
 ![Host Debug Image]({{ BASE_PATH }}/assets/images/host-debug.png "Host Debug")
 
-So a typical
+A typical implementation would be the following:
+
+``` c#
+using System;
+using Shuttle.Core.Host;
+
+namespace Domain.Server
+{
+	public class DomainHost : IHost, IDisposable
+	{
+		private volatile bool active = true;
+	
+		public void Start()
+		{
+		   while (active)
+		   {
+				// perform some processing
+		   }
+		}
+
+		public void Dispose()
+		{
+			active = false;
+		}
+	}
+}
+```
+
+You would probably want to use some thread-base processing but that is up to you.
+
+Notice the `IDisposable` implementation.  Whenever a service is stopped, or `ctrl+c` pressed for a console application, the `IHost` instance is safe-cast to `IDisposable`.  If the host instance implements `IDisposable` the `Dispose` method will be called.
