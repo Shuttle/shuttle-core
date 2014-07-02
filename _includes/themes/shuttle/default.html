@@ -129,11 +129,9 @@
             {% include JB/pages_list %}
           </ul>
           <ul class="nav navbar-nav navbar-right">
-			<li class="divider-vertical"></li>
-			{% if site.author.github %}
+			{% if site.github_repository %}
 			<li>
-			  <a href="https://github.com/{{ site.author.github }}" class="zocial github icon" target="_blank">
-				<span class='visible-xs visible-sm hidden-md hidden-lg'>Github</span>
+			  <a href="{{ site.github_repository }}" class="zocial github icon hidden-xs hidden-sm" target="_blank">
 			  </a>
 			</li>
 			{% endif %}
