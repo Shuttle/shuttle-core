@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0"?>
 <package >
-  <metadata>
-    <id>shuttle-core-data-http</id>
-    <version>3.1.1</version>
-    <authors>Eben Roux</authors>
-    <owners>Eben Roux</owners>
-    <licenseUrl>https://github.com/shuttle/shuttle-core/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/shuttle/shuttle-core</projectUrl>
-    <iconUrl>https://raw.github.com/shuttle/shuttle-core/master/media/logo-core-small.png</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>The data http component contains an implementation of IDatabaseConnectionCache that is safe for use in a web or wcf environment.  As a last resort a ThreadStatic collection will be used.</description>
-    <copyright>Copyright (c) 2011-2014, Eben Roux</copyright>
-    <tags>c# data access orm</tags>
-	<dependencies>
-		<dependency id="shuttle-core-infrastructure" version="" />
-		<dependency id="shuttle-core-data" version="" />
-	</dependencies>
-  </metadata>
+	<metadata>
+		<id>shuttle-core-data-http</id>
+		<version>3.1.2</version>
+		<authors>Eben Roux</authors>
+		<owners>Eben Roux</owners>
+		<licenseUrl>https://github.com/shuttle/shuttle-core/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/shuttle/shuttle-core</projectUrl>
+		<iconUrl>https://raw.github.com/shuttle/shuttle-core/master/media/logo-core-small.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>The data http component contains an implementation of IDatabaseConnectionCache that is safe for use in a web or wcf environment.  As a last resort a ThreadStatic collection will be used.</description>
+		<copyright>Copyright (c) 2011-2014, Eben Roux</copyright>
+		<tags>c# data access orm</tags>
+		<dependencies>
+			<dependency id="shuttle-core-infrastructure" version="3.1.1" />
+			<dependency id="shuttle-core-data" version="3.1.1" />
+		</dependencies>
+	</metadata>
 </package>

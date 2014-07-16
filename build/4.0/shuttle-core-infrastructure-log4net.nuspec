@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0"?>
 <package >
-  <metadata>
-    <id>shuttle-core-infrastructure-log4net</id>
-    <version>3.1.1</version>
-    <authors>Eben Roux</authors>
-    <owners>Eben Roux</owners>
-    <licenseUrl>https://github.com/shuttle/shuttle-core/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/shuttle/shuttle-core</projectUrl>
-    <iconUrl>https://raw.github.com/shuttle/shuttle-core/master/media/logo-core-small.png</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>The log4net component includes an implementation of the ILog interface for Log4Net.</description>
-    <copyright>Copyright (c) 2011-2014, Eben Roux</copyright>
-    <tags>c# generic Windows service hosting</tags>
-	<dependencies>
-		<dependency id="shuttle-core-infrastructure" version="3.1.1" />
-		<dependency id="log4net" version="1.2.13.0" />
-	</dependencies>
-  </metadata>
+	<metadata>
+		<id>shuttle-core-infrastructure-log4net</id>
+		<version>3.1.2</version>
+		<authors>Eben Roux</authors>
+		<owners>Eben Roux</owners>
+		<licenseUrl>https://github.com/shuttle/shuttle-core/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/shuttle/shuttle-core</projectUrl>
+		<iconUrl>https://raw.github.com/shuttle/shuttle-core/master/media/logo-core-small.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>The log4net component includes an implementation of the ILog interface for Log4Net.</description>
+		<copyright>Copyright (c) 2011-2014, Eben Roux</copyright>
+		<tags>c# generic Windows service hosting</tags>
+		<dependencies>
+			<dependency id="shuttle-core-infrastructure" version="3.1.1" />
+			<dependency id="log4net" version="1.2.13.0" />
+		</dependencies>
+	</metadata>
 </package>

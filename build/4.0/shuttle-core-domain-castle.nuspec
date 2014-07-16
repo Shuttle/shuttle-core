@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0"?>
 <package >
-  <metadata>
-    <id>shuttle-core-domain-castle</id>
-    <version>3.1.1</version>
-    <authors>Eben Roux</authors>
-    <owners>Eben Roux</owners>
-    <licenseUrl>https://github.com/shuttle/shuttle-core/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/shuttle/shuttle-core</projectUrl>
-    <iconUrl>https://raw.github.com/shuttle/shuttle-core/master/media/logo-core-small.png</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>The domain castle component provides an implementation of the IDomainEventDispatcher that uses the WindsorContainer.</description>
-    <copyright>Copyright (c) 2011-2014, Eben Roux</copyright>
-    <tags>c# domain utlity</tags>
-	<dependencies>
-		<dependency id="castle.core" version="" />
-		<dependency id="castle.windsor" version="" />
-		<dependency id="shuttle-core-infrastructure" version="" />
-		<dependency id="shuttle-core-domain" version="" />
-	</dependencies>
-  </metadata>
+	<metadata>
+		<id>shuttle-core-domain-castle</id>
+		<version>3.1.2</version>
+		<authors>Eben Roux</authors>
+		<owners>Eben Roux</owners>
+		<licenseUrl>https://github.com/shuttle/shuttle-core/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/shuttle/shuttle-core</projectUrl>
+		<iconUrl>https://raw.github.com/shuttle/shuttle-core/master/media/logo-core-small.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>The domain castle component provides an implementation of the IDomainEventDispatcher that uses the WindsorContainer.</description>
+		<copyright>Copyright (c) 2011-2014, Eben Roux</copyright>
+		<tags>c# domain utlity</tags>
+		<dependencies>
+			<dependency id="castle.core" version="3.3.0" />
+			<dependency id="castle.windsor" version="3.3.0" />
+			<dependency id="shuttle-core-infrastructure" version="3.1.1" />
+			<dependency id="shuttle-core-domain" version="3.1.1" />
+		</dependencies>
+	</metadata>
 </package>
