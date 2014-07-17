@@ -1,6 +1,17 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 
-[assembly: AssemblyTitle("Shuttle.Core.Infrastructure")]
-[assembly: AssemblyVersion("3.1.2.0")]
+#if NET35FULL
+[assembly: AssemblyTitle("Shuttle.Core.Infrastructure for .NET Framework 3.5")]
+#endif
+
+#if NET40FULL
+[assembly: AssemblyTitle("Shuttle.Core.Infrastructure for .NET Framework 4.0")]
+#endif
+
+#if NET45FULL
+[assembly: AssemblyTitle("Shuttle.Core.Infrastructure for .NET Framework 4.5")]
+#endif
+
+[assembly: AssemblyVersion("3.1.3.0")]
 [assembly: InternalsVisibleTo("Test.All")]

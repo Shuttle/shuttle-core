@@ -124,7 +124,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>md "..\..\..\..\build\$(ConfigurationName)\$(Framework)"
-copy "$(TargetPath)" "..\..\..\..\build\$(ConfigurationName)\$(Framework)"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

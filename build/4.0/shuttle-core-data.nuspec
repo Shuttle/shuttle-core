@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>shuttle-core-data</id>
-		<version>3.1.2</version>
+		<version>3.1.3</version>
 		<authors>Eben Roux</authors>
 		<owners>Eben Roux</owners>
 		<licenseUrl>https://github.com/shuttle/shuttle-core/blob/master/LICENSE</licenseUrl>
@@ -13,7 +13,7 @@
 		<copyright>Copyright (c) 2011-2014, Eben Roux</copyright>
 		<tags>c# data access orm</tags>
 		<dependencies>
-			<dependency id="shuttle-core-infrastructure" version="3.1.1" />
+			<dependency id="shuttle-core-infrastructure" version="3.1.3" />
 		</dependencies>
 	</metadata>
 </package>

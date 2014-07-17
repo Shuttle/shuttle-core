@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NET35FULL</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -113,7 +113,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>md "..\..\..\..\build\$(ConfigurationName)\$(Framework)"
-copy "$(TargetPath)" "..\..\..\..\build\$(ConfigurationName)\$(Framework)"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
