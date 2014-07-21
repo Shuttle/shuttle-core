@@ -76,5 +76,5 @@ public void Detach(System.ServiceModel.OperationContext owner)
 
 TBD
 
-[Shuttle.Core.Data.IDatabaseConnection]: {{ BASE_PATH }}/api-data/#IDatabaseConnection
-[Shuttle.Core.Data.DataSource]: {{ BASE_PATH }}/api-data/#DataSource
+[Shuttle.Core.Data.IDatabaseConnection]: {{ site.baseurl }}/api-data/#IDatabaseConnection
+[Shuttle.Core.Data.DataSource]: {{ site.baseurl }}/api-data/#DataSource

@@ -140,5 +140,5 @@ public ILog For(object instance)
 
 TBD
 
-[Shuttle.Core.Infrastructure.ILog]: {{ BASE_PATH }}/api-infrastructure/#ILog
+[Shuttle.Core.Infrastructure.ILog]: {{ site.baseurl }}/api-infrastructure/#ILog
 

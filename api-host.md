@@ -226,4 +226,4 @@ public static void Main(params string[] args)
 
 TBD
 
-[Shuttle.Core.Infrastructure.Arguments]: {{ BASE_PATH }}/api-infrastructure/#Arguments
+[Shuttle.Core.Infrastructure.Arguments]: {{ site.baseurl }}/api-infrastructure/#Arguments
