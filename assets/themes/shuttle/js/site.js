@@ -2,6 +2,7 @@ $(function(){
 	var setTOC = function() {
 		$("#toc").width($('#toc-container').width())
 	};
+	
     var move = function() {
         var st = $(window).scrollTop();
         var ot = $("#toc-anchor").offset().top;
@@ -19,6 +20,8 @@ $(function(){
                 });
             }
         }
+		
+		$('#footer').css('position', (st + $(window).height()) < ($(document).height() - $(window).height()) ? 'inherit' : 'fixed');
     };
 	
 	setTOC();
@@ -34,5 +37,6 @@ $(function(){
 	$('table').addClass('table table-hover table-condensed table-responsive');
 	
     $(window).scroll(move);
+
     move();	
 })
