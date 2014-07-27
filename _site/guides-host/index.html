@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Shuttle.Core.Host</title>
+    
+    <meta name="author" content="Eben Roux">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/shuttle/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link href="/assets/themes/shuttle/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/shuttle/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
+    
+    <!-- Custom styles -->
+    <link href="/assets/themes/shuttle/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/shuttle/css/jquery.tocify.css" rel="stylesheet" type="text/css" media="all">
+	
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images
+      <link rel="shortcut icon" href="images/favicon.ico">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div id="wrap">
+      <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jb-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">shuttle-core</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+          <ul class="nav navbar-nav">
+			<li class='dropdown'>
+				<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+				Guides
+				<b class='caret'></b>
+				</a>
+				<ul class='dropdown-menu'>
+					<li>
+						<a href='/guides-host'>Shuttle.Core.Host</a>
+					</li>
+					<li>
+						<a href='/guides-infrastructure'>Shuttle.Core.Infrastructure</a>
+					</li>
+					<li>
+						<a href='/guides-data'>Shuttle.Core.Data</a>
+					</li>
+					<li>
+						<a href='/guides-domain'>Shuttle.Core.Domain</a>
+					</li>
+				</ul>
+			</li>
+			<li class='dropdown'>
+				<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+				API
+				<b class='caret'></b>
+				</a>
+				<ul class='dropdown-menu'>
+					<li>
+						<a href='/api-host'>Shuttle.Core.Host</a>
+					</li>
+					<li>
+						<a href='/api-infrastructure'>Shuttle.Core.Infrastructure</a>
+					</li>
+					<li>
+						<a href='/api-data'>Shuttle.Core.Data</a>
+					</li>
+					<li>
+						<a href='/api-data-http'>Shuttle.Core.Data.Http</a>
+					</li>
+					<li>
+						<a href='/api-domain'>Shuttle.Core.Domain</a>
+					</li>
+				</ul>
+			</li>
+			<li class='dropdown'>
+				<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+				Extensions
+				<b class='caret'></b>
+				</a>
+				<ul class='dropdown-menu'>
+					<li class='dropdown-header'>Castle</li>
+					<li>
+						<a href='/extensions-castle-domain'>Shuttle.Core.Domain.Castle</a>
+					</li>
+					<li class='divider'></li>
+					<li class='dropdown-header'>Log4Net</li>
+					<li>
+						<a href='/extensions-log4net-infrastructure'>Shuttle.Core.Infrastructure.Log4Net</a>
+					</li>
+				</ul>
+			</li>
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive/">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories/">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages/">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags/">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+			
+			<li>
+			  <a href="https://github.com/Shuttle/shuttle-core" class="hidden-xs hidden-sm" target="_blank">GitHub</a>
+			</li>
+			
+		  </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+      <div class="container">
+        
+<div class="row">
+	<div id='toc-container' class='col-md-3'>
+	<div id="toc-anchor"></div> 
+	<div id='toc' class='visible-md visible-lg'></div>
+	</div>
+	<div class='col-md-9'>
+	<h1>Shuttle.Core.Host</h1>
+
+<p>The generic host is used to execute code either within a console window or as a Windows service.</p>
+
+<p>When the generic host is executed it searches for all classes that implement the <code>IHost</code>.  It needs to find exactly 1 class implementing the interface else it fails with an exception.  If you <em>do</em> have more than one type implementing the interface you can specify the interface using an argument:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">/hostType=&quot;assembly qualified name&quot;
+</code></pre></div>
+<p>In order to debug applications that use the <code>IHost</code> interface you would simply need to set the <code>Shuttle.Core.Host.exe</code> as the startup application for your project:</p>
+
+<p><img src="/assets/images/host-debug.png" alt="Host Debug Image" title="Host Debug"></p>
+
+<p>A typical implementation would be the following:</p>
+<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Shuttle.Core.Host</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">Domain.Server</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">DomainHost</span> <span class="p">:</span> <span class="n">IHost</span><span class="p">,</span> <span class="n">IDisposable</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="n">volatile</span> <span class="kt">bool</span> <span class="n">active</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+        <span class="p">{</span>
+           <span class="k">while</span> <span class="p">(</span><span class="n">active</span><span class="p">)</span>
+           <span class="p">{</span>
+                <span class="c1">// perform some processing</span>
+           <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Dispose</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">active</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>You would probably want to use some thread-base processing but that is up to you.</p>
+
+<p>Notice the <code>IDisposable</code> implementation.  Whenever a service is stopped, or <code>ctrl+c</code> pressed for a console application, the <code>IHost</code> instance is safe-cast to <code>IDisposable</code>.  If the host instance implements <code>IDisposable</code> the <code>Dispose</code> method will be called.</p>
+
+<p>The following command-line arguments are available and can be viewed by running <code>Shuttle.Core.Host /?</code>:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">    [/install [/serviceName]]   
+        - install the service
+
+    [/displayName]              
+        - friendly name for the installed service
+
+    [/description]              
+        - Description for the service
+
+    [/hostType] 
+        - type implementing IHost that should be used
+
+    [/instance]                 
+        - unique name of the instance you wish to install
+
+    [/startManually]            
+        - specifies that the service should start manually
+
+    [/username]                 
+        - username of the account to use for the service
+
+    [/password]]                
+        - password of the account to use for the service
+
+    - or -
+
+    [/uninstall [/serviceName] [/instance]] 
+</code></pre></div>
+<h2>IHost</h2>
+
+<p>As mentioned, if no <code>/hostType</code> is specified the folder the <code>Shuttle.ESB.Host.exe</code> is in will be scanned for the class implementing <code>IHost</code>.  Should no class, or more than 1 class, be located an exception will be raised.</p>
+
+<h2>Service Name</h2>
+
+<p>If no <code>/serviceName</code> is specified the full name of the service bus host type will be used along with the version number of the assembly it is contained within.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">    Shuttle.Application.Server.Host (1.0.0.0)
+</code></pre></div>
+<h2>Display Name</h2>
+
+<p>The default for the <code>/displayName</code> is the same value as <code>/serviceName</code>, and the description defaults to a generic service bus host description.</p>
+
+<h2>Uninstall</h2>
+
+<p>If you set the <code>/serviceName</code> and/or <code>/instance</code> during installation you will need to specify them when uninstalling as well, e.g.:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">    Shuttle.ESB.Host.exe 
+        /uninstall 
+        /serviceName:&quot;Shuttle.Application.Server&quot; 
+        /instance:&quot;Instance5&quot;
+</code></pre></div>
+<h2>Example</h2>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Shuttle.ESB.Host.exe 
+    /install 
+    /serviceName:&quot;Shuttle.Application.Server&quot; 
+    /displayName:&quot;Shuttle server for the application&quot;
+    /description:&quot;Service to handle messages relating to the application&quot; 
+    /hostType:&quot;QualifiedNamespace.Host, AssemblyName&quot;
+    /username:&quot;domain\hostuser&quot;
+    /password:&quot;p@ssw0rd!&quot;
+</code></pre></div>
+	</div>
+</div>
+
+
+      </div>
+
+    </div>
+
+    <div id="footer">
+        <p>&copy; 2014 Eben Roux
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> / <a href="http://github.com/dhulihan/hooligan" target="_blank">The Hooligan Theme</a>
+        </p>
+    </div id="footer">
+
+    
+
+    <script src="/assets/themes/shuttle/js/jquery.min.js"></script>
+	<script src="/assets/themes/shuttle/js/jquery-ui.js"></script>
+	<script src="/assets/themes/shuttle/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/assets/themes/shuttle/js/jquery.tocify.js"></script>
+	<script src="/assets/themes/shuttle/js/site.js"></script>
+  </body>
+</html>
