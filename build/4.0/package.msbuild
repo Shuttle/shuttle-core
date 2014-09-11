@@ -1,0 +1,63 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
+	<UsingTask AssemblyFile="MSBuildCommunityTasks\MSBuild.Community.Tasks.dll" TaskName="MSBuild.Community.Tasks.Prompt" />
+	<UsingTask AssemblyFile="MSBuildCommunityTasks\MSBuild.Community.Tasks.dll" TaskName="MSBuild.Community.Tasks.FileUpdate" />
+
+	<PropertyGroup>
+		<DeploymentFolder>..\deployment</DeploymentFolder>
+	</PropertyGroup>
+	
+	<Target Name="Build">
+		<Prompt Text="Enter semantic version:" Condition="$(SemanticVersion) == ''">
+			<Output TaskParameter="UserInput" PropertyName="SemanticVersion" />
+		</Prompt>
+		
+        <MSBuild
+            Projects="$(MSBuildProjectFile)"
+            Targets="ApplyDeploymentVersionNumber"
+            Properties="SemanticVersion=$(SemanticVersion)"
+        />
+
+		<MSBuild Projects="build.msbuild" />
+
+        <MSBuild
+            Projects="$(MSBuildProjectFile)"
+            Targets="NugetDeployments"
+            Properties="SemanticVersion=$(SemanticVersion);PackageId=$(PackageId)"
+        />
+	</Target>
+	
+	<Target Name="ApplyDeploymentVersionNumber">
+		<Error Text="Please enter a semantic version number." Condition="$(SemanticVersion) == ''" />
+		
+		<ItemGroup>
+			<AssemblyInfoFiles Include="..\..\**\*AssemblyInfo.cs"/>
+			<NugetFiles Include="..\..\**\*.nuspec"/>
+		</ItemGroup>
+		
+		<FileUpdate Files="@(AssemblyInfoFiles)" Regex="AssemblyInformationalVersion\s*\(\s*&quot;.*&quot;\s*\)" ReplacementText="AssemblyInformationalVersion(&quot;$(SemanticVersion)&quot;)" />
+		<FileUpdate Files="@(AssemblyInfoFiles)" Regex="AssemblyVersion\s*\(\s*&quot;.*&quot;\s*\)" ReplacementText="AssemblyVersion(&quot;$(SemanticVersion).0&quot;)" />
+		<FileUpdate Files="@(NugetFiles)" Regex="\&lt;version\&gt;.*\&lt;/version\&gt;" ReplacementText="&lt;version&gt;$(SemanticVersion)&lt;/version&gt;" />
+	</Target>
+
+	<Target Name="NugetDeployments">
+		<MSBuild Projects="package.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-infrastructure;include=..\release\**\Shuttle.Core.Infrastructure.dll;" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-infrastructure'"/>
+		<MSBuild Projects="package.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-infrastructure-log4net;include=..\release\**\Shuttle.Core.Infrastructure.Log4Net.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-infrastructure-log4net'"/>
+		<MSBuild Projects="package.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-host;include=..\release\**\Shuttle.Core.Host.exe" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-host'"/>
+		<MSBuild Projects="package.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-domain;include=..\release\**\Shuttle.Core.Domain.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-domain'"/>
+		<MSBuild Projects="package.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-domain-castle;include=..\release\**\Shuttle.Core.Domain.Castle.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-domain-castle'"/>
+		<MSBuild Projects="package.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-data;include=..\release\**\Shuttle.Core.Data.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-data'"/>
+		<MSBuild Projects="package.msbuild" Targets="NugetDeployment" Properties="PackageId=shuttle-core-data-http;include=..\release\**\Shuttle.Core.Data.Http.dll" Condition="$(PackageId) == '' Or $(PackageId) == 'shuttle-core-data-http'"/>
+	</Target>
+	
+	<Target Name="NugetDeployment">
+		<CreateItem Include="$(include)">
+			<Output TaskParameter="Include" ItemName="NugetBinaries"/>
+		</CreateItem>
+	
+		<Copy SourceFiles="$(PackageId).nuspec" DestinationFolder="$(DeploymentFolder)\nuget\$(PackageId)" SkipUnchangedFiles="false" />
+		<Copy SourceFiles="@(NugetBinaries)" DestinationFolder="$(DeploymentFolder)\nuget\$(PackageId)\lib\%(RecursiveDir)" SkipUnchangedFiles="false" />
+
+		<Exec Command="nuget pack $(PackageId).nuspec" WorkingDirectory="$(DeploymentFolder)\nuget\$(PackageId)" />
+		<!-- <Exec Command="nuget push $(DeploymentFolder)\nuget\$(PackageId)\$(PackageId).$(SemanticVersion).nupkg" /> -->
+	</Target>
+</Project>
