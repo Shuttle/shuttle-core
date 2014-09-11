@@ -1,9 +1,19 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
 	<ItemGroup>
-		<Framework Include="net35-full;net40-full;net45-full" />
+		<Framework Include="net35-full;net40-full;net45-full;net451-full" />
 	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\source\Shuttle.Core.Data\Shuttle.Core.Data.csproj" />
+		<ProjectReference Include="..\..\source\Shuttle.Core.Data.Http\Shuttle.Core.Data.Http.csproj" />
+		<ProjectReference Include="..\..\source\Shuttle.Core.Domain\Shuttle.Core.Domain.csproj" />
+		<ProjectReference Include="..\..\source\Shuttle.Core.Domain.Castle\Shuttle.Core.Domain.Castle.csproj" />
+		<ProjectReference Include="..\..\source\Shuttle.Core.Host\Shuttle.Core.Host.csproj" />
+		<ProjectReference Include="..\..\source\Shuttle.Core.Infrastructure\Shuttle.Core.Infrastructure.csproj" />
+		<ProjectReference Include="..\..\source\Shuttle.Core.Infrastructure.Log4Net\Shuttle.Core.Infrastructure.Log4Net.csproj" />
+	</ItemGroup>
+
 	<Target Name="Build">
-		<MSBuild Projects="shared.msbuild" Properties="Configuration=Debug;Framework=%(Framework.Identity);OutputPath=$(MSBuildProjectDirectory)\..\Debug\%(Framework.Identity)"/>
-		<MSBuild Projects="shared.msbuild" Properties="Configuration=Release;Framework=%(Framework.Identity);OutputPath=$(MSBuildProjectDirectory)\..\Release\%(Framework.Identity)"/>
+		<MSBuild Projects="@(ProjectReference)" Targets="Rebuild" Properties="Configuration=Debug;Framework=%(Framework.Identity);OutputPath=$(MSBuildProjectDirectory)\..\Debug\%(Framework.Identity)"/>
+		<MSBuild Projects="@(ProjectReference)" Targets="Rebuild" Properties="Configuration=Release;Framework=%(Framework.Identity);OutputPath=$(MSBuildProjectDirectory)\..\Release\%(Framework.Identity)"/>
 	</Target>
 </Project>

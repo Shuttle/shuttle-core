@@ -13,5 +13,9 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTitle("Shuttle.Core.Infrastructure for .NET Framework 4.5")]
 #endif
 
-[assembly: AssemblyVersion("3.1.3.0")]
+#if NET451FULL
+[assembly: AssemblyTitle("Shuttle.Core.Infrastructure for .NET Framework 4.5.1")]
+#endif
+
+[assembly: AssemblyVersion("3.1.4.0")]
 [assembly: InternalsVisibleTo("Test.All")]
