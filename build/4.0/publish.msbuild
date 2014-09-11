@@ -58,6 +58,6 @@
 		<FileUpdate Files="$(DeploymentFolder)\nuget\$(PackageId)\$(PackageId).nuspec" Regex="\{semver\}" ReplacementText="$(SemanticVersion)" />
 
 		<Exec Command="nuget pack $(PackageId).nuspec" WorkingDirectory="$(DeploymentFolder)\nuget\$(PackageId)" />
-		<!-- <Exec Command="nuget push $(DeploymentFolder)\nuget\$(PackageId)\$(PackageId).$(SemanticVersion).nupkg" /> -->
+		<Exec Command="nuget push $(DeploymentFolder)\nuget\$(PackageId)\$(PackageId).$(SemanticVersion).nupkg" />
 	</Target>
 </Project>
