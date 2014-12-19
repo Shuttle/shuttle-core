@@ -8,7 +8,7 @@ The `shuttle-core` is a project that contains cross-cutting libraries.  This rep
 repositories
 ============
 
-The packages that constitute shuttle-core are each located in their own repository:
+The packages that constitute `shuttle-core` are each located in their own repository:
 
 - https://github.com/Shuttle/shuttle-core-host
 - https://github.com/Shuttle/shuttle-core-infrastructure
