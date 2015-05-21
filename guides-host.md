@@ -81,7 +81,7 @@ The following command-line arguments are available and can be viewed by running 
 ```		
 
 ## IHost
-As mentioned, if no `/hostType` is specified the folder the `Shuttle.ESB.Host.exe` is in will be scanned for the class implementing `IHost`.  Should no class, or more than 1 class, be located an exception will be raised.
+As mentioned, if no `/hostType` is specified the folder the `Shuttle.Core.Host.exe` is in will be scanned for the class implementing `IHost`.  Should no class, or more than 1 class, be located an exception will be raised.
 
 ## Service Name
 If no `/serviceName` is specified the full name of the service bus host type will be used along with the version number of the assembly it is contained within.
@@ -98,7 +98,7 @@ The default for the `/displayName` is the same value as `/serviceName`, and the 
 If you set the `/serviceName` and/or `/instance` during installation you will need to specify them when uninstalling as well, e.g.:
 
 ```
-	Shuttle.ESB.Host.exe 
+	Shuttle.Core.Host.exe 
 		/uninstall 
 		/serviceName:"Shuttle.Application.Server" 
 		/instance:"Instance5"
@@ -107,7 +107,7 @@ If you set the `/serviceName` and/or `/instance` during installation you will ne
 ## Example
 
 ```
-Shuttle.ESB.Host.exe 
+Shuttle.Core.Host.exe 
 	/install 
 	/serviceName:"Shuttle.Application.Server" 
 	/displayName:"Shuttle server for the application"
