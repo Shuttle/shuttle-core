@@ -66,6 +66,9 @@ The following command-line arguments are available and can be viewed by running 
 	[/instance]					
 		- unique name of the instance you wish to install
 		
+	[/configurationFileName]
+		- an alternate configuration file name to use instead of {IHost.dll}.config
+
 	[/startManually]			
 		- specifies that the service should start manually
 		
