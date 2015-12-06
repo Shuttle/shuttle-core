@@ -1,20 +1,10 @@
 ---
-title: Shuttle.Core.Host
+title: Service Host
 layout: api 
 ---
-# Shuttle.Core.Host
+# Generic Service Host
 
-The generic host is used to execute code either within a console window or as a Windows service.
-
-When the generic host is executed it searches for all classes that implement the `IHost`.  It needs to find exactly 1 class implementing the interface else it fails with an exception.  If you *do* have more than one type implementing the interface you can specify the interface using an argument:
-
-```
-/hostType="assembly qualified name"
-```
-
-In order to debug applications that use the `IHost` interface you would simply need to set the `Shuttle.Core.Host.exe` as the startup application for your project:
-
-![Host Debug Image]({{ site.baseurl }}/assets/images/host-debug.png "Host Debug")
+The generic host located is package `shuttle-core-host` is an executable assembly used to execute code either within a console window or as a Windows service.  Since it can host your code while running in Visual Studio it makes debugging very easy.  No need to attach a debugger to a Windows service.
 
 A typical implementation would be the following:
 
@@ -43,6 +33,16 @@ namespace Domain.Server
 	}
 }
 ```
+
+When the generic host is executed it searches for all classes that implement the `IHost`.  It needs to find exactly 1 class implementing the interface else it fails with an exception.  If you *do* have more than one type implementing the interface you can specify the interface using an argument:
+
+```
+/hostType="assembly qualified name"
+```
+
+In order to debug applications that use the `IHost` interface you would simply need to set the `Shuttle.Core.Host.exe` as the startup application for your project:
+
+![Host Debug Image]({{ site.baseurl }}/assets/images/host-debug.png "Host Debug")
 
 You would probably want to use some thread-base processing but that is up to you.
 
@@ -118,4 +118,28 @@ Shuttle.Core.Host.exe
 	/hostType:"QualifiedNamespace.Host, AssemblyName"
 	/username:"domain\hostuser"
 	/password:"p@ssw0rd!"
+```
+
+# API
+
+It is also possible to install and uninstall services that make use of `shuttle-core-host` by using the `WindowsServiceInstaller` class:
+
+``` c#
+var windowsServiceInstaller = new WindowsServiceInstaller();
+
+var installConfiguration = new InstallConfiguration
+{
+	ServiceAssemblyPath = @"{path to your service}\Shuttle.Core.Host.exe",
+	// more arguments may be specified
+};  
+
+windowsServiceInstaller.Install(installConfiguration);
+
+var serviceInstallerConfiguration = new ServiceInstallerConfiguration
+{
+	ServiceAssemblyPath = @"{path to your service}\Shuttle.Core.Host.exe",
+	// more arguments may be specified
+};
+
+windowsServiceInstaller.Uninstall(serviceInstallerConfiguration);
 ```

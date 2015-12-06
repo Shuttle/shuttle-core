@@ -1,11 +1,73 @@
 ---
 layout: default
-title: Home
+title: shuttle-core documentation
 tagline: cross-cutting assemblies that facilitate the development of .net software
 ---
 <div id='shuttle-esb-jumbotron' class='jumbotron'>
 	<h1>shuttle-core</h1>
-	<p>The Shuttle Core project consists of various library components that are used to facilitate the development of .Net software.</p>
+	<p>The shuttle-core project consists of various library components that are used to facilitate the development of .Net software.</p>
+	<p>These components are used extensively in other repositories such as the <a href='http://shuttle.github.io/shuttle-esb/' target='_blank'>shuttle-esb</a> and <a href='http://shuttle.github.io/shuttle-recall/' target='_blank'>shuttle-recall</a> projects.</p>
+</div>
+
+<h2>Core Components</h2>
+<div class='row'>
+	<div class='col-sm-6 col-md-4'>
+		<div class='thumbnail'>
+			<div class='caption'>
+			<h3>shuttle-core-host</h3>
+			<p>A generic host that can run as a console application or be installed as a Windows service.  Used to host shuttle-esb endpoints but can be used to host any Windows service.</p>
+			<p>
+				<a href='http://www.nuget.org/packages/shuttle-core-host' target='_blank' class='btn btn-primary' role='button'>NuGet</a>
+				<a href='https://github.com/Shuttle/shuttle-core-host' target='_blank' class='btn btn-default' role='button'>GitHub</a>
+				<a href='https://github.com/Shuttle/shuttle-core-host/issues' target='_blank' class='btn btn-default' role='button'>Issues</a>
+			</p>
+			</div>
+		</div>
+	</div>
+	<div class='col-sm-6 col-md-4'>
+		<div class='thumbnail'>
+			<div class='caption'>
+			<h3>shuttle-core-infrastructure</h3>
+			<p>Contains core infrastructure services such as event-based pipelines, logging, and thread processing.</p>
+			<p>
+				<a href='http://www.nuget.org/packages/shuttle-core-infrastructure' target='_blank' class='btn btn-primary' role='button'>NuGet</a>
+				<a href='https://github.com/Shuttle/shuttle-core-infrastructure' target='_blank' class='btn btn-default' role='button'>GitHub</a>
+				<a href='https://github.com/Shuttle/shuttle-core-infrastructure/issues' target='_blank' class='btn btn-default' role='button'>Issues</a>
+			</p>
+			</div>
+		</div>
+	</div>
+	<div class='col-sm-6 col-md-4'>
+		<div class='thumbnail'>
+			<div class='caption'>
+			<h3>shuttle-core-data</h3>
+			<p>A very thin abstraction over ADO.NET that enables object-relational mapping.</p>
+			<p>
+				<a href='http://www.nuget.org/packages/shuttle-core-data' target='_blank' class='btn btn-primary' role='button'>NuGet</a>
+				<a href='https://github.com/Shuttle/shuttle-core-data' target='_blank' class='btn btn-default' role='button'>GitHub</a>
+				<a href='https://github.com/Shuttle/shuttle-core-data/issues' target='_blank' class='btn btn-default' role='button'>Issues</a>
+			</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h2>Implementations</h2>
+<div class='row'>
+	<div class='col-sm-6 col-md-4'>
+		<div class='thumbnail'>
+			<div class='caption'>
+			<h3>shuttle-core-infrastructure-log4net</h3>
+			<p>Contains a Log4Net <strong>ILog</strong> implementation.</p>
+			<p>
+				<a href='http://www.nuget.org/packages/shuttle-core-infrastructure-log4net' target='_blank' class='btn btn-primary' role='button'>NuGet</a>
+				<a href='https://github.com/Shuttle/shuttle-core-infrastructure-log4net' target='_blank' class='btn btn-default' role='button'>GitHub</a>
+				<a href='https://github.com/Shuttle/shuttle-core-infrastructure-log4net/issues' target='_blank' class='btn btn-default' role='button'>Issues</a>
+				<a href='http://logging.apache.org/log4net/' target='_blank' class='btn btn-default' role='button'>Log4Net</a>
+			</p>
+			</div>
+		</div>
+	</div>
 </div>
 
 {% for post in paginator.posts %}
