@@ -10,12 +10,12 @@ In this way all logging can be performed through the `ILog` interface and accomp
 
 Since there is some boilerplate code implementors may make use of the `AbstractLog` class to implement a new concrete logging mechanism:
 
-``` c#
+~~~ c#
 public abstract class AbstractLog : ILog
 {
 	// boilerplate
 }
-```
+~~~
 
 # Assigning a logging mechanism
 
@@ -23,16 +23,16 @@ If no log is assigned or if a `null` is assigned the `NullLog.Instance` will be 
 
 ## Assign
 
-``` c#
+~~~ c#
 public static void Assign(ILog instance)
-```
+~~~
 
 This assigns the log to use for the duration of the execution.
 
 ## AssignTransient
 
-``` c#
+~~~ c#
 public static TransientLog AssignTransient(ILog instance)
-```
+~~~
 
 Returns a `IDisposable` instance that returns the log to the previous instance on dispose.  This may be usefull for testing purposes where you may want to use a mock object and ensure that certain bits are logged.

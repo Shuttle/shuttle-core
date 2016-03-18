@@ -10,7 +10,7 @@ A `Pipeline` is a variation of the pipes and filters pattern and consists of 1 o
 
 Each `Pipeline` always has its own state that is simply a name/value pair with some convenience methods to get and set/replace values.  The `State` class will use the full type name of the object as a key should none be specified:
 
-``` c#
+~~~ c#
 var state = new State();
 var list = new List<string> {"item-1"};
 
@@ -19,7 +19,7 @@ state.Add("my-key", "my-key-value");
 
 Console.WriteLine(state.Get<List<string>>()[0]);
 Console.Write(state.Get<string>("my-key"));
-```
+~~~
 
 # Example
 
@@ -27,7 +27,7 @@ Events *have* to derive from `PipelineEvent`.
 
 We will use the following events:
 
-``` c#
+~~~ c#
 public class OnAddCharacterA : PipelineEvent
 {
 }
@@ -41,13 +41,13 @@ public class OnAddCharacter : PipelineEvent
 		Character = character;
 	}
 }
-```
+~~~
 
 The `OnAddCharacterA` event represents a very explicit event whereas with the `OnAddCharacter` event one can specify some data.  In this case the character to add.
 
 In order for the pipeline to process the events we will have to define one or more observers to handle the events.  We will define only one for this sample but we could very easily add another that will handle one or more of the same, or other, events:
 
-``` c#
+~~~ c#
     public class CharacterPipelineObserver : 
         IPipelineObserver<OnAddCharacterA>,
         IPipelineObserver<OnAddCharacter>
@@ -72,11 +72,11 @@ In order for the pipeline to process the events we will have to define one or mo
             state.Replace("value", value);
         }
     }
-```
+~~~
 
 Next we will define the pipeline itself:
 
-``` c#
+~~~ c#
 var pipeline = new Pipeline();
 
 pipeline.RegisterStage("process")
@@ -89,7 +89,7 @@ pipeline.State.Add("value", "start");
 pipeline.Execute();
 
 Console.WriteLine(pipeline.State.Get<string>("value")); // outputs start-A-Z
-```
+~~~
 
 We can now execute this pipeline with predictable results.
 
