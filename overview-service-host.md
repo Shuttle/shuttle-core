@@ -4,7 +4,7 @@ layout: api
 ---
 # Generic Service Host
 
-The generic host located is package `shuttle-core-host` is an executable assembly used to execute code either within a console window or as a Windows service.  Since it can host your code while running in Visual Studio it makes debugging very easy.  No need to attach a debugger to a Windows service.
+The generic host is an executable assembly used to execute code either within a console window or as a Windows service.  Since it can host your code while running in Visual Studio it makes debugging very easy.  No need to attach a debugger to a Windows service.
 
 A typical implementation would be the following:
 
