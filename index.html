@@ -6,75 +6,11 @@ tagline: cross-cutting assemblies that facilitate the development of .net softwa
 <div id='shuttle-jumbotron' class='jumbotron'>
 	<h1>Shuttle.Core</h1>
 	<p>The shuttle-core project consists of various library components that are used to facilitate the development of .Net software.</p>
-	<p>These components are used extensively in other repositories such as the <a href='http://shuttle.github.io/shuttle-esb/' target='_blank'>shuttle-esb</a> and <a href='http://shuttle.github.io/shuttle-recall/' target='_blank'>shuttle-recall</a> projects.</p>
+	<p>These components are used extensively in other repositories such as the <a href='http://shuttle.github.io/shuttle-esb/' target='_blank'>Shuttle.Esb</a> and <a href='http://shuttle.github.io/shuttle-recall/' target='_blank'>Shuttle.Recall</a> projects.</p>
 </div>
 
-<div class='jumbotron alert alert-danger'>
-	<h1>NuGet Package Renaming</h1>
-	<p>Within the next couple of weeks all NuGet packages that have the 'shuttle-{package}' structure will be renamed using the .Net assembly naming standard as 'Shuttle.{Package}'.</p>
-	<p class='alert alert-info'>If you cannot find a particular package using the old structure please remove the old package reference and re-add using the new structure.</p>
-</div>
-
-<h2>Core Components</h2>
-<div class='row'>
-	<div class='col-sm-6 col-md-4'>
-		<div class='thumbnail'>
-			<div class='caption'>
-			<h3>shuttle-core-host</h3>
-			<p>A generic host that can run as a console application or be installed as a Windows service.  Used to host shuttle-esb endpoints but can be used to host any Windows service.</p>
-			<p>
-				<a href='http://www.nuget.org/packages/shuttle-core-host' target='_blank' class='btn btn-primary' role='button'>NuGet</a>
-				<a href='https://github.com/Shuttle/shuttle-core-host' target='_blank' class='btn btn-default' role='button'>GitHub</a>
-				<a href='https://github.com/Shuttle/shuttle-core-host/issues' target='_blank' class='btn btn-default' role='button'>Issues</a>
-			</p>
-			</div>
-		</div>
-	</div>
-	<div class='col-sm-6 col-md-4'>
-		<div class='thumbnail'>
-			<div class='caption'>
-			<h3>shuttle-core-infrastructure</h3>
-			<p>Contains core infrastructure services such as event-based pipelines, logging, and thread processing.</p>
-			<p>
-				<a href='http://www.nuget.org/packages/shuttle-core-infrastructure' target='_blank' class='btn btn-primary' role='button'>NuGet</a>
-				<a href='https://github.com/Shuttle/shuttle-core-infrastructure' target='_blank' class='btn btn-default' role='button'>GitHub</a>
-				<a href='https://github.com/Shuttle/shuttle-core-infrastructure/issues' target='_blank' class='btn btn-default' role='button'>Issues</a>
-			</p>
-			</div>
-		</div>
-	</div>
-	<div class='col-sm-6 col-md-4'>
-		<div class='thumbnail'>
-			<div class='caption'>
-			<h3>shuttle-core-data</h3>
-			<p>A very thin abstraction over ADO.NET that enables object-relational mapping.</p>
-			<p>
-				<a href='http://www.nuget.org/packages/shuttle-core-data' target='_blank' class='btn btn-primary' role='button'>NuGet</a>
-				<a href='https://github.com/Shuttle/shuttle-core-data' target='_blank' class='btn btn-default' role='button'>GitHub</a>
-				<a href='https://github.com/Shuttle/shuttle-core-data/issues' target='_blank' class='btn btn-default' role='button'>Issues</a>
-			</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-<h2>Implementations</h2>
-<div class='row'>
-	<div class='col-sm-6 col-md-4'>
-		<div class='thumbnail'>
-			<div class='caption'>
-			<h3>shuttle-core-infrastructure-log4net</h3>
-			<p>Contains a Log4Net <strong>ILog</strong> implementation.</p>
-			<p>
-				<a href='http://www.nuget.org/packages/shuttle-core-infrastructure-log4net' target='_blank' class='btn btn-primary' role='button'>NuGet</a>
-				<a href='https://github.com/Shuttle/shuttle-core-infrastructure-log4net' target='_blank' class='btn btn-default' role='button'>GitHub</a>
-				<a href='https://github.com/Shuttle/shuttle-core-infrastructure-log4net/issues' target='_blank' class='btn btn-default' role='button'>Issues</a>
-				<a href='http://logging.apache.org/log4net/' target='_blank' class='btn btn-default' role='button'>Log4Net</a>
-			</p>
-			</div>
-		</div>
-	</div>
-</div>
+{% capture include-index %}{% include index.md %}{% endcapture %}
+{{ include-index | markdownify }}
 
 {% for post in paginator.posts %}
 <div class='row'>
