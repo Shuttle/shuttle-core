@@ -4,7 +4,7 @@ layout: api
 ---
 # Logging Infrastructure
 
-The shuttle-core project does not provide a concrete implementation for logging but rather provides an abstract mechanism that can be used to implement any logging mechanism such as a Log4Net implementation.
+The Shuttle.Core project does not provide a concrete implementation for logging but rather provides an abstract mechanism that can be used to implement any logging mechanism such as a Log4Net implementation.
 
 In this way all logging can be performed through the `ILog` interface and accompanying `Log` singleton without relying on any specific implementation.  Developer can then make use any implementation.
 

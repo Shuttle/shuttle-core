@@ -4,7 +4,7 @@ layout: api
 ---
 # Oversable Pipelines
 
-The `Pipeline` class is defined in the `shuttle-core-infrastructure` package.
+The `Pipeline` class is defined in the `Shuttle.Core.Infrastructure` package.
 
 A `Pipeline` is a variation of the pipes and filters pattern and consists of 1 or more stages that each contain one or more events.  When the pipeline is executed each event in each stage is raised in the order that they were registered.  One or more observers should be registered to handle the relevant event(s).
 

@@ -122,7 +122,7 @@ Shuttle.Core.Host.exe
 
 # API
 
-It is also possible to install and uninstall services that make use of `shuttle-core-host` by using the `WindowsServiceInstaller` class:
+It is also possible to install and uninstall services that make use of `Shuttle.Core.Host` by using the `WindowsServiceInstaller` class:
 
 ~~~ c#
 var windowsServiceInstaller = new WindowsServiceInstaller();
