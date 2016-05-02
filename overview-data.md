@@ -174,4 +174,151 @@ There are two implementations of this interface.
 
 ## RawQuery
 
+The `RawQuery` enables you to create any query using the native language structure:
+
+~~~ c#
+var query = RawQuery.Create("select UserName from dbo.Member where Id = @Id")
+	.AddParameterValue(new MappedColumn<Guid>("Id", DbType.Guid), 
+		new Guid('{75208260-CF93-454E-95EC-FE1903F3664E}'));
+~~~
+
 ## ProcedureQuery
+
+The `ProcedureQuery` is used to execute a stored procedure:
+
+~~~ c#
+var query = ProcedureQuery.Create("uspMemberById")
+	.AddParameterValue(new MappedColumn<Guid>("Id", DbType.Guid), 
+		new Guid('{75208260-CF93-454E-95EC-FE1903F3664E}'));
+~~~
+
+# MappedColumn
+
+Typically you would not want to create a `MappedColumn` each time you need it and these are also quite fixed.  A column mapping can, therefore, by defined statically:
+
+~~~ c#
+using System;
+using System.Data;
+using Shuttle.Core.Data;
+
+namespace Shuttle.Ordering.DataAccess
+{
+    public class OrderColumns
+    {
+        public static readonly MappedColumn<Guid> Id =
+            new MappedColumn<Guid>("Id", DbType.Guid);
+
+        public static readonly MappedColumn<string> OrderNumber =
+            new MappedColumn<string>("OrderNumber", DbType.String, 20);
+
+        public static readonly MappedColumn<string> OrderDate =
+            new MappedColumn<string>("OrderDate", DbType.DateTime);
+
+        public static readonly MappedColumn<string> CustomerName =
+        new MappedColumn<string>("CustomerName", DbType.String, 65);
+
+        public static readonly MappedColumn<string> CustomerEMail =
+            new MappedColumn<string>("CustomerEMail", DbType.String, 130);
+    }
+}
+~~~
+
+There are quite a few options that you can set on the `MappedColumn` in order to represent your column properly.
+
+## MapFrom
+
+~~~ c#
+public T MapFrom(DataRow row)
+~~~
+
+This will return the typed value of the specified column as contained in the passed-in `DataRow`.
+
+# IDataRowMapper<T>
+
+You use this interface to implement a mapper for a `DataRow` that will result in an object of type `T`:
+
+~~~ c#
+using System.Data;
+using Shuttle.Core.Data;
+using Shuttle.Process.Custom.Server.Domain;
+
+namespace Shuttle.ProcessManagement
+{
+    public class OrderProcessMapper : IDataRowMapper<OrderProcess>
+    {
+        public MappedRow<OrderProcess> Map(DataRow row)
+        {
+            var result = new OrderProcess(OrderProcessColumns.Id.MapFrom(row))
+            {
+                CustomerName = OrderProcessColumns.CustomerName.MapFrom(row),
+                CustomerEMail = OrderProcessColumns.CustomerEMail.MapFrom(row),
+                OrderId = OrderProcessColumns.OrderId.MapFrom(row),
+                InvoiceId = OrderProcessColumns.InvoiceId.MapFrom(row),
+                DateRegistered = OrderProcessColumns.DateRegistered.MapFrom(row),
+                OrderNumber = OrderProcessColumns.OrderNumber.MapFrom(row)
+            };
+
+            return new MappedRow<OrderProcess>(row, result);
+        }
+    }
+}
+~~~
+
+# MappedRow
+
+A `MappedRow` instance contains bother a `DataRow` and the object that the `DataRow` mapped to.  
+
+This may be useful in situation where the `DataRow` contains more information that is available on the object.  An example may be an `OrderLine` where the `DataRow` contains the `OrderId` column but the `OrderLine` object does not.  In order to still be able to make that association it is useful to have both available.
+
+# IAssembler
+
+An `IAssembler` implementation is used to create multiple mappings with as few calls as possible.  An example may be where we perform two `select` queries; one to get 3 orders and another to get the order lines belonging to those 3 orders.
+
+> `select OrderId, OrderNumber, OrderDate from dbo.Order where OrderId in (2, 6, 44)`
+
+| Order Id | Order Number | Order Date |
+| --- | --- | --- |
+| 2 | ORD-002 | 14 Feb 2016 |
+| 6 | ORD-006 | 24 Mar 2016 |
+| 44 | ORD-044 | 4 Apr 2016 |
+
+> `select OrderId, Product, Quantity from dbo.OrderLine where OrderId in (2, 6, 44)`
+
+| Order Id | Product | Quantity |
+| --- | --- | --- |
+| 2 | Red Socks | 2 |
+| 2 | Blue Socks | 3 |
+| 6 | Sports Towel | 1 |
+| 6 | Squash Racquet | 1 |
+| 6 | Squash Ball | 3 |
+| 44 | Vaughn's DDD Book | 1 |
+| 44 | Shuttle.Sentinel License | 5 |
+
+Using a `MappedData` instance we can keep adding the `MappedRow` instances to the `MappedData` and then have the assembler return the three `Order` aggregates:
+
+~~~ c#
+public class OrderAssembler : IAssembler<Order>
+{
+	public IEnumerable<Order> Assemble(MappedData data)
+	{
+		var result = new List<Order>();
+
+		foreach (var orderRow in data.MappedRows<Order>())
+		{
+			var order = orderRow.Result;
+
+			foreach (var orderLineRow in data.MappedRows<OrderLine>())
+			{
+				if (orderLineRow.Row["OrderId"].Equals(order.OrderId))
+				{
+					order.AddLine(orderLineRow.Result);
+				}
+			}
+
+			result.Add(order);
+		}
+
+		return result;
+	}
+}
+~~~
