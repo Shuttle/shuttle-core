@@ -66,8 +66,20 @@
 			<li>
 				<a href='{{ BASE_PATH }}/overview-service-host'>Host</a>
 			</li>
-			<li>
-				<a href='{{ BASE_PATH }}/overview-data'>Data</a>
+				<li class='dropdown'>
+					<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+					Data
+					<b class='caret'></b>
+					</a>
+					<ul class='dropdown-menu'>
+						<li>
+							<a href='{{ BASE_PATH }}/overview-data'>Overview</a>
+						</li>
+						<li class='divider'></li>
+						<li>
+							<a href='{{ BASE_PATH }}/data-dependency-injection'>Dependency Injection</a>
+						</li>
+					</ul>
 			</li>
 			<li>
 				<a href='{{ BASE_PATH }}/overview-pipelines'>Pipelines</a>

@@ -156,6 +156,52 @@ using (var context = factory.Create("connectionStringName"))
 }
 ~~~
 
+# IDataRepository<T>
+
+An `IDataRepository<T>` implementation is responsible for returning a hydrated object.  To this end you make use of the `DataReposity<T>` class that takes a `IDatabaseGateway` instance along with a `IDataRowMapper<T>` used to create the hydrated instance.
+
+The following methods can be used to interact with your object type.
+
+## FetchAllUsing
+
+~~~ c#
+IEnumerable<T> FetchAllUsing(IQuery query);
+~~~
+
+Uses the `select` clause represented by the `IQuery` instance to create a list of objects of type `T`.  The `select` clause will need to select all the required columns and will, typically, return more than one instance.
+
+## FetchItemUsing
+
+~~~ c#
+T FetchItemUsing(IQuery query);
+~~~
+
+Returns a single object instance of type `T` that is hydrated using the data returned from the `select` clause represented by the `IQuery` instance.
+
+## FetchMappedRowsUsing
+
+~~~ c#
+IEnumerable<MappedRow<T>> FetchMappedRowsUsing(IQuery query);
+~~~
+
+This is similar to the `FetchAllUsing` method but instead returns a list of `MappedRow<T>` instances.  Uses the `select` clause represented by the `IQuery` instance to create a list of `MappedRow` instances of type `T`.  The `select` clause will need to select all the required columns and will, typically, return more than one instance.
+
+## FetchMappedRowUsing
+
+~~~ c#
+MappedRow<T> FetchMappedRowUsing(IQuery query);
+~~~
+
+Similar to the `FetchItemUsing` method but instead return a `MappedRow<T>` instance that is hydrated using the data returned from the `select` clause represented by the `IQuery` instance.
+
+## Contains
+
+~~~ c#
+bool Contains(IQuery query);
+~~~
+
+Returns `true` is the `IQuery` instance `select` clause returns an `int` scalar that equals `1`; else returns `false`.
+
 # IQuery
 
 An `IQuery` represent a database query that can be executed against the relevant database type.  There is only one method that needs to be implemented:
