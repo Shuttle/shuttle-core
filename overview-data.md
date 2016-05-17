@@ -33,6 +33,18 @@ using (var context = factory.Create(existingIDbConnection))
 }
 ~~~
 
+# IConfiguredDatabaseContextFactory
+
+You can pre-configure your database context factory using this interface.  If you typically connect to only one data source this may be helpful:
+
+~~~ c#
+IDatabaseContext Create();
+
+void ConfigureWith(string connectionStringName);
+void ConfigureWith(string providerName, string connectionString);
+void ConfigureWith(IDbConnection dbConnection);
+~~~
+
 # IDatabaseGateway
 
 The `DatabaseGateway` is used to execute `IQuery` instances in order return data from, or make changes to, the underlying data store.  If there is no active open `IDatabaseContext` returned by the `DatabaseContext.Current` and `InvalidOperationException` will be thrown.
