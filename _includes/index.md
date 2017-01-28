@@ -6,6 +6,10 @@ The `Shuttle.Core.Host` package is an executable assembly used to execute code e
 
 The `Shuttle.Core.Data` provides a thin abstraction over ADO.NET.
 
+# Container
+
+There are interfaces that abstract away dependency injection containers semantics to facilitate working with the most popular DI containers.
+
 # Pipelines
 
 The observable pipelines are included in the `Shuttle.Core.Infrastructure` package and provide a mechanism to decouple functionality in order to facilitate re-use and improve extensibility.
