@@ -19,7 +19,7 @@ When using a dependency injection container there are a couple of thing that nee
 
 ## WindsorContainer Example
 
-~~~ c#
+``` c#
 public class CompositionRoot
 {
 	public void WireUp(IWindsorContainer container)
@@ -48,4 +48,4 @@ public class CompositionRoot
 				.WithServiceFirstInterface());
 	}
 }
-~~~
+```
