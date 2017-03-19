@@ -61,6 +61,23 @@ IEnumerable<object> ResolveAll(Type dependencyType);
 
 All instances of the requested dependency type will be resolved.  
 
+## Bootstrapping
+
+It is important to note that your bootstrap implementations should be idempotent as they *may* be called more than once in some instances.
+
+<a name="IComponentRegistryBootstrap"></a>
+
+### IComponentRegistryBootstrap
+
+You can call the `IComponentRegistry.Bootstrap()` extension method to bootstrap registrations.  This method will instance any classes that implement the `IComponentRegistryBootstrap` interface and call the `Register(IComponentRegistry registry)` method within that instance.  The implementation has to have a default constructor.
+
+<a name="IComponentResolverBootstrap"></a>
+
+### IComponentResolverBootstrap
+
+You can call the `IComponentResolver.Bootstrap()` extension method to bootstrap resolving components.  This method will instance any classes that implement the `IComponentResolverBootstrap` interface and call the `Resolve(IComponentResolver resolver)` method within that instance.  The implementation has to have a default constructor.
+
+
 ## Implementations
 
 The following implementations can be used *out-of-the-box*:
