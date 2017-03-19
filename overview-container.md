@@ -61,6 +61,8 @@ IEnumerable<object> ResolveAll(Type dependencyType);
 
 All instances of the requested dependency type will be resolved.  
 
+<a name="Bootstrapping"></a>
+
 ## Bootstrapping
 
 It is important to note that your bootstrap implementations should be idempotent as they *may* be called more than once in some instances.
