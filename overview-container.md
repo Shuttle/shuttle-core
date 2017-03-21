@@ -4,6 +4,8 @@ layout: api
 ---
 # Overview
 
+[test](#bootstrapping)
+
 In the dependency injection (DI) world there appears to be somewhat of a trend to separate registration and resolution of components.  Some containers have an explicit split while others do not allow any registrations after the first instance resolution.
 
 To this end the `Shuttle.Core.Infrastructure` package provides two interfaces that relate to dependency injection containers.  The `IComponentRegistry` defines the registration of dependencies while the `IComponentResolver` defines the resolution of dependencies.
@@ -79,6 +81,7 @@ You can call the `IComponentRegistry.Bootstrap()` extension method to bootstrap 
 
 You can call the `IComponentResolver.Bootstrap()` extension method to bootstrap resolving components.  This method will instance any classes that implement the `IComponentResolverBootstrap` interface and call the `Resolve(IComponentResolver resolver)` method within that instance.  The implementation has to have a default constructor.
 
+<a name="Supported"></a>
 
 ## Implementations
 
