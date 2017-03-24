@@ -4,8 +4,6 @@ layout: api
 ---
 # Overview
 
-[test](#bootstrapping)
-
 In the dependency injection (DI) world there appears to be somewhat of a trend to separate registration and resolution of components.  Some containers have an explicit split while others do not allow any registrations after the first instance resolution.
 
 To this end the `Shuttle.Core.Infrastructure` package provides two interfaces that relate to dependency injection containers.  The `IComponentRegistry` defines the registration of dependencies while the `IComponentResolver` defines the resolution of dependencies.
