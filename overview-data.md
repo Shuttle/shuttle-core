@@ -324,7 +324,7 @@ namespace Shuttle.ProcessManagement
 
 # MappedRow
 
-A `MappedRow` instance contains bother a `DataRow` and the object that the `DataRow` mapped to.  
+A `MappedRow` instance contains both a `DataRow` and the object that the `DataRow` mapped to.  
 
 This may be useful in situation where the `DataRow` contains more information that is available on the object.  An example may be an `OrderLine` where the `DataRow` contains the `OrderId` column but the `OrderLine` object does not.  In order to still be able to make that association it is useful to have both available.
 
