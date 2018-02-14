@@ -3,57 +3,20 @@ layout: default
 title: shuttle-core documentation
 tagline: cross-cutting assemblies that facilitate the development of .net software
 ---
-<div id='shuttle-jumbotron' class='jumbotron'>
-	<h1>Shuttle.Core</h1>
-	<p>The shuttle-core project consists of various library components that are used to facilitate the development of .Net software.</p>
-	<p>These components are used extensively in other repositories such as the <a href='http://shuttle.github.io/shuttle-esb/' target='_blank'>Shuttle.Esb</a> and <a href='http://shuttle.github.io/shuttle-recall/' target='_blank'>Shuttle.Recall</a> projects.</p>
+<div class='panel panel-primary'>
+    <div class="panel-heading">
+        <h3>Shuttle.Core</h3>
+    </div>
+    <div class="panel-body">
+        <p>The Shuttle.Core set of components consists of various assemblies that are used to facilitate the development of .Net software.</p>
+        <p>These components are used extensively in other repositories such as the <a href='http://shuttle.github.io/shuttle-esb/' target='_blank'>Shuttle.Esb</a> and <a href='http://shuttle.github.io/shuttle-recall/' target='_blank'>Shuttle.Recall</a> projects.</p>
+    </div>
+</div>
+
+<div class="alert alert-success" role="alert">
+    <p>Now supports .Net 4.6+ and .Net Core 2.0+ (from v10.0.0)</p>
 </div>
 
 {% capture include-index %}{% include index.md %}{% endcapture %}
 {{ include-index | markdownify }}
 
-{% for post in paginator.posts %}
-<div class='row'>
-  <div class='col-md-12'>
-    <h2>{{ post.title }}</h2>
-    <h4>{{ post.date | date_to_long_string }}</h4>
-    <p>
-      <a href='{{ BASE_PATH }}{{ post.url }}'>Read Post</a>
-    </p>
-  </div>
-</div>
-{% endfor %}
-<div class='row'>
-  <div class='col-md-12'>
-    <div class='pagination'>
-      <ul class='pagination'>
-        {% if paginator.previous_page %}
-          {% if paginator.previous_page == 1 %}
-          <li><a href='/'>&laquo;</a></li>
-          {% else %}
-          <li><a href='/page{{ paginator.previous_page }}'>&laquo;</a></li>
-          {% endif %}
-        {% else %}
-        <li><span class='disabled'>&laquo;</span></li>
-        {% endif %}
-        {% if paginator.page == 1 %}
-        <li><span class='active'>1</span></li>
-        {% else %}
-        <li><a href='/'>1</a></li>
-        {% endif %}
-        {% for count in (2..paginator.total_pages) %}
-          {% if count == paginator.page %}
-          <li><span class='active'>{{ count }}</span></li>
-          {% else %}
-          <li><a href='/page{{ count }}'>{{ count }}</a></li>
-          {% endif %}
-        {% endfor %}
-        {% if paginator.next_page %}
-        <li><a href='/page{{ paginator.next_page }}'>&raquo;</a></li>
-        {% else %}
-        <li><span class='disabled'>&raquo;</span></li>
-        {% endif %}
-      </ul>
-    </div>
-  </div>
-</div>
