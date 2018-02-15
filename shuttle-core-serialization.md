@@ -2,7 +2,11 @@
 title: Serializer
 layout: api
 ---
-# ISerializer
+# Shuttle.Core.Serialization
+
+```
+PM> Install-Package Shuttle.Core.Serialization
+```
 
 An implementation of the `ISerializer` interface is used to serialize objects into a `Stream`.
 
