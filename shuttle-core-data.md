@@ -1,16 +1,24 @@
 ---
-title: Data
+title: Shuttle.Core.Data
 layout: api
 ---
+# Shuttle.Core.Data
+
+```
+PM> Install-Package Shuttle.Core.Data
+```
+
+Provides a thin abstraction over ADO.NET.
+
 # Overview
 
-The `Shuttle.Core.Data` package provides a thin abstraction over ADO.NET by making use of the `DbProviderFactories`.  Even though it provides object/relational mapping mechasnims it is in no way an ORM.
+The `Shuttle.Core.Data` package provides a thin abstraction over ADO.NET by making use of the `DbProviderFactories` (see `Shuttle.Core.Data.SqlClient` for .Net Core Provider Factory adapter).  Even though it provides object/relational mapping mechanisms it is in no way an ORM.
 
 # IDatabaseContextFactory
 
 As per usual, in order to access a database, we need a database connection.  A database connection is represented by a `IDatabaseContext` instance that may be obtained by using an instance of an `IDatabaseContextFactory` implementation.
 
-The `DatabaseContextFactory` implmentation makes use of an `IDbConnectionFactory` implementation, that creates a `System.Data.IDbConnection` by using the provider name and connection string, an `IDbCommandFactory` that creates a `System.Data.IDbCommand` by using `IDbConnection` instance.  The `DatabaseContextFactory` also requires an instance of a `IDatabaseContextCache` that stores connections and is assigned to the `DatabaseContext` in order to obtain the active connection.
+The `DatabaseContextFactory` implementation makes use of an `IDbConnectionFactory` implementation, that creates a `System.Data.IDbConnection` by using the provider name and connection string, an `IDbCommandFactory` that creates a `System.Data.IDbCommand` by using `IDbConnection` instance.  The `DatabaseContextFactory` also requires an instance of a `IDatabaseContextCache` that stores connections and is assigned to the `DatabaseContext` in order to obtain the active connection.
 
 ``` c#
 var factory = DatabaseContextFactory.Default();
@@ -324,7 +332,7 @@ namespace Shuttle.ProcessManagement
 
 # MappedRow
 
-A `MappedRow` instance contains both a `DataRow` and the object that the `DataRow` mapped to.  
+A `MappedRow` instance contains bother a `DataRow` and the object that the `DataRow` mapped to.  
 
 This may be useful in situation where the `DataRow` contains more information that is available on the object.  An example may be an `OrderLine` where the `DataRow` contains the `OrderId` column but the `OrderLine` object does not.  In order to still be able to make that association it is useful to have both available.
 

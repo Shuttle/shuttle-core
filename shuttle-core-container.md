@@ -1,8 +1,12 @@
 ---
-title: Container
+title: Shuttle.Core.Container
 layout: api
 ---
-# Overview
+# Shuttle.Core.Container
+
+```
+PM> Install-Package Shuttle.Core.Container
+```
 
 In the dependency injection (DI) world there appears to be somewhat of a trend to separate registration and resolution of components.  Some containers have an explicit split while others do not allow any registrations after the first instance resolution.
 
