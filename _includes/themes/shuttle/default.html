@@ -73,16 +73,40 @@
 						<a href='{{ BASE_PATH }}/shuttle-core-cli'>Shuttle.Core.Cli</a>
 					</li>
 					<li>
+						<a href='{{ BASE_PATH }}/shuttle-core-compression'>Shuttle.Core.Compression</a>
+					</li>
+					<li>
+						<a href='{{ BASE_PATH }}/shuttle-core-configuration'>Shuttle.Core.Configuration</a>
+					</li>
+					<li>
+						<a href='{{ BASE_PATH }}/shuttle-core-contract'>Shuttle.Core.Contract</a>
+					</li>
+					<li>
+						<a href='{{ BASE_PATH }}/shuttle-core-encryption'>Shuttle.Core.Encryption</a>
+					</li>
+					<li>
 						<a href='{{ BASE_PATH }}/shuttle-core-pipelines'>Shuttle.Core.Pipelines</a>
 					</li>
 					<li>
-						<a href='{{ BASE_PATH }}/shuttle-core-logging'>Shuttle.Core.Logging</a>
+						<a href='{{ BASE_PATH }}/shuttle-core-reflection'>Shuttle.Core.Reflection</a>
 					</li>
 					<li>
-						<a href='{{ BASE_PATH }}/shuttle-core-serialization'>Shuttle.Core.Serialization</a>
+						<a href='{{ BASE_PATH }}/shuttle-core-specification'>Shuttle.Core.Specification</a>
 					</li>
 					<li>
-						<a href='{{ BASE_PATH }}/overview-transactionscope'>Transaction Scope</a>
+						<a href='{{ BASE_PATH }}/shuttle-core-streams'>Shuttle.Core.Streams</a>
+					</li>
+					<li>
+						<a href='{{ BASE_PATH }}/shuttle-core-threading'>Shuttle.Core.Threading</a>
+					</li>
+					<li>
+						<a href='{{ BASE_PATH }}/shuttle-core-timespantypeconverters'>Shuttle.Core.TimeSpanTypeConverters</a>
+					</li>
+					<li>
+						<a href='{{ BASE_PATH }}/shuttle-core-transactions'>Shuttle.Core.Transactions</a>
+					</li>
+					<li>
+						<a href='{{ BASE_PATH }}/shuttle-core-uris'>Shuttle.Core.uris</a>
 					</li>
 				</ul>
 			</li>
@@ -116,18 +140,6 @@
 					</li>
 				</ul>
 			</li>
-			<li>
-				<a class='dropdown-toggle' data-toggle='dropdown' href='#'>Windows Services<b class='caret'></b></a>
-				<ul class='dropdown-menu'>
-					<li>
-						<a href='{{ BASE_PATH }}/overview-service-host'>Service Host</a>
-					</li>
-					<li class='divider'></li>
-					<li>
-						<a href='{{ BASE_PATH }}/overview-service-host-old'>Host (obsolete)</a>
-					</li>
-				</ul>
-			</li>
 			<li class='dropdown'>
 				<a class='dropdown-toggle' data-toggle='dropdown' href='#'>Data<b class='caret'></b></a>
 				<ul class='dropdown-menu'>
@@ -144,18 +156,45 @@
 			</li>
 			<li class='dropdown'>
 				<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-				Implementations
+				Logging
 				<b class='caret'></b>
 				</a>
 				<ul class='dropdown-menu'>
-					<li class='dropdown-header'>Log4Net</li>
 					<li>
-						<a href='{{ BASE_PATH }}/implementations-log4net'>Log4Net Logging</a>
+						<a href='{{ BASE_PATH }}/shuttle-core-logging'>Shuttle.Core.Logging</a>
+					</li>
+					<li class='divider'></li>
+					<li>
+						<a href='{{ BASE_PATH }}/shuttle-core-logging-log4net'>Log4Net Logging</a>
+					</li>
+				</ul>
+			</li>
+			<li class='dropdown'>
+				<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+				Seriulization
+				<b class='caret'></b>
+				</a>
+				<ul class='dropdown-menu'>
+					<li>
+						<a href='{{ BASE_PATH }}/shuttle-core-serialization'>Shuttle.Core.Serialization</a>
+					</li>
+					<li class='divider'></li>
+					<li>
+						<a href='{{ BASE_PATH }}/shuttle-core-json'>Shuttle.Core.Json</a>
 					</li>
 				</ul>
 			</li>
 			<li>
-				<a href='{{ BASE_PATH }}/packages'>Packages</a>
+				<a class='dropdown-toggle' data-toggle='dropdown' href='#'>Service Hosting<b class='caret'></b></a>
+				<ul class='dropdown-menu'>
+					<li>
+						<a href='{{ BASE_PATH }}/shuttle-core-servicehost'>Shuttle.Core.ServiceHost</a>
+					</li>
+					<li class='divider'></li>
+					<li>
+						<a href='{{ BASE_PATH }}/shuttle-core-host'>Shuttle.Core.Host (obsolete)</a>
+					</li>
+				</ul>
 			</li>
 			<!--
             {% assign pages_list = site.pages %}

@@ -1,7 +1,15 @@
 ---
-title: TransactionScope
+title: Shuttle.Core.Transactions
 layout: api
 ---
+# Shuttle.Core.Transactions
+
+```
+PM> Install-Package Shuttle.Core.Transactions
+```
+
+This package makes use of the .Net `TransactionScope` class to provide ambient transaction handling.  .Net Core 2.0 does not yet support ambient transactions and you would need to handle any transactions yourself.  To this end you would need to return a `NullTransactionScope` from the `ITransactionScopeFactory` implementation.  If you are using the `DefaultTransactionScopeFactory` then you can simply set the `enabled` attribute to `false`.
+
 # ITransactionScope
 
 An implementation of the `ITransactionScope` interface is used to wrap a `TransactionScope`.

@@ -1,5 +1,5 @@
 ---
-title: Serializer
+title: Shuttle.Core.Serialization
 layout: api
 ---
 # Shuttle.Core.Serialization

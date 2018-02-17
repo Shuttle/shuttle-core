@@ -1,5 +1,5 @@
 ---
-title: Unity
+title: Shuttle.Core.Unity
 layout: api
 ---
 # Shuttle.Core.Unity

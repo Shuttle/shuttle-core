@@ -1,10 +1,14 @@
 ---
-title: Service Host (obsolete)
+title: Shuttle.Core.Host (obsolete)
 layout: api 
 ---
-# Generic Service Host
+# Shuttle.Core.Host
 
-***Please note***: This package will still work but it is highly recommended that you rather use the new [Service Host]({{ BASE_PATH }}/overview-service-host).
+```
+PM> Install-Package Shuttle.Core.Host
+```
+
+**Please Note:** *This package is now obsolete.  Please make use of `Shuttle.Core.ServiceHost`*
 
 The generic host is an executable assembly used to execute code either within a console window or as a Windows service.  Since it can host your code while running in Visual Studio it makes debugging very easy.  No need to attach a debugger to a Windows service.
 
@@ -124,7 +128,7 @@ Shuttle.Core.Host.exe
 
 # API
 
-It is also possible to install and uninstall services that make use of `Shuttle.Core.Host` by using the `WindowsServiceInstaller` class:
+It is also possible to install and uninstall services that make use of `shuttle-core-host` by using the `WindowsServiceInstaller` class:
 
 ``` c#
 var windowsServiceInstaller = new WindowsServiceInstaller();
