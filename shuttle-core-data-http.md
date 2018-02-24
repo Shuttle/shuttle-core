@@ -13,3 +13,11 @@ Register, or use, the `ContextDatabaseContextCache` implementation of the `IData
 ``` c#
 registry.Register<IDatabaseContextCache, ContextDatabaseContextCache>();
 ```
+
+## .Net Core 2.0+
+
+In order to gain access to the relevant `HttpContext` you also need to register the following:
+
+``` c#
+registry.Register<IHttpContextAccessor, HttpContextAccessor>();
+```
