@@ -4,6 +4,8 @@ layout: api
 ---
 # Shuttle.Core.Data
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EFmkdjsrWy0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 ```
 PM> Install-Package Shuttle.Core.Data
 ```
