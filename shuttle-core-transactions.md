@@ -60,7 +60,7 @@ There is also a configuration section that can be used:
 ``` xml
 <configuration>
   <configSections>
-    <section name="transactionScope" type="Shuttle.Core.Infrastructure.TransactionScopeSection, Shuttle.Core.Infrastructure"/>
+    <section name="transactionScope" type="Shuttle.Core.Transactions.TransactionScopeSection, Shuttle.Core.Transactions"/>
   </configSections>
 
   <transactionScope
