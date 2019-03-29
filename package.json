@@ -1,0 +1,23 @@
+{
+  "name": "shuttle-core",
+  "version": "1.0.0",
+  "description": "Documentation repository for the Shuttle.Core set of cross-cutting libraries.",
+  "scripts": {
+    "host": "jekyll serve --watch --baseurl ''"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shuttle/shuttle-core.git"
+  },
+  "author": "Eben Roux",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shuttle/shuttle-core/issues"
+  },
+  "homepage": "https://github.com/Shuttle/shuttle-core#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.7"
+  }
+}
