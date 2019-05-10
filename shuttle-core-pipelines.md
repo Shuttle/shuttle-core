@@ -10,7 +10,7 @@ PM> Install-Package Shuttle.Core.Pipelines
 
 Observable event-based pipelines based broadly on pipes and filters.
 
-The `Pipeline` class is defined in the `Shuttle.Core.Infrastructure` package.
+The `Pipeline` class is defined in the `Shuttle.Core.Pipelines` package.
 
 A `Pipeline` is a variation of the pipes and filters pattern and consists of 1 or more stages that each contain one or more events.  When the pipeline is executed each event in each stage is raised in the order that they were registered.  One or more observers should be registered to handle the relevant event(s).
 
@@ -40,12 +40,12 @@ public class OnAddCharacterA : PipelineEvent
 
 public class OnAddCharacter : PipelineEvent
 {
-	public char Character { get; private set; }
+    public char Character { get; private set; }
 
-	public OnAddCharacter(char character)
-	{
-		Character = character;
-	}
+    public OnAddCharacter(char character)
+    {
+        Character = character;
+    }
 }
 ```
 
@@ -86,8 +86,8 @@ Next we will define the pipeline itself:
 var pipeline = new Pipeline();
 
 pipeline.RegisterStage("process")
-	.WithEvent<OnAddCharacterA>()
-	.WithEvent(new OnAddCharacter('Z'));
+    .WithEvent<OnAddCharacterA>()
+    .WithEvent(new OnAddCharacter('Z'));
 
 pipeline.RegisterObserver(new CharacterPipelineObserver());
 

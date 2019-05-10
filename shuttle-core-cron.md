@@ -51,9 +51,9 @@ Format is {minute} {hour} {day-of-month} {month} {day-of-week}
 
 ```
 {minutes} : 0-59 , - * /
-{hours} : 	0-23 , - * /
+{hours} :     0-23 , - * /
 {day-of-month} 1-31 , - * ? / L W
-{month} : 1-12 or JAN-DEC	, - * /
+{month} : 1-12 or JAN-DEC    , - * /
 {day-of-week} : 1-7 or SUN-SAT , - * ? / L #
 
 Examples:

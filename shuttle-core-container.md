@@ -21,8 +21,7 @@ Typically there would be no need to directly reference this package unless you a
 ```
 public enum Lifestyle
 {
-	Singleton = 0,
-	Transient = 1
+    Singleton = 0,Transient = 1
 }
 ```
 
@@ -78,7 +77,7 @@ You can control the bootstrapping behaviour using and implementation of the `IBo
 ``` xml
 <configuration>
   <configSections>
-    <section name="bootstrap" type="Shuttle.Core.Infrastructure.BootstrapSection, Shuttle.Core.Infrastructure"/>
+    <section name="bootstrap" type="Shuttle.Core.Container.BootstrapSection, Shuttle.Core.Container"/>
   </configSections>
 
   <bootstrap scan="All|Shuttle|None">
@@ -101,7 +100,7 @@ You may also make use of the registry's configuration section to specify explici
 ``` xml
 <configuration>
   <configSections>
-    <section name="componentRegistry" type="Shuttle.Core.Infrastructure.ComponentRegistrySection, Shuttle.Core.Infrastructure"/>
+    <section name="componentRegistry" type="Shuttle.Core.Container.ComponentRegistrySection, Shuttle.Core.Container"/>
   </configSections>
 
   <componentRegistry scan="true|false">
@@ -131,7 +130,7 @@ In addition you may also use the following configuration section to specify expl
 ``` xml
 <configuration>
   <configSections>
-    <section name="componentResolver" type="Shuttle.Core.Infrastructure.ComponentResolverSection, Shuttle.Core.Infrastructure"/>
+    <section name="componentResolver" type="Shuttle.Core.Container.ComponentResolverSection, Shuttle.Core.Container"/>
   </configSections>
 
   <componentResolver scan="true|false">
@@ -156,4 +155,4 @@ The following implementations can be used *out-of-the-box*:
 - [SimpleInjector](https://github.com/Shuttle/Shuttle.Core.SimpleInjector)
 - [Unity](https://github.com/Shuttle/Shuttle.Core.Unity)
 
-If you don't see your container of choice here please [log an issue](https://github.com/Shuttle/Shuttle.Core.Infrastructure/issues/new) or share your own implementation.
+If you don't see your container of choice here please [log an issue](https://github.com/Shuttle/Shuttle.Core.Container/issues/new) or share your own implementation.

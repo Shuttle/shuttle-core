@@ -27,19 +27,19 @@ var factory = DatabaseContextFactory.Default();
 
 using (var context = factory.Create("connectionStringName"))
 {
-	// database interaction
+    // database interaction
 }
 
 using (var context = factory
-	.Create("System.Data.SqlClient", 
-		"Data Source=.\sqlexpress;Initial Catalog=Shuttle;Integrated Security=SSPI"))
+    .Create("System.Data.SqlClient", 
+        "Data Source=.\\sqlexpress;Initial Catalog=Shuttle;Integrated Security=SSPI"))
 {
-	// database interaction
+    // database interaction
 }
 
 using (var context = factory.Create(existingIDbConnection))
 {
-	// database interaction
+    // database interaction
 }
 ```
 
@@ -75,7 +75,7 @@ var gateway = new DatabaseGateway();
 
 using (var context = factory.Create("connectionStringName"))
 {
-	var reader = gateway.GetReaderUsing(RawQuery.Create("select Id, Username from dbo.Member"));
+    var reader = gateway.GetReaderUsing(RawQuery.Create("select Id, Username from dbo.Member"));
 }
 ```
 
@@ -93,7 +93,7 @@ var gateway = new DatabaseGateway();
 
 using (var context = factory.Create("connectionStringName"))
 {
-	gateway.ExecuteUsing(RawQuery.Create("delete from dbo.Member where Username = 'mr.resistor'"));
+    gateway.ExecuteUsing(RawQuery.Create("delete from dbo.Member where Username = 'mr.resistor'"));
 }
 ```
 
@@ -111,13 +111,13 @@ var gateway = new DatabaseGateway();
 
 using (var context = factory.Create("connectionStringName"))
 {
-	var username = gateway.GetScalarUsing<string>(
-		RawQuery.Create("select Username from dbo.Member where Id = 10")
-	);
-	
-	var id = gateway.GetScalarUsing<int>(
-		RawQuery.Create("select Id from dbo.Member where Username = 'mr.resistor'")
-	);
+    var username = gateway.GetScalarUsing<string>(
+        RawQuery.Create("select Username from dbo.Member where Id = 10")
+    );
+    
+    var id = gateway.GetScalarUsing<int>(
+        RawQuery.Create("select Id from dbo.Member where Username = 'mr.resistor'")
+    );
 }
 ```
 
@@ -135,7 +135,7 @@ var gateway = new DatabaseGateway();
 
 using (var context = factory.Create("connectionStringName"))
 {
-	var table = gateway.GetDataTableFor(RawQuery.Create("select Id, Username from dbo.Member"));
+    var table = gateway.GetDataTableFor(RawQuery.Create("select Id, Username from dbo.Member"));
 }
 ```
 
@@ -153,7 +153,7 @@ var gateway = new DatabaseGateway();
 
 using (var context = factory.Create("connectionStringName"))
 {
-	var rows = gateway.GetRowsUsing(RawQuery.Create("select Id, Username from dbo.Member"));
+    var rows = gateway.GetRowsUsing(RawQuery.Create("select Id, Username from dbo.Member"));
 }
 ```
 
@@ -172,9 +172,9 @@ var gateway = new DatabaseGateway();
 
 using (var context = factory.Create("connectionStringName"))
 {
-	var row = gateway.GetSingleRowUsing(
-		RawQuery.Create("select Id, Username, EMail, DateActivated from dbo.Member where Id = 10")
-	);
+    var row = gateway.GetSingleRowUsing(
+        RawQuery.Create("select Id, Username, EMail, DateActivated from dbo.Member where Id = 10")
+    );
 }
 ```
 
@@ -246,8 +246,8 @@ The `RawQuery` enables you to create any query using the native language structu
 
 ``` c#
 var query = RawQuery.Create("select UserName from dbo.Member where Id = @Id")
-	.AddParameterValue(new MappedColumn<Guid>("Id", DbType.Guid), 
-		new Guid('{75208260-CF93-454E-95EC-FE1903F3664E}'));
+    .AddParameterValue(new MappedColumn<Guid>("Id", DbType.Guid), 
+        new Guid('{75208260-CF93-454E-95EC-FE1903F3664E}'));
 ```
 
 ## ProcedureQuery
@@ -256,8 +256,8 @@ The `ProcedureQuery` is used to execute a stored procedure:
 
 ``` c#
 var query = ProcedureQuery.Create("uspMemberById")
-	.AddParameterValue(new MappedColumn<Guid>("Id", DbType.Guid), 
-		new Guid('{75208260-CF93-454E-95EC-FE1903F3664E}'));
+    .AddParameterValue(new MappedColumn<Guid>("Id", DbType.Guid), 
+        new Guid('{75208260-CF93-454E-95EC-FE1903F3664E}'));
 ```
 
 # MappedColumn
@@ -367,26 +367,26 @@ Using a `MappedData` instance we can keep adding the `MappedRow` instances to th
 ``` c#
 public class OrderAssembler : IAssembler<Order>
 {
-	public IEnumerable<Order> Assemble(MappedData data)
-	{
-		var result = new List<Order>();
+    public IEnumerable<Order> Assemble(MappedData data)
+    {
+        var result = new List<Order>();
 
-		foreach (var orderRow in data.MappedRows<Order>())
-		{
-			var order = orderRow.Result;
+        foreach (var orderRow in data.MappedRows<Order>())
+        {
+            var order = orderRow.Result;
 
-			foreach (var orderLineRow in data.MappedRows<OrderLine>())
-			{
-				if (orderLineRow.Row["OrderId"].Equals(order.OrderId))
-				{
-					order.AddLine(orderLineRow.Result);
-				}
-			}
+            foreach (var orderLineRow in data.MappedRows<OrderLine>())
+            {
+                if (orderLineRow.Row["OrderId"].Equals(order.OrderId))
+                {
+                    order.AddLine(orderLineRow.Result);
+                }
+            }
 
-			result.Add(order);
-		}
+            result.Add(order);
+        }
 
-		return result;
-	}
+        return result;
+    }
 }
 ```

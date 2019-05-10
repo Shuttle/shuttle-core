@@ -20,23 +20,23 @@ using Shuttle.Core.Host;
 
 namespace Domain.Server
 {
-	public class DomainHost : IHost, IDisposable
-	{
-		private volatile bool active = true;
-	
-		public void Start()
-		{
-		   while (active)
-		   {
-				// perform some processing
-		   }
-		}
+    public class DomainHost : IHost, IDisposable
+    {
+        private volatile bool active = true;
+    
+        public void Start()
+        {
+           while (active)
+           {
+                // perform some processing
+           }
+        }
 
-		public void Dispose()
-		{
-			active = false;
-		}
-	}
+        public void Dispose()
+        {
+            active = false;
+        }
+    }
 }
 ```
 
@@ -57,37 +57,37 @@ Notice the `IDisposable` implementation.  Whenever a service is stopped, or `ctr
 The following command-line arguments are available and can be viewed by running `Shuttle.Core.Host /?`:
 
 ```
-	[/install [/serviceName]]	
-		- install the service
-		
-	[/displayName]				
-		- friendly name for the installed service
-		
-	[/description]				
-		- Description for the service
-		
-	[/hostType]	
-		- type implementing IHost that should be used
-		
-	[/instance]					
-		- unique name of the instance you wish to install
-		
-	[/configurationFileName]
-		- an alternate configuration file name to use instead of {IHost.dll}.config
+    [/install [/serviceName]]    
+        - install the service
+        
+    [/displayName]                
+        - friendly name for the installed service
+        
+    [/description]                
+        - Description for the service
+        
+    [/hostType]    
+        - type implementing IHost that should be used
+        
+    [/instance]                    
+        - unique name of the instance you wish to install
+        
+    [/configurationFileName]
+        - an alternate configuration file name to use instead of {IHost.dll}.config
 
-	[/startManually]			
-		- specifies that the service should start manually
-		
-	[/username]					
-		- username of the account to use for the service
-		
-	[/password]]				
-		- password of the account to use for the service
-		
-	- or -
-	
-	[/uninstall [/serviceName] [/instance]]	
-```		
+    [/startManually]            
+        - specifies that the service should start manually
+        
+    [/username]                    
+        - username of the account to use for the service
+        
+    [/password]]                
+        - password of the account to use for the service
+        
+    - or -
+    
+    [/uninstall [/serviceName] [/instance]]    
+```        
 
 ## IHost
 As mentioned, if no `/hostType` is specified the folder the `Shuttle.Core.Host.exe` is in will be scanned for the class implementing `IHost`.  Should no class, or more than 1 class, be located an exception will be raised.
@@ -96,7 +96,7 @@ As mentioned, if no `/hostType` is specified the folder the `Shuttle.Core.Host.e
 If no `/serviceName` is specified the full name of the service bus host type will be used along with the version number of the assembly it is contained within.
 
 ```
-	Shuttle.Application.Server.Host (1.0.0.0)
+    Shuttle.Application.Server.Host (1.0.0.0)
 ```
 
 ## Display Name
@@ -107,23 +107,23 @@ The default for the `/displayName` is the same value as `/serviceName`, and the 
 If you set the `/serviceName` and/or `/instance` during installation you will need to specify them when uninstalling as well, e.g.:
 
 ```
-	Shuttle.Core.Host.exe 
-		/uninstall 
-		/serviceName:"Shuttle.Application.Server" 
-		/instance:"Instance5"
+    Shuttle.Core.Host.exe 
+        /uninstall 
+        /serviceName:"Shuttle.Application.Server" 
+        /instance:"Instance5"
 ```
 
 ## Example
 
 ```
 Shuttle.Core.Host.exe 
-	/install 
-	/serviceName:"Shuttle.Application.Server" 
-	/displayName:"Shuttle server for the application"
-	/description:"Service to handle messages relating to the application" 
-	/hostType:"QualifiedNamespace.Host, AssemblyName"
-	/username:"domain\hostuser"
-	/password:"p@ssw0rd!"
+    /install 
+    /serviceName:"Shuttle.Application.Server" 
+    /displayName:"Shuttle server for the application"
+    /description:"Service to handle messages relating to the application" 
+    /hostType:"QualifiedNamespace.Host, AssemblyName"
+    /username:"domain\\hostuser"
+    /password:"p@ssw0rd!"
 ```
 
 # API
@@ -135,16 +135,16 @@ var windowsServiceInstaller = new WindowsServiceInstaller();
 
 var installConfiguration = new InstallConfiguration
 {
-	ServiceAssemblyPath = @"{path to your service}\Shuttle.Core.Host.exe",
-	// more arguments may be specified
+    ServiceAssemblyPath = @"{path to your service}\\Shuttle.Core.Host.exe",
+    // more arguments may be specified
 };  
 
 windowsServiceInstaller.Install(installConfiguration);
 
 var serviceInstallerConfiguration = new ServiceInstallerConfiguration
 {
-	ServiceAssemblyPath = @"{path to your service}\Shuttle.Core.Host.exe",
-	// more arguments may be specified
+    ServiceAssemblyPath = @"{path to your service}\\Shuttle.Core.Host.exe",
+    // more arguments may be specified
 };
 
 windowsServiceInstaller.Uninstall(serviceInstallerConfiguration);

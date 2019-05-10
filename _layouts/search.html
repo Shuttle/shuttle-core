@@ -2,7 +2,10 @@
 
 {%- include head.html -%}
 
-<body data-spy="scroll" data-target="#toc">
+<body>
+    <script lang="js">
+        performSearch('{{ site.time | date: '%s' }}');
+    </script>
 
 {%- include header.html -%}
 
@@ -11,11 +14,7 @@
         <div class="row">
             <div class='col-md-2 d-none d-sm-block'>
             </div>
-            <div id='toc-container' class='col-md-2 d-none d-md-block'>
-                <nav id="toc" data-toggle="toc" class="sticky-top"></nav>
-            </div>
-            <div class='col-md-6 pb-5'>
-                {{ content }}
+            <div class='col-md-8 pb-5' id="search-results-container">
             </div>
             <div class='col-md-2 d-none d-sm-block'>
             </div>

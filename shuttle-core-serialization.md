@@ -41,27 +41,27 @@ For instance, the following two types will cause issues when used in the root `C
 ``` c#
 namespace Serializer.v1
 {
-	public class MovedEvent
-	{
-		public string Where { get; set; } 
-	}
+    public class MovedEvent
+    {
+        public string Where { get; set; } 
+    }
 }
 
 namespace Serializer.v2
 {
-	public class MovedEvent
-	{
-		public string Where { get; set; } 
-	}
+    public class MovedEvent
+    {
+        public string Where { get; set; } 
+    }
 }
 
 namespace Serializer
 {
-	public class Complex
-	{
-		public v1.MovedEvent { get; set; }
-		public v2.MovedEvent { get; set; }
-	}
+    public class Complex
+    {
+        public v1.MovedEvent { get; set; }
+        public v2.MovedEvent { get; set; }
+    }
 }
 ```
 

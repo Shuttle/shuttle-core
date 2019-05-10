@@ -17,7 +17,7 @@ Since there is some boilerplate code implementors may make use of the `AbstractL
 ``` c#
 public abstract class AbstractLog : ILog
 {
-	// boilerplate
+    // boilerplate
 }
 ```
 

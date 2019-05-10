@@ -17,7 +17,7 @@ A typical implementation would be as follows:
 ``` c#
 using System;
 using System.Threading;
-using Shuttle.Core.Infrastructure;
+using Shuttle.Core.ServiceHost;
 
 namespace Shuttle.Core.ServiceHost.Server
 {
@@ -111,32 +111,32 @@ You may also specify configuration using the following configuration which may, 
 The following command-line arguments are available and can be viewed by running `{your-console}.exe /?`:
 
 ```
-[/install [/serviceName]]	
-	- install the service
-		
-[/displayName]				
-	- friendly name for the installed service
-		
-[/description]				
-	- Description for the service
-		
-[/instance]					
-	- unique name of the instance you wish to install
-		
-[/startMode]			
-	- specifies that the service start mode (Boot, System, Automatic, Manual, Disabled)
-		
+[/install [/serviceName]]    
+    - install the service
+        
+[/displayName]                
+    - friendly name for the installed service
+        
+[/description]                
+    - Description for the service
+        
+[/instance]                    
+    - unique name of the instance you wish to install
+        
+[/startMode]            
+    - specifies that the service start mode (Boot, System, Automatic, Manual, Disabled)
+        
 [/username /password]
-	- username and password of the account to use for the service
+    - username and password of the account to use for the service
 - or -
-	
-[/uninstall [/serviceName] [/instance]]	
+    
+[/uninstall [/serviceName] [/instance]]    
 
 [/start]
-	- starts the service instance
+    - starts the service instance
 
 [/stop]
-	- stops the service instance
+    - stops the service instance
 ```
 
 ### Service Name
@@ -152,21 +152,21 @@ Namespace.ConsoleApplication (1.0.0.0)
 If you set the `/serviceName` and/or `/instance` during installation you will need to specify them when uninstalling as well, e.g.:
 
 ```
-{your=console}.exe 
-	/uninstall 
-	/serviceName:"Shuttle.Application.Server" 
-	/instance:"Instance5"
+{your-console}.exe 
+    /uninstall 
+    /serviceName:"Shuttle.Application.Server" 
+    /instance:"Instance5"
 ```
 
 ### Example
 
 ```
-{your=console}.exe 
-	/install 
-	/serviceName:"Shuttle.Application.Server" 
-	/displayName:"Shuttle server for the application"
-	/description:"Service to handle messages relating to the application." 
-	/username:"domain\hostuser"
-	/password:"p@ssw0rd!"
+{your-console}.exe 
+    /install 
+    /serviceName:"Shuttle.Application.Server" 
+    /displayName:"Shuttle server for the application"
+    /description:"Service to handle messages relating to the application." 
+    /username:"domain\\hostuser"
+    /password:"p@ssw0rd!"
 ```
 
