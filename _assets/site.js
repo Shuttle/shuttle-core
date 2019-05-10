@@ -10,7 +10,7 @@ performSearch = function (version) {
 
     $.ajax({
         cache: true,
-        url: '/content.json?' + version,
+        url: baseurl + '/content.json?' + version,
         dataType: 'json'
     })
         .done(function(data){
@@ -64,6 +64,6 @@ $(function () {
             return;
         }
 
-        window.location.replace(window.location.origin + '/search?match=' + $('#search').val());
+        window.location.replace(window.location.origin + baseurl + '/search?match=' + $('#search').val());
     })
 });
