@@ -27,6 +27,8 @@
     transform: rotate(90deg);
 }
 
+iframe { padding: 0 0 1rem 0; }
+
 footer a { color: #997659; }
 footer a:hover { color: #994b0c; }
 

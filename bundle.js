@@ -9,4 +9,5 @@ import '~/_assets/bootstrap-toc.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import '~/_assets/bootstrap-toc.css';
 import '~/_assets/site.css';
+import '~/_assets/syntax.css';
 import '@fortawesome/fontawesome-free/css/all.css';
