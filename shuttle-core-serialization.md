@@ -73,4 +73,4 @@ By explicitly specifying the types the `DefaultSerializer` will add a namespace 
 void AddSerializerType(Type root, Type contained);
 ```
 
-Specify the `contained` tpe that is used within te `root` type somewhere.
+Specify the `contained` type that is used within the `root` type somewhere.
