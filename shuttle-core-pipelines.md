@@ -54,30 +54,30 @@ The `OnAddCharacterA` event represents a very explicit event whereas with the `O
 In order for the pipeline to process the events we will have to define one or more observers to handle the events.  We will define only one for this sample but we could very easily add another that will handle one or more of the same, or other, events:
 
 ``` c#
-    public class CharacterPipelineObserver : 
-        IPipelineObserver<OnAddCharacterA>,
-        IPipelineObserver<OnAddCharacter>
+public class CharacterPipelineObserver : 
+    IPipelineObserver<OnAddCharacterA>,
+    IPipelineObserver<OnAddCharacter>
+{
+    public void Execute(OnAddCharacterA pipelineEvent)
     {
-        public void Execute(OnAddCharacterA pipelineEvent)
-        {
-            var state = pipelineEvent.Pipeline.State;
-            var value = state.Get<string>("value");
+        var state = pipelineEvent.Pipeline.State;
+        var value = state.Get<string>("value");
 
-            value = string.Format("{0}-A", value);
+        value = string.Format("{0}-A", value);
 
-            state.Replace("value", value);
-        }
-
-        public void Execute(OnAddCharacter pipelineEvent)
-        {
-            var state = pipelineEvent.Pipeline.State;
-            var value = state.Get<string>("value");
-
-            value = string.Format("{0}-{1}", value, pipelineEvent.Character);
-
-            state.Replace("value", value);
-        }
+        state.Replace("value", value);
     }
+
+    public void Execute(OnAddCharacter pipelineEvent)
+    {
+        var state = pipelineEvent.Pipeline.State;
+        var value = state.Get<string>("value");
+
+        value = string.Format("{0}-{1}", value, pipelineEvent.Character);
+
+        state.Replace("value", value);
+    }
+}
 ```
 
 Next we will define the pipeline itself:
