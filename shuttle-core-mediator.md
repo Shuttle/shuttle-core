@@ -34,6 +34,21 @@ There is also an extension method on the `IMediator` interface for sending messa
 Task SendAsync(this IMediator mediator, object message, CancellationToken cancellationToken = default)
 ```
 
+#### Extensions
+
+```c#
+public static void RegisterMediatorParticipants(this IComponentRegistry registry, string assemblyName)
+public static void RegisterMediatorParticipants(this IComponentRegistry registry, Assembly assembly)
+```
+
+Registers all types that implement the `IParticipant<T>` interface against the open generic type `IParticipant<>`.
+
+```c#
+public static void AddMediatorParticipants(this IComponentResolver resolver)
+```
+
+Adds any participant instances registered against the open generic `IParticipant`.
+
 ## IParticipant
 
 ```c#

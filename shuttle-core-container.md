@@ -50,6 +50,142 @@ IComponentRegistry RegisterCollection(Type dependencyType, IEnumerable<Type> imp
 
 Registers a collection of implementation types against the relevant dependency type using the given lifestyle.  Collections are a somewhat unique case and need to be registered as such.
 
+#### Extensions
+
+There are a number of extension methods that facilitate the registration of components:
+
+```c#
+public static bool IsRegistered<TDependency>(this IComponentRegistry registry)
+```
+
+Will return `true` if the dependency is registered; else `false`.
+
+```c#
+public static IComponentRegistry Register<TDependency, TImplementation>(this IComponentRegistry registry)
+```
+
+Registers a new dependency/implementation type pair as a singleton.
+
+```c#
+public static IComponentRegistry Register<TDependency, TImplementation>(this IComponentRegistry registry, Lifestyle lifestyle)
+```
+
+Registers a new dependency/implementation type pair with the given `Lifestyle`.
+
+```c#
+public static IComponentRegistry Register<TDependencyImplementation>(this IComponentRegistry registry)
+```
+
+Registers a new dependency/implementation type pair by binding the implementation type to itself.
+
+```c#
+public static IComponentRegistry RegisterInstance<TDependency>(this IComponentRegistry registry, TDependency instance)
+```
+
+Registers a singleton instance for the given dependency type.
+
+```c#
+public static IComponentRegistry Register(this IComponentRegistry registry, Type dependencyType, Type implementationType)
+```
+
+Registers a new dependency/implementation type pair as a singleton.
+
+```c#
+public static IComponentRegistry AttemptRegister<TDependency, TImplementation>(this IComponentRegistry registry)
+```
+
+Registers a new dependency/implementation type pair as a singleton if the dependency has not yet been registered; else does nothing.
+
+```c#
+public static IComponentRegistry AttemptRegister<TDependency, TImplementation>(this IComponentRegistry registry)
+```
+
+Registers a new dependency/implementation type pair as a singleton if the dependency has not yet been registered; else does nothing.
+
+```c#
+public static IComponentRegistry AttemptRegister<TDependency, TImplementation>(this IComponentRegistry registry, Lifestyle lifestyle)
+```
+
+Registers a new dependency/implementation type pair if the dependency has not yet been registered; else does nothing.
+
+```c#
+public static IComponentRegistry AttemptRegister<TDependencyImplementation>(this IComponentRegistry registry)
+```
+
+Registers a new dependency/implementation type pair as a singleton if the dependency has not yet been registered; else does nothing.
+
+```c#
+public static IComponentRegistry AttemptRegister<TDependencyImplementation>(this IComponentRegistry registry, Lifestyle lifestyle)
+```
+
+Registers a new dependency/implementation type pair if the dependency has not yet been registered; else does nothing.
+
+```c#
+public static IComponentRegistry AttemptRegister<TDependencyImplementation>(this IComponentRegistry registry, Lifestyle lifestyle)
+```
+
+Registers a new dependency/implementation type pair if the dependency has not yet been registered; else does nothing.
+
+```c#
+public static IComponentRegistry AttemptRegister<TDependencyImplementation>(this IComponentRegistry registry, Lifestyle lifestyle)
+```
+
+Registers a new dependency/implementation type pair if the dependency has not yet been registered; else does nothing.
+
+```c#
+public static IComponentRegistry AttemptRegister<TDependencyImplementation>(this IComponentRegistry registry, Lifestyle lifestyle)
+```
+
+Registers a new dependency/implementation type pair with then given `Lifestyle` if the dependency has not yet been registered; else does nothing.
+
+```c#
+public static IComponentRegistry AttemptRegisterInstance<TDependency>(this IComponentRegistry registry, TDependency instance)
+```
+
+Registers a singleton instance for the given dependency type if the dependency has not yet been registered; else does nothing.
+
+```c#
+public static IComponentRegistry AttemptRegisterGeneric(this IComponentRegistry registry, Type dependencyType, Type implementationType)
+```
+
+Registers an open generic for the given dependency type as a singleton if the dependency has not yet been registered; else does nothing.
+
+```c#
+public static IComponentRegistry AttemptRegisterGeneric(this IComponentRegistry registry, Type dependencyType, Type implementationType, Lifestyle lifestyle)
+```
+
+Registers an open generic for the given dependency type if the dependency has not yet been registered; else does nothing.
+
+```c#
+public static void RegisterSuffixed(this IComponentRegistry registry, string assemblyName)
+```
+
+ Register all types in the given assembly that end in the `DefaultSuffixes` against a dependency type matching the type name with an `I` prefix, e.g. `CustomerRepository` will be registered against `ICustomerRepository`.
+
+```c#
+public static void RegisterSuffixed(this IComponentRegistry registry, string assemblyName, IEnumerable<string> suffixes)
+```
+
+Register all types in the given assembly that end in the given `suffixes` against a dependency type matching the type name with an `I` prefix, e.g. `CustomerRepository` will be registered against `ICustomerRepository`.
+
+```c#
+public static void RegisterSuffixed(this IComponentRegistry registry, Assembly assembly)
+```
+
+Register all types in the given assembly that end in the `DefaultSuffixes` against a dependency type matching the type name with an `I` prefix, e.g. `CustomerRepository` will be registered against `ICustomerRepository`.
+
+```c#
+public static void RegisterSuffixed(this IComponentRegistry registry, Assembly assembly, IEnumerable<string> suffixes)
+```
+
+Register all types in the given assembly that end in the given `suffixes` against a dependency type matching the type name with an `I` prefix, e.g. `CustomerRepository` will be registered against `ICustomerRepository`.
+
+```c#
+public static void Register(this IComponentRegistry registry, Assembly assembly, Func<Type, bool> shouldRegister, Func<Type, Type> getDependencyType, Func<Type, Lifestyle> getLifestyle)
+```
+
+Registers all the types in the given assembly that satisfies the `shouldRegister` function against the type returned from the `getDependencyType` function.
+
 ## IComponentResolver
 
 ### Resolve
@@ -65,6 +201,35 @@ IEnumerable<object> ResolveAll(Type dependencyType);
 ```
 
 All instances of the requested dependency type will be resolved.  
+
+#### Extensions
+
+There are a couple of extension methods available to facilitate the resolving of dependencies:
+
+```c#
+public static T Resolve<T>(this IComponentResolver resolver)
+```
+
+Resolves the requested service type.  If the service type cannot be resolved an exception is thrown.
+
+```c#
+public static T AttemptResolve<T>(this IComponentResolver resolver)
+public static object AttemptResolve(this IComponentResolver resolver, Type dependencyType)
+```
+
+Attempts to resolve the requested service type.  If the service type cannot be resolved null is returned.
+
+```c#
+public static IEnumerable<object> Resolve(this IComponentResolver resolver, IEnumerable<Type> dependencyTypes)
+```
+
+Resolves all the given types.  These may be types that will not necessarily be injected into another class but that may require other instances from the resolver.
+
+```c#
+public static IEnumerable<T> ResolveAll<T>(this IComponentResolver resolver)
+```
+
+Resolves all registered instances of the requested service type.
 
 <a name="Bootstrapping"></a>
 
