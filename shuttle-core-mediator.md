@@ -28,13 +28,18 @@ void Send(object message, CancellationToken cancellationToken = default);
 
 The `Send` method will find all participants that implements the `IParticipant<T>` with the type `T` of the message type that you are sending.  Participants that are marked with the `BeforeObserverAttribute` filter will be executed first followed by all participants with no filters attributes and then finally all participants marked with the `AfterObserverAttribute` filter will be called.
 
-There is also an extension method on the `IMediator` interface for sending messages asynchronously:
+#### Extensions
 
 ```c#
 Task SendAsync(this IMediator mediator, object message, CancellationToken cancellationToken = default)
 ```
+Sends a message asynchronously.
 
-#### Extensions
+```c#
+public static T Send<T>(this IMediator mediator, T message, CancellationToken cancellationToken)
+```
+
+The same as `Send` except that it returns the given message.
 
 ```c#
 public static void RegisterMediatorParticipants(this IComponentRegistry registry, string assemblyName)
@@ -47,7 +52,7 @@ Registers all types that implement the `IParticipant<T>` interface against the o
 public static void AddMediatorParticipants(this IComponentResolver resolver)
 ```
 
-Adds any participant instances registered against the open generic `IParticipant`.
+Adds any participant instances registered against the open generic `IParticipant` to the registered `IMediator` instance.
 
 ## IParticipant
 
