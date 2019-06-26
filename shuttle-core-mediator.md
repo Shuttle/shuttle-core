@@ -36,7 +36,7 @@ Task SendAsync(this IMediator mediator, object message, CancellationToken cancel
 Sends a message asynchronously.
 
 ```c#
-public static T Send<T>(this IMediator mediator, T message, CancellationToken cancellationToken)
+public static T Send<T>(this IMediator mediator, T message, CancellationToken cancellationToken = default)
 ```
 
 The same as `Send` except that it returns the given message.
