@@ -17,7 +17,8 @@ A typical implementation would be as follows:
 ``` c#
 using System;
 using System.Threading;
-using Shuttle.Core.ServiceHost;
+using System.Threading.Tasks;
+using Shuttle.Core.Threading;
 
 namespace Shuttle.Core.ServiceHost.Server
 {
@@ -25,40 +26,34 @@ namespace Shuttle.Core.ServiceHost.Server
     {
         private static void Main()
         {
-            ServiceHost.Run<TestHost>();
+            ServiceHost.Run<Host>();
         }
 
-        public class TestHost : IServiceHost, IThreadState
+        public class Host : IServiceHost
         {
-            private readonly Thread _thread;
-            private volatile bool _active;
-
-            public TestHost()
-            {
-                _thread = new Thread(Worker);
-            }
+            private Task _task;
+            private CancellationTokenSource _cancellationTokenSource;
+            private CancellationToken _cancellationToken;
 
             public void Start()
             {
-                _active = true;
-                _thread.Start();
+                _cancellationTokenSource = new CancellationTokenSource();
+                _cancellationToken = _cancellationTokenSource.Token;
+
+                _task = Task.Run(() =>
+                {
+                    while (!_cancellationToken.IsCancellationRequested)
+                    {
+                        Console.WriteLine($"[working] : {DateTime.Now:O}");
+                        ThreadSleep.While(1000, _cancellationToken);
+                    }
+                }, _cancellationToken);
             }
 
             public void Stop()
             {
-                _active = false;
-                _thread.Join(5000);
-            }
-
-            public bool Active => _active;
-
-            private void Worker()
-            {
-                while (_active)
-                {
-                    Console.WriteLine($"[working] : {DateTime.Now:O}");
-                    ThreadSleep.While(1000, this);
-                }
+                _cancellationTokenSource.Cancel();
+                _task.Wait();
             }
         }
     }
