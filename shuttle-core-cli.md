@@ -31,7 +31,7 @@ The following are valid arguments:
 
 The argument name and value may be *quoted* with either a single quote (`'`) or double quote (`"`).
 
-An `Arguments` instances may be constructed from the `Environment.GetCommandLineArgs()` values using the `Arguments.FromCommandLine()` static factory method.
+An `Arguments` instance may be constructed from the `Environment.GetCommandLineArgs()` values using the `Arguments.FromCommandLine()` static factory method.
 
 ### Checking for values
 
