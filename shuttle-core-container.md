@@ -157,28 +157,25 @@ public static IComponentRegistry AttemptRegisterGeneric(this IComponentRegistry 
 Registers an open generic for the given dependency type if the dependency has not yet been registered; else does nothing.
 
 ```c#
-public static void RegisterSuffixed(this IComponentRegistry registry, string assemblyName)
-```
-
- Register all types in the given assembly that end in the `DefaultSuffixes` against a dependency type matching the type name with an `I` prefix, e.g. `CustomerRepository` will be registered against `ICustomerRepository`.
-
-```c#
-public static void RegisterSuffixed(this IComponentRegistry registry, string assemblyName, IEnumerable<string> suffixes)
-```
-
-Register all types in the given assembly that end in the given `suffixes` against a dependency type matching the type name with an `I` prefix, e.g. `CustomerRepository` will be registered against `ICustomerRepository`.
-
-```c#
-public static void RegisterSuffixed(this IComponentRegistry registry, Assembly assembly)
+public static void RegisterSuffixed(this IComponentRegistry registry, string assemblyName, Lifestyle lifestyle = Lifestyle.Singleton)
+public static void RegisterSuffixed(this IComponentRegistry registry, Assembly assembly, Lifestyle lifestyle = Lifestyle.Singleton)
 ```
 
 Register all types in the given assembly that end in the `DefaultSuffixes` against a dependency type matching the type name with an `I` prefix, e.g. `CustomerRepository` will be registered against `ICustomerRepository`.
 
 ```c#
-public static void RegisterSuffixed(this IComponentRegistry registry, Assembly assembly, IEnumerable<string> suffixes)
+public static void RegisterSuffixed(this IComponentRegistry registry, string assemblyName, IEnumerable<string> suffixes, Lifestyle lifestyle = Lifestyle.Singleton)
+public static void RegisterSuffixed(this IComponentRegistry registry, Assembly assembly, IEnumerable<string> suffixes, Lifestyle lifestyle = Lifestyle.Singleton)
 ```
 
 Register all types in the given assembly that end in the given `suffixes` against a dependency type matching the type name with an `I` prefix, e.g. `CustomerRepository` will be registered against `ICustomerRepository`.
+
+``` c#
+public static void RegisterAll(this IComponentRegistry registry, string assemblyName, Lifestyle lifestyle = Lifestyle.Singleton)
+public static void RegisterAll(this IComponentRegistry registry, Assembly assembly, Lifestyle lifestyle = Lifestyle.Singleton)
+```
+
+Register all interfaces in the given assembly that have a single implementation as a regular dependency.  All interfaces that have more than 1 implementation are registered as collections.
 
 ```c#
 public static void Register(this IComponentRegistry registry, Assembly assembly, Func<Type, bool> shouldRegister, Func<Type, Type> getDependencyType, Func<Type, Lifestyle> getLifestyle)
