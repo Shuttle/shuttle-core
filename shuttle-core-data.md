@@ -43,6 +43,18 @@ using (var context = factory.Create(existingIDbConnection))
 }
 ```
 
+# DbCommandFactory
+
+By default the `CommandTimeout` is set to `15` seconds by the `DbCommandFactory` implementation of the `IDbCommandFactory` interface.  In order to change this timeout you can set it in the `<appSettings>` using a key `Shuttle.Core.Data.DbCommandFactory.CommandTimeout` as follows:
+
+``` xml
+<appSettings>
+    <add key="Shuttle.Core.Data.DbCommandFactory.CommandTimeout" value="600"/>
+</appSettings>
+```
+
+The `CommandTimeout` will now be `600` seconds (10 minutes).
+
 # IConfiguredDatabaseContextFactory
 
 You can pre-configure your database context factory using this interface.  If you typically connect to only one data source this may be helpful:
