@@ -121,6 +121,9 @@ The following command-line arguments are available and can be viewed by running 
 [/startMode]            
     - specifies that the service start mode (Boot, System, Automatic, Manual, Disabled)
         
+[/delayedAutoStart]
+	- if specified will delay services with a start mode of 'Automatic'
+
 [/username /password]
     - username and password of the account to use for the service
 - or -
