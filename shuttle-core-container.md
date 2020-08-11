@@ -30,6 +30,17 @@ When registering a dependency type with an implementation type you can specify o
 - Singleton: only a single instance is created and that instance is returned for any call to `Resolve` the service type.
 - Transient: a new instance of the implementation type is returned for each call to `Resolve` the service type.
 
+### Registering all dependency implementations
+
+``` c#
+public static void RegisterAll(this IComponentRegistry registry, string assemblyName, Lifestyle lifestyle = Lifestyle.Singleton)
+public static void RegisterAll(this IComponentRegistry registry, Assembly assembly, Lifestyle lifestyle = Lifestyle.Singleton)
+```
+
+Register all interfaces in the given assembly, that have not yet been registered, that have a single implementation as a regular dependency.  All interfaces that have more than 1 implementation are registered as collections.
+
+This method differes from the usual convention in that there is no `AttemptRegisterAll` method.
+
 ### Register
 
 ``` c#
@@ -169,13 +180,6 @@ public static void RegisterSuffixed(this IComponentRegistry registry, Assembly a
 ```
 
 Register all types in the given assembly that end in the given `suffixes` against a dependency type matching the type name with an `I` prefix, e.g. `CustomerRepository` will be registered against `ICustomerRepository`.
-
-``` c#
-public static void RegisterAll(this IComponentRegistry registry, string assemblyName, Lifestyle lifestyle = Lifestyle.Singleton)
-public static void RegisterAll(this IComponentRegistry registry, Assembly assembly, Lifestyle lifestyle = Lifestyle.Singleton)
-```
-
-Register all interfaces in the given assembly that have a single implementation as a regular dependency.  All interfaces that have more than 1 implementation are registered as collections.
 
 ```c#
 public static void Register(this IComponentRegistry registry, Assembly assembly, Func<Type, bool> shouldRegister, Func<Type, Type> getDependencyType, Func<Type, Lifestyle> getLifestyle)
