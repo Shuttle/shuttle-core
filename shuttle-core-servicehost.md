@@ -126,7 +126,7 @@ The following command-line arguments are available and can be viewed by running 
 
 [/username /password]
     - username and password of the account to use for the service
-	
+
 - or -
     
 [/uninstall [/serviceName] [/instance]]    
