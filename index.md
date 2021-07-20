@@ -13,11 +13,11 @@ tagline: cross-cutting assemblies that facilitate the development of .net softwa
 <br/>
 <div class="alert alert-success" role="alert">
     Packages currently target <code class="language-plaintext">netstandard2.0</code> and <code class="language-plaintext">netstandard2.1</code> which means that the libraries can be used with the following runtimes:
-	<ul>
-	<li>.NET Core 2.1+</li>
-	<li>.NET Framework 4.6.1+</li>
-	<li>.NET 5.0</li>
-	</ul>
+    <ul>
+        <li>.NET Core 2.1+</li>
+        <li>.NET Framework 4.6.1+</li>
+        <li>.NET 5.0</li>
+    </ul>
 </div>
 
 {% capture include-index %}{% include index.md %}{% endcapture %}
