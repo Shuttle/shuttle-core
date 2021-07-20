@@ -2,7 +2,7 @@
 title: Shuttle.Core.TimeSpanTypeConverters
 layout: api
 ---
-# Shuttle.Core.TimeSpanTypeConverters
+# TimeSpanTypeConverters
 
 ```
 PM> Install-Package Shuttle.Core.TimeSpanTypeConverters

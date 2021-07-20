@@ -1,6 +1,5 @@
 exclude: [.idea,node_modules,bundle.js,package.json,package-lock.json]
 
-highlighter: Rouge
 github: https://github.com/Shuttle/shuttle-core
 name: shuttle-core
 title: Shuttle.Core
