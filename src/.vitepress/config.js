@@ -223,9 +223,10 @@ module.exports = (async () => {
             }
         },
 
+        base: '/shuttle-core/',
         lang: 'en-US',
-        title: 'Shuttle',
-        description: 'Shuttle - Stuff',
+        title: 'Shuttle.Core Documentation',
+        description: 'Shuttle.Core Documentation',
 
         themeConfig: {
             algolia: {
