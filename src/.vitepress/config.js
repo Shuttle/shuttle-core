@@ -132,8 +132,8 @@ const data = [
         text: 'Implementations',
         items: [
             {
-                text: 'SqlClient',
-                link: '/data/shuttle-core-data-sqlclient'
+                text: 'Http',
+                link: '/data/shuttle-core-data-http'
             },
         ]
     }

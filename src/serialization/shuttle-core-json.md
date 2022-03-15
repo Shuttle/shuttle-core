@@ -1,7 +1,3 @@
----
-title: Shuttle.Core.Json
-layout: api
----
 # Shuttle.Core.Json
 
 ```
