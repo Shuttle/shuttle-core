@@ -225,8 +225,13 @@ module.exports = (async () => {
 
         base: '/shuttle-core/',
         lang: 'en-US',
-        title: 'Shuttle.Core Documentation',
-        description: 'Shuttle.Core Documentation',
+        title: 'Documentation',
+        description: 'Shuttle-Core Documentation',
+
+        head: [
+            ...base.head,
+            ['link', { rel: "shortcut icon", href: "/shuttle-core/favicon.ico" }]
+        ],
 
         themeConfig: {
             algolia: {
@@ -241,7 +246,7 @@ module.exports = (async () => {
             // },
 
             socialLinks: [
-                { icon: 'github', link: 'https://github.com/shuttle-npm/vitepress-theme' },
+                { icon: 'github', link: 'https://github.com/Shuttle/shuttle-core' },
                 // { icon: 'twitter', link: '' },
                 // { icon: 'discord', link: '' }
             ],

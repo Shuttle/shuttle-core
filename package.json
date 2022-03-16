@@ -28,7 +28,7 @@
     "dependencies": {
         "@vueuse/core": "^8.0.1",
         "normalize.css": "^8.0.1",
-        "shuttle-theme": "^1.0.3",
+        "shuttle-theme": "^1.0.6",
         "vitepress": "^0.22.3"
     }
 }
