@@ -225,7 +225,7 @@ module.exports = (async () => {
 
         base: '/shuttle-core/',
         lang: 'en-US',
-        title: 'Documentation',
+        title: 'Shuttle.Core',
         description: 'Shuttle-Core Documentation',
 
         head: [
