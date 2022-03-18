@@ -251,6 +251,10 @@ module.exports = (async () => {
                 // { icon: 'discord', link: '' }
             ],
 
+            footer: {
+                copyright: `Copyright © 2013-${new Date().getFullYear()} Eben Roux`
+            },
+            
             nav: [
                 {
                     text: 'Infrastructure',

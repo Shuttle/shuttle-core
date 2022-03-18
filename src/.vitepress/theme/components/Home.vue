@@ -28,6 +28,14 @@ import { VTIconShuttle } from 'shuttle-theme';
 </template>
 
 <style scoped>
+a {
+    color: var(--vt-c-orange-dark);
+}
+
+a:hover {
+    color: var(--vt-c-orange);
+}
+
 .logo {
     height: 15em;
     width: 15em;
@@ -38,7 +46,7 @@ section {
 }
 
 #hero {
-  padding: 96px 32px;
+  padding: 32px 32px;
   text-align: center;
 }
 
