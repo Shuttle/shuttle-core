@@ -22,7 +22,7 @@ import { VTIconShuttle } from 'shuttle-theme';
     </div>
     <div class="vt-box">
       <h2>Open Source</h2>
-      <div>These packages are free open source software licensed under the <a href='https://opensource.org/licenses/BSD-3-Clause'>3-Clause BSD License</a>.</div>
+      <div>These packages are free open source software licensed under the <a href='https://opensource.org/licenses/BSD-3-Clause'>3-Clause BSD License</a>.  Pull requests are welcome.</div>
     </div>
   </section>
 </template>

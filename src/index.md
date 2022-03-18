@@ -1,6 +1,6 @@
 ---
 page: true
-title: Shuttle.Core
+title: Home
 ---
 <script setup>
 import Home from '/@theme/components/Home.vue'
