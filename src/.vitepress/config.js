@@ -234,11 +234,11 @@ module.exports = (async () => {
         ],
 
         themeConfig: {
-            // algolia: {
-            //     indexName: 'Shuttle.Core Documentation',
-            //     appId: '42GX712C20',
-            //     apiKey: 'cc059819a5d38ee7a55298f7cf9ed70a'
-            // },
+            algolia: {
+                indexName: 'shuttle',
+                appId: '8AVNJSMBZI',
+                apiKey: 'a17fbccfc1eca711e2ec7712bfcec46f'
+            },
 
             // carbonAds: {
             //     code: '',
