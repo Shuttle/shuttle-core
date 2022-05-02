@@ -71,23 +71,9 @@ You can register the mediator using `ComponentRegistryExtensions.RegisterMediato
 The participants may be registered using the following `ComponentRegistryExtensions` methods:
 
 ```c#
-public static void RegisterMediatorParticipants(this IComponentRegistry registry, string assemblyName);
-
 public static void RegisterMediatorParticipants(this IComponentRegistry registry, Assembly assembly);
 ```
 
-Then the participants have to be added to the `IMediator` implementation, which may be done using the following `ComponentResolverExtensions` method:
-
-Registers all types that implement the `IParticipant<T>` interface against the open generic type `IParticipant<>`.
-
-```c#
-public static void AddMediatorParticipants(this IComponentResolver resolver)
-```
-
-Adds any participant instances registered against the open generic `IParticipant` to the registered `IMediator` instance.
-
 ## Considerations
-
-The mediator may be as broad or narrow as is applicable.  You could create a new mediator and add only the relevant participants to solve a particular use-case or you could have a central mediator registered in your dependency injection container of choice to provide decoupling across your system.
 
 If you have a rather predictable sequential workflow and you require something faster execution then you may wish to consider the [Shuttle.Core.Pipelines](http://shuttle.github.io/shuttle-core/shuttle-core-pipelines) package.  A performance testing application for your use-case would be able to indicate the more suitable option.
