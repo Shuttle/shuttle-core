@@ -101,6 +101,59 @@ We can now execute this pipeline with predictable results.
 
 Pipelines afford us the ability to better decouple functionality.  This means that we could re-use the same observer in multiple pipelines enabling us to compose functionality at a more granular level.
 
+## Extending Pipelines
+
+Pipelines are usually instantiated using an implementation of the `IPipelineFactory` interface which would also provide you with the following event handlers:
+
+```c#
+event EventHandler<PipelineEventArgs> PipelineCreated;
+event EventHandler<PipelineEventArgs> PipelineObtained;
+event EventHandler<PipelineEventArgs> PipelineReleased;
+```
+
+We would make any alterations to a pipeline, such as adding an observer, when a `PipelineCreated` event is raised.  An example of how one may go about doing is is available in the [Shuttle.Esb.Module.ActiveTimeRange](https://github.com/Shuttle/Shuttle.Esb.Module.ActiveTimeRange) repository:
+
+```c#
+using System;
+using Shuttle.Core.Contract;
+using Shuttle.Core.Pipelines;
+
+namespace Shuttle.Esb.Module.ActiveTimeRange
+{
+    public class ActiveTimeRangeModule
+    {
+        private readonly ActiveTimeRange _activeTimeRange;
+        private readonly string _shutdownPipelineName = typeof(ShutdownPipeline).FullName;
+        private readonly string _startupPipelineName = typeof(StartupPipeline).FullName;
+
+        public ActiveTimeRangeModule(IPipelineFactory pipelineFactory,
+            IActiveTimeRangeConfiguration activeTimeRangeConfiguration)
+        {
+            Guard.AgainstNull(pipelineFactory, nameof(pipelineFactory));
+            Guard.AgainstNull(activeTimeRangeConfiguration, nameof(activeTimeRangeConfiguration));
+
+            _activeTimeRange = activeTimeRangeConfiguration.CreateActiveTimeRange();
+
+            pipelineFactory.PipelineCreated += PipelineCreated;
+        }
+
+        private void PipelineCreated(object sender, PipelineEventArgs e)
+        {
+            var pipelineName = e.Pipeline.GetType().FullName ?? string.Empty;
+
+            if (pipelineName.Equals(_startupPipelineName, StringComparison.InvariantCultureIgnoreCase)
+                ||
+                pipelineName.Equals(_shutdownPipelineName, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return;
+            }
+
+            e.Pipeline.RegisterObserver(new ActiveTimeRangeObserver(_activeTimeRange));
+        }
+    }
+}
+```
+
 ## Transactions
 
 The following provides a pipeline observer to handle transaction scopes.
