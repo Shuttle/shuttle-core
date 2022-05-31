@@ -20,14 +20,14 @@ const _hoisted_2 = /* @__PURE__ */ createBaseVNode("iframe", {
   allow: "autoplay; encrypted-media",
   allowfullscreen: ""
 }, null, -1);
-const _hoisted_3 = /* @__PURE__ */ createStaticVNode("", 94);
-const _hoisted_97 = [
+const _hoisted_3 = /* @__PURE__ */ createStaticVNode("", 95);
+const _hoisted_98 = [
   _hoisted_1,
   _hoisted_2,
   _hoisted_3
 ];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", null, _hoisted_97);
+  return openBlock(), createElementBlock("div", null, _hoisted_98);
 }
 var shuttleCoreData = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 export { __pageData, shuttleCoreData as default };
