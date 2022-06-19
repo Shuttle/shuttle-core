@@ -43,6 +43,8 @@ using (var context = factory.Create(existingIDbConnection))
 }
 ```
 
+There is an extension method `IDatabaseContextFactory.IsAvailable()` that maybe used to determine if the application is able to connect to the database.
+
 ## DbCommandFactory
 
 By default the `CommandTimeout` is set to `15` seconds by the `DbCommandFactory` implementation of the `IDbCommandFactory` interface.  In order to change this timeout you can set it in the `<appSettings>` using a key `Shuttle.Core.Data.DbCommandFactory.CommandTimeout` as follows:
