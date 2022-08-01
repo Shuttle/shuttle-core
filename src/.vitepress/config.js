@@ -73,47 +73,6 @@ const infrastructure = [
     }
 ];
 
-const container = [
-    {
-        text: 'Overview',
-        items: [
-            {
-                text: 'Shuttle.Core.Container',
-                link: '/container/shuttle-core-container'
-            },
-        ]
-    },
-    {
-        text: 'Implementations',
-        items: [
-            {
-                text: 'Autofac',
-                link: '/container/shuttle-core-autofac'
-            },
-            {
-                text: 'Castle',
-                link: '/container/shuttle-core-castle'
-            },
-            {
-                text: 'Ninject',
-                link: '/container/shuttle-core-ninject'
-            },
-            {
-                text: 'SimpleInjector',
-                link: '/container/shuttle-core-simpleinjector'
-            },
-            {
-                text: 'StructureMap',
-                link: '/container/shuttle-core-structuremap'
-            },
-            {
-                text: 'Unity',
-                link: '/container/shuttle-core-unity'
-            },
-        ]
-    }
-];
-
 const data = [
     {
         text: 'Data',
@@ -139,31 +98,6 @@ const data = [
     }
 ]
 
-const logging = [
-    {
-        text: 'Logging',
-        items: [
-            {
-                text: 'Shuttle.Core.Logging',
-                link: '/logging/shuttle-core-logging'
-            },
-        ]
-    },
-    {
-        text: 'Implementations',
-        items: [
-            {
-                text: 'Log4Net',
-                link: '/logging/shuttle-core-log4net'
-            },
-            {
-                text: 'Microsoft Extensions Logging',
-                link: '/logging/shuttle-core-microsoft'
-            },
-        ]
-    }
-]
-
 const serialization = [
     {
         text: 'Serialization',
@@ -183,26 +117,6 @@ const serialization = [
             },
         ]
     }
-]
-
-const serviceHosting = [
-    {
-        text: 'Service Hosting',
-        items: [
-            {
-                text: 'Worker Service',
-                link: '/service-hosting/shuttle-core-workerservice'
-            },
-            {
-                text: 'Service Host (Obsolete)',
-                link: '/service-hosting/shuttle-core-servicehost'
-            },
-            {
-                text: 'Host (Obsolete)',
-                link: '/service-hosting/shuttle-core-host'
-            },
-        ]
-    },
 ]
 
 module.exports = (async () => {
@@ -262,39 +176,21 @@ module.exports = (async () => {
                     link: '/infrastructure/index'
                 },
                 {
-                    text: 'Container',
-                    activeMatch: `^/container/`,
-                    link: '/container/shuttle-core-container'
-                },
-                {
                     text: 'Data',
                     activeMatch: `^/data/`,
                     link: '/data/shuttle-core-data'
-                },
-                {
-                    text: 'Logging',
-                    activeMatch: `^/logging/`,
-                    link: '/logging/shuttle-core-logging'
                 },
                 {
                     text: 'Serialization',
                     activeMatch: `^/serialization/`,
                     link: '/serialization/shuttle-core-serialization'
                 },
-                {
-                    text: 'Service Hosting',
-                    activeMatch: `^/service-hosting/`,
-                    link: '/service-hosting/shuttle-core-workerservice'
-                },
             ],
 
             sidebar: {
                 '/infrastructure/': infrastructure,
-                '/container/': container,
                 '/data/': data,
-                '/logging/': logging,
                 '/serialization/': serialization,
-                '/service-hosting/': serviceHosting,
             }
         },
     };
