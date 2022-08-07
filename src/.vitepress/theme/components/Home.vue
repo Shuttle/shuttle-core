@@ -5,7 +5,7 @@ import { VTIconDiscord } from 'shuttle-theme';
 <template>
     <section id="hero">
         <p class="upgrade-notice">
-            The latest version of the Shuttle.Core components now make use of <a href="https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection">.NET dependency injection</a> as well as the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-6.0">options pattern</a>.  This is a major departure from the component container adapter pattern used to date.  This, along with the resulting configuration changes, represent a <strong>breaking change</strong>.
+            The latest version of the Shuttle.Core components now make use of <a href="https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection" target="_blank">.NET dependency injection</a> as well as the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-6.0" target="_blank">options pattern</a>.  This is a major departure from the component container adapter pattern used to date.  Please take a look at the <a href="/shuttle-core/upgrade-ms-di.html">upgrade guide</a> to see the <strong>breaking changes</strong>.
         </p>
         <VTIconShuttle class="logo" />
         <p class="description">

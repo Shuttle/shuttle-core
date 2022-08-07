@@ -1,7 +1,3 @@
----
-title: Shuttle.Core.System
-layout: api
----
 # Shuttle.Core.System
 
 ```
@@ -14,7 +10,7 @@ OS and system level abstractions.
 
 The default implement is `EnvironmentService`.
 
-```c#
+``` c#
 bool UserInteractive { get; }
 ```
 
@@ -24,7 +20,7 @@ Return `true` if running as a console application; else `false`.
 
  The default implementation is `ProcessService`.
 
- ```c#
+ ``` c#
  IProcess GetCurrentProcess();
  ```
 
@@ -34,7 +30,7 @@ Return `true` if running as a console application; else `false`.
 
 Represents a system process and the default implementation is `SystemProcess`.
 
-```c#
+``` c#
 void Kill();
 ```
 

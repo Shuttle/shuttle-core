@@ -14,16 +14,16 @@ const infrastructure = [
                 link: '/infrastructure/shuttle-core-compression'
             },
             {
-                text: 'Configuration',
-                link: '/infrastructure/shuttle-core-configuration'
-            },
-            {
                 text: 'Contract',
                 link: '/infrastructure/shuttle-core-contract'
             },
             {
                 text: 'Cron',
                 link: '/infrastructure/shuttle-core-cron'
+            },
+            {
+                text: 'Dependency Injection',
+                link: '/infrastructure/shuttle-core-dependencyinjection'
             },
             {
                 text: 'Encryption',
@@ -58,16 +58,8 @@ const infrastructure = [
                 link: '/infrastructure/shuttle-core-threading'
             },
             {
-                text: 'TimeSpanTypeConverters',
-                link: '/infrastructure/shuttle-core-timespantypeconverters'
-            },
-            {
                 text: 'Transactions',
                 link: '/infrastructure/shuttle-core-transactions'
-            },
-            {
-                text: 'Uris',
-                link: '/infrastructure/shuttle-core-uris'
             },
         ]
     }
@@ -80,10 +72,6 @@ const data = [
             {
                 text: 'Shuttle.Core.Data',
                 link: '/data/shuttle-core-data'
-            },
-            {
-                text: 'Dependency Injection',
-                link: '/data/shuttle-core-data-di'
             },
         ]
     },
@@ -103,7 +91,7 @@ const serialization = [
         text: 'Serialization',
         items: [
             {
-                text: 'Shuttle.Core.Data',
+                text: 'Shuttle.Core.Serialization',
                 link: '/serialization/shuttle-core-serialization'
             },
         ]
@@ -112,7 +100,7 @@ const serialization = [
         text: 'Implementations',
         items: [
             {
-                text: 'Newtonsoft.Json',
+                text: 'Json',
                 link: '/serialization/shuttle-core-json'
             },
         ]
@@ -184,6 +172,11 @@ module.exports = (async () => {
                     text: 'Serialization',
                     activeMatch: `^/serialization/`,
                     link: '/serialization/shuttle-core-serialization'
+                },
+                {
+                    text: 'Hosting',
+                    activeMatch: `^/core/`,
+                    link: '/core/hosting'
                 },
             ],
 
