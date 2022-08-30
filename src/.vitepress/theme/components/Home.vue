@@ -1,24 +1,11 @@
-<script setup>
-import { VTIconShuttle } from 'shuttle-theme';
-import { VTIconDiscord } from 'shuttle-theme';
-</script>
 <template>
     <section id="hero">
         <p class="upgrade-notice">
             The latest version of the Shuttle.Core components now make use of <a href="https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection" target="_blank">.NET dependency injection</a> as well as the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-6.0" target="_blank">options pattern</a>.  This is a major departure from the component container adapter pattern used to date.  Please take a look at the <a href="/shuttle-core/upgrade-ms-di.html">upgrade guide</a> to see the <strong>breaking changes</strong>.
         </p>
-        <VTIconShuttle class="logo" />
         <p class="description">
             Cross-cutting packages that are used to facilitate the development of .Net software.
         </p>
-        <p>
-            <a href="https://discord.gg/57ptMQrpwT" target="_blank">
-                <div class="discord-link">
-                    <VTIconDiscord class="discord-logo" />Join our Discord channel
-                </div>
-            </a>
-        </p>
-
     </section>
 
     <section id="highlights" class="vt-box-container">
@@ -46,9 +33,10 @@ import { VTIconDiscord } from 'shuttle-theme';
     max-width: 960px;
     margin: 0px auto;
     color: var(--vt-c-text-2);
-    font-size: .75rem;
+    font-size: .9rem;
     border: solid 1px var(--vt-c-divider-dark-1);
     margin-bottom: 2em;
+    background-color: var(--vt-c-bg-soft);
 }
 
 .discord-link {

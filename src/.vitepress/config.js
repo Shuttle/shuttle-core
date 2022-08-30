@@ -149,8 +149,8 @@ module.exports = (async () => {
 
             socialLinks: [
                 { icon: 'github', link: 'https://github.com/Shuttle/shuttle-core' },
+                { icon: 'discord', link: 'https://discord.gg/57ptMQrpwT' }
                 // { icon: 'twitter', link: '' },
-                // { icon: 'discord', link: '' }
             ],
 
             footer: {
@@ -161,7 +161,7 @@ module.exports = (async () => {
                 {
                     text: 'Infrastructure',
                     activeMatch: `^/infrastructure/`,
-                    link: '/infrastructure/index'
+                    link: '/infrastructure/shuttle-core-cli'
                 },
                 {
                     text: 'Data',

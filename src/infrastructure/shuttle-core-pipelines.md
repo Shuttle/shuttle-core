@@ -6,6 +6,21 @@ PM> Install-Package Shuttle.Core.Pipelines
 
 Observable event-based pipelines based broadly on pipes and filters.
 
+A `Pipeline` is a variation of the pipes and filters pattern and consists of 1 or more stages that each contain one or more events.  When the pipeline is executed each event in each stage is raised in the order that they were registered.  One or more observers should be registered to handle the relevant event(s).
+
+Each `Pipeline` always has its own state that is simply a name/value pair with some convenience methods to get and set/replace values.  The `State` class will use the full type name of the object as a key should none be specified:
+
+``` c#
+var state = new State();
+var list = new List<string> {"item-1"};
+
+state.Add(list); // key = System.Collections.Generic.List`1[[System.String...]]
+state.Add("my-key", "my-key-value");
+
+Console.WriteLine(state.Get<List<string>>()[0]);
+Console.Write(state.Get<string>("my-key"));
+```
+
 ## Configuration
 
 In order to more easily make use of pipelines an implementation of the `IPipelineFactory` should be used.  The following will register the `PipelineFactory` implementation:
@@ -17,6 +32,8 @@ services.AddPipelineProcessing(builder => {
 ```
 
 This will register the `IPipelineFactory` and, using the builder, add all `IPipeline` and `IPipelineObserver` implementations as `Transient`.  The pipeline instances are re-used as they are kept in a pool.
+
+## Modules
 
 Since pipelines are quite frequently extended by adding observers a *module* may be added that adds the relevant observers to a pipeline on creation:
 
@@ -57,23 +74,6 @@ The above module could be added to the `IServiceCollection` as follows:
 
 ```c#
 services.AddPipelineModule<SomeModule>();
-```
-
-## Overview
-
-A `Pipeline` is a variation of the pipes and filters pattern and consists of 1 or more stages that each contain one or more events.  When the pipeline is executed each event in each stage is raised in the order that they were registered.  One or more observers should be registered to handle the relevant event(s).
-
-Each `Pipeline` always has its own state that is simply a name/value pair with some convenience methods to get and set/replace values.  The `State` class will use the full type name of the object as a key should none be specified:
-
-``` c#
-var state = new State();
-var list = new List<string> {"item-1"};
-
-state.Add(list); // key = System.Collections.Generic.List`1[[System.String...]]
-state.Add("my-key", "my-key-value");
-
-Console.WriteLine(state.Get<List<string>>()[0]);
-Console.Write(state.Get<string>("my-key"));
 ```
 
 ## Example
