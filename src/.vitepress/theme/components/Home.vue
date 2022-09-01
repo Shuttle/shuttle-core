@@ -3,6 +3,7 @@
         <p class="upgrade-notice">
             The latest version of the Shuttle.Core components now make use of <a href="https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection" target="_blank">.NET dependency injection</a> as well as the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-6.0" target="_blank">options pattern</a>.  This is a major departure from the component container adapter pattern used to date.  Please take a look at the <a href="/shuttle-core/upgrade-ms-di.html">upgrade guide</a> to see the <strong>breaking changes</strong>.
         </p>
+        <h1 class="tagline">Useful .Net stuff</h1>
         <p class="description">
             Cross-cutting packages that are used to facilitate the development of .Net software.
         </p>
@@ -39,35 +40,6 @@
     background-color: var(--vt-c-bg-soft);
 }
 
-.discord-link {
-    margin: auto;
-    background-color: rgb(88, 101, 242);
-    color: #fff;
-    width: fit-content;
-    padding: 0.75em;
-    margin-top: 1em;
-    border-radius: 8px;
-    transition: background-color 0.5s;
-}
-
-.discord-link:hover {
-    background-color: rgb(47, 55, 143);
-    transition: background-color 0.5s;
-}
-
-.discord-link:active {
-    background-color: rgb(31, 39, 119);
-    transition: background-color 0.2s;
-}
-
-.discord-logo {
-    height: 2em;
-    width: 2em;
-    fill: #fff;
-    display: inline;
-    margin-right: 1em;
-}
-
 a {
     color: var(--vt-c-orange-dark);
 }
@@ -102,7 +74,9 @@ section {
 
 html:not(.dark) .accent,
 .dark .tagline {
-    background: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
+    background: -webkit-linear-gradient(315deg,
+            hsl(31, 75%, 52%) 25%,
+            hsl(45, 69%, 44%));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
