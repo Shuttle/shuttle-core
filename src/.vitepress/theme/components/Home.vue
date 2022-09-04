@@ -1,23 +1,12 @@
-<script setup>
-import { VTIconShuttle } from 'shuttle-theme';
-import { VTIconDiscord } from 'shuttle-theme';
-</script>
 <template>
     <section id="hero">
-        <VTIconShuttle class="logo" />
-        <h1 class="tagline">
-        </h1>
+        <p class="upgrade-notice">
+            The latest version of the Shuttle.Core components now make use of <a href="https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection" target="_blank">.NET dependency injection</a> as well as the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-6.0" target="_blank">options pattern</a>.  This is a major departure from the component container adapter pattern used to date.  Please take a look at the <a href="/shuttle-core/upgrade-ms-di.html">upgrade guide</a> to see the <strong>breaking changes</strong>.
+        </p>
+        <h1 class="tagline">Useful .Net stuff</h1>
         <p class="description">
             Cross-cutting packages that are used to facilitate the development of .Net software.
         </p>
-        <p>
-            <a href="https://discord.gg/57ptMQrpwT" target="_blank">
-                <div class="discord-link">
-                    <VTIconDiscord class="discord-logo" />Join our Discord channel
-                </div>
-            </a>
-        </p>
-
     </section>
 
     <section id="highlights" class="vt-box-container">
@@ -40,33 +29,15 @@ import { VTIconDiscord } from 'shuttle-theme';
 </template>
 
 <style scoped>
-.discord-link {
-    margin: auto;
-    background-color: rgb(88, 101, 242);
-    color: #fff;
-    width: fit-content;
-    padding: 0.75em;
-    margin-top: 1em;
+.upgrade-notice {
     border-radius: 8px;
-    transition: background-color 0.5s;
-}
-
-.discord-link:hover {
-    background-color: rgb(47, 55, 143);
-    transition: background-color 0.5s;
-}
-
-.discord-link:active {
-    background-color: rgb(31, 39, 119);
-    transition: background-color 0.2s;
-}
-
-.discord-logo {
-    height: 2em;
-    width: 2em;
-    fill: #fff;
-    display: inline;
-    margin-right: 1em;
+    max-width: 960px;
+    margin: 0px auto;
+    color: var(--vt-c-text-2);
+    font-size: .9rem;
+    border: solid 1px var(--vt-c-divider-dark-1);
+    margin-bottom: 2em;
+    background-color: var(--vt-c-bg-soft);
 }
 
 a {
@@ -103,7 +74,9 @@ section {
 
 html:not(.dark) .accent,
 .dark .tagline {
-    background: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
+    background: -webkit-linear-gradient(315deg,
+            hsl(31, 75%, 52%) 25%,
+            hsl(45, 69%, 44%));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

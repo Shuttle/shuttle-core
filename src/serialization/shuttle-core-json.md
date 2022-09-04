@@ -4,16 +4,20 @@
 PM> Install-Package Shuttle.Core.Json
 ```
 
-Json.Net implementation of the `ISerializer` interface.
+A `System.Text.Json` implementation of the `ISerializer` interface.
 
 ## Usage
 
 ``` c#
-var serializer = JsonSerializer.Default();
-````
+services.AddJsonSerializer(builder => {
+	builder.Options = new JsonSerializerOptions 
+	{
+	};
 
-You can also specify `JsonSerializerSettings` when using the constructor to create the `JsonSerializer`:
+	// or
 
-``` c#
-var serializer = new JsonSerializer(new JsonSerializerSettings());
-````
+	buidler.Options.option = value;
+});
+```
+
+The `builder.Options` is of type [JsonSerializerOptions](https://docs.microsoft.com/en-us/dotnet/api/system.text.json.jsonserializeroptions?view=net-6.0).
