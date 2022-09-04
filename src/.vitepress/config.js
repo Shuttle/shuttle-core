@@ -178,6 +178,10 @@ module.exports = (async () => {
                     activeMatch: `^/core/`,
                     link: '/core/hosting'
                 },
+                {
+                    text: 'v-previous',
+                    link: 'https://shuttle.github.io/shuttle-core-pre-ms-di/'
+                },
             ],
 
             sidebar: {
