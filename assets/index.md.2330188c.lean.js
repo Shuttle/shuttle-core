@@ -1,11 +1,15 @@
-import { _ as _export_sfc, d as createStaticVNode, c as createElementBlock, e as createVNode, o as openBlock } from "./app.e654cdbe.js";
+import { _ as _export_sfc, o as openBlock, c as createElementBlock, d as createStaticVNode, e as createVNode } from "./app.e654cdbe.js";
 var Home_vue_vue_type_style_index_0_scoped_true_lang = "";
 const _sfc_main$1 = {};
-const _hoisted_1 = /* @__PURE__ */ createStaticVNode("", 2);
+const _hoisted_1 = { id: "hero" };
+const _hoisted_2 = /* @__PURE__ */ createStaticVNode("", 3);
+const _hoisted_5 = [
+  _hoisted_2
+];
 function _sfc_render(_ctx, _cache) {
-  return _hoisted_1;
+  return openBlock(), createElementBlock("section", _hoisted_1, _hoisted_5);
 }
-var Home = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__scopeId", "data-v-a6b243ca"]]);
+var Home = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__scopeId", "data-v-d03c0ed4"]]);
 const __pageData = '{"title":"Home","description":"","frontmatter":{"page":true,"title":"Home"},"headers":[],"relativePath":"index.md"}';
 const __default__ = {};
 const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
