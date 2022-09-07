@@ -1,31 +1,40 @@
 <template>
-    <section id="hero">
-        <p class="upgrade-notice">
-            The latest version of the Shuttle.Core components now make use of <a href="https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection" target="_blank">.NET dependency injection</a> as well as the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-6.0" target="_blank">options pattern</a>.  This is a major departure from the component container adapter pattern used to date.  Please take a look at the <a href="/shuttle-core/upgrade-ms-di.html">upgrade guide</a> to see the <strong>breaking changes</strong>.
-        </p>
-        <h1 class="tagline">Useful .Net stuff</h1>
-        <p class="description">
-            Cross-cutting packages that are used to facilitate the development of .Net software.
-        </p>
-    </section>
+    <div>
+        <section id="hero">
+            <p class="upgrade-notice">
+                The latest version of the Shuttle.Core components now make use of <a
+                    href="https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection"
+                    target="_blank">.NET dependency injection</a> as well as the <a
+                    href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-6.0"
+                    target="_blank">options pattern</a>. This is a major departure from the component container adapter
+                pattern used to date. Please take a look at the <a href="/shuttle-core/upgrade-ms-di.html">upgrade
+                    guide</a> to see the <strong>breaking changes</strong>.
+            </p>
+            <h1 class="tagline">Useful .Net stuff</h1>
+            <p class="description">
+                Cross-cutting packages that are used to facilitate the development of .Net software.
+            </p>
+        </section>
 
-    <section id="highlights" class="vt-box-container">
-        <div class="vt-box">
-            <h2>Framework Support</h2>
-            <div>Packages currently target <code>netstandard2.0</code> and <code>netstandard2.1</code> which means that
-                they can be used with .NET Core 2.1+, .NET Framework 4.6.1+, and .NET 5.0+</div>
-        </div>
-        <div class="vt-box">
-            <h2>Common Patterns</h2>
-            <div>Many common patterns and mechanisms are provided that get you up-and-running quickly.</div>
-        </div>
-        <div class="vt-box">
-            <h2>Open Source</h2>
-            <div>These packages are free open source software licensed under the <a
-                    href='https://opensource.org/licenses/BSD-3-Clause'>3-Clause BSD License</a>. Pull requests are
-                welcome.</div>
-        </div>
-    </section>
+        <section id="highlights" class="vt-box-container">
+            <div class="vt-box">
+                <h2>Framework Support</h2>
+                <div>Packages currently target <code>netstandard2.0</code> and <code>netstandard2.1</code> which means
+                    that
+                    they can be used with .NET Core 2.1+, .NET Framework 4.6.1+, and .NET 5.0+</div>
+            </div>
+            <div class="vt-box">
+                <h2>Common Patterns</h2>
+                <div>Many common patterns and mechanisms are provided that get you up-and-running quickly.</div>
+            </div>
+            <div class="vt-box">
+                <h2>Open Source</h2>
+                <div>These packages are free open source software licensed under the <a
+                        href='https://opensource.org/licenses/BSD-3-Clause'>3-Clause BSD License</a>. Pull requests are
+                    welcome.</div>
+            </div>
+        </section>
+    </div>
 </template>
 
 <style scoped>
