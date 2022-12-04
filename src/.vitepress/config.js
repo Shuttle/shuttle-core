@@ -67,7 +67,7 @@ const infrastructure = [
 
 const data = [
     {
-        text: 'Data',
+        text: 'Data / Micro ORM',
         items: [
             {
                 text: 'Shuttle.Core.Data',
@@ -164,7 +164,7 @@ module.exports = (async () => {
                     link: '/infrastructure/shuttle-core-cli'
                 },
                 {
-                    text: 'Data',
+                    text: 'Data / Micro ORM',
                     activeMatch: `^/data/`,
                     link: '/data/shuttle-core-data'
                 },
