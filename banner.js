@@ -1,4 +1,4 @@
-setTimeout(function() {
+setInterval(function() {
     if (!document.getElementById("pendel-banner")) {
         var banner = document.createElement("div");
 
