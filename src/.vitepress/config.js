@@ -132,7 +132,8 @@ module.exports = (async () => {
 
         head: [
             ...base.head,
-            ['link', { rel: "shortcut icon", href: "/shuttle-core/favicon.ico" }]
+            ['link', { rel: "shortcut icon", href: "/shuttle-core/favicon.ico" }],
+            ['script', { type: "text/javascript", src: "/shuttle-core/banner.js" }]
         ],
 
         themeConfig: {
